@@ -1,0 +1,26 @@
+\begin{abstract}
+Astronomical workflows combine physical quantities, time scales, reference
+systems and scientific models whose meaning must be preserved across numerical
+operations. We present Siderust, a composable Rust architecture for astronomy
+and astrodynamics that represents these concepts through strongly typed
+interfaces and reusable scientific components. Independent libraries provide
+dimensional quantities, affine geometry, astronomical time, datasets,
+approximation, optics and dynamics; a domain layer composes them into coordinate
+transformations, analytical and kernel-backed ephemerides, and observing
+workflows. Units, epochs, frames and coordinate centers remain explicit as values
+move between components, allowing the compiler to check selected scientific
+constraints and runtime contexts to supply observer and model parameters.
+We demonstrate the architecture in Siderust v0.16.0 through a terrestrial
+viewing-window calculation and the geometric altitude and azimuth of Earth
+from a lunar surface site, including finite-distance parallax.
+Independent comparisons with Essential Routines for Fundamental Astronomy
+(ERFA) and the C implementation of the SPICE toolkit (CSPICE) cover time conversion, Earth rotation,
+reference-frame transformations, ephemerides and surface geometry.
+Earth-rotation and sidereal-time residuals remain below
+$\RotationBound$ radians over 1,000 epochs, and the lunar application agrees
+with the corresponding CSPICE reduction within $\EarthAngleBound$ degrees.
+Matched arithmetic measurements show closely similar typed and scalar costs
+for both tested quantity operations. Together, these results demonstrate a reusable
+foundation for constructing astronomical applications with explicit scientific
+semantics and consistent computational interfaces.
+\end{abstract}

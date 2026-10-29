@@ -1,0 +1,103 @@
+\section{Related Work and Positioning}
+
+Units, time and coordinates are represented in several ways across astronomical
+software. Astropy integrates quantities, time and coordinate objects in Python,
+with attribute-aware transformations between frames \cite{astropy2022}.
+SOFA and ERFA provide standard numerical routines for IAU fundamental astronomy,
+with conventions expressed through documented arguments and reference
+algorithms \cite{sofa,erfa}. SPICE couples geometry to body identifiers,
+reference frames, epochs and kernel data \cite{acton1996spice,acton2018spice}.
+Orekit organizes flight-dynamics calculations around dates, frames, states and
+physical models \cite{orekit2016,orekitSoftware}. These designs demonstrate the value of
+scientific representations alongside numerical algorithms.
+
+Rust-native projects bring related design choices to compiled scientific
+software. ANISE combines SPICE-inspired geometry, frame metadata and ephemeris
+data through Rust and Python interfaces \cite{anise}. Nyx composes spacecraft
+states, dynamics, propagation and estimation for mission analysis \cite{nyx}.
+Brahe combines Rust and Python satellite-dynamics interfaces, epochs,
+coordinate conversions and configurable Earth-orientation data \cite{brahe}.
+Hifitime supplies precise epochs, durations and explicit time-scale identifiers
+\cite{hifitime}. The \texttt{uom} library represents dimensional quantities
+statically and converts their unit representations \cite{uom}.
+
+Astropy carries unit and scale metadata in runtime objects and checks
+compatibility during execution; frame attributes include epoch and observer
+location. ANISE also enforces scientific context: its frame descriptors carry
+origin and orientation identifiers, with fallible kernel-graph traversal
+\cite{aniseFrames}. Hifitime stores a time-scale value in its epoch, whereas
+\texttt{uom} encodes dimensions and unit systems statically, normalizing
+quantities to base units. These are substantive semantic mechanisms, not an
+absence of safety. Orekit uses dates, frame trees and model providers; its
+standard numerical arguments follow SI conventions. SOFA/ERFA expose convention-
+specific scalar and array arguments; SPICE validates names, kernels and coverage
+at runtime. Model and data selection remain scientific decisions in each design.
+
+Table~\ref{tab:positioning} compares the architectural boundaries most relevant
+to Siderust. Our quantity layer retains unit markers in public types; our time
+layer parameterizes epochs by scale and encoding; and our geometry layer
+parameterizes positions by frame and center. Siderust connects these generic
+representations through an astronomy-specific transformation and model layer.
+The same abstractions therefore serve a terrestrial observing workflow, a lunar
+surface calculation or a numerical dynamics component. Applications can also
+adopt the lower-level libraries independently.
+
+\begin{table*}[!tbp]
+\centering
+\caption{Architectural approaches to scientific context. Entries describe public
+interface choices rather than numerical rankings.}
+\label{tab:positioning}
+\footnotesize
+\begin{tabularx}{\textwidth}{@{}lYYY@{}}
+\toprule
+System & Scientific representations & Composition mechanism & Relevant design emphasis \\
+\midrule
+Astropy & Quantities, time and coordinate objects & Dynamic units and frame-attribute checks & Integrated Python astronomy workflows \\
+SOFA/ERFA & Convention-specific numerical inputs & Standardized routines and argument conventions & Fundamental-astronomy reference algorithms \\
+SPICE & Bodies, frames, epochs and kernels & Metadata-driven kernel geometry & Model-backed planetary and mission geometry \\
+Orekit & Dates, frames and spacecraft states & Object and model interfaces & Flight-dynamics and estimation workflows \\
+ANISE & Frame metadata, Cartesian states and ephemerides & Rust domain objects and kernel data & Navigation and ephemeris composition \\
+Nyx & Trajectory states, Hifitime epochs and dynamical models & Propagation and estimation interfaces & Astrodynamics and mission analysis \\
+Brahe & Epochs, numerical states and frame conversions & Rust/Python operations with EOP context & Satellite analysis and propagation \\
+Hifitime & Epochs, durations and scale identifiers & Dedicated temporal operations & Reusable precision-time component \\
+\texttt{uom} & Dimension-parameterized quantities & Static dimensional arithmetic & Reusable unit-system abstraction \\
+Siderust & Unit, scale, frame and center types & Generic scientific layers plus model contexts & Composable astronomical computation \\
+\bottomrule
+\end{tabularx}
+\end{table*}
+
+These projects establish the broader design space in which Siderust operates.
+Its distinguishing emphasis is the composition of independently reusable
+scientific layers through type-visible astronomical interfaces. We evaluate
+that implementation using reference operations with aligned models, frames
+and observables, so that numerical comparisons address the intended scientific
+computation.
+
+\subsection{A concrete context-preserving workflow}
+
+The Earth-from-Moon calculation in Section~\ref{sec:lunar-example} provides a
+common workflow with a finite target, epoch, frame, center and units. Its
+independent reference uses the actual SpiceyPy interfaces
+\texttt{spkpos("EARTH", et, "J2000", "NONE", "MOON")} and % chktex 36
+\texttt{pxform("J2000", "IAU\_MOON", et)}, followed by observer subtraction % chktex 36
+and a local projection. CSPICE specifies kilometres and TDB seconds from J2000;
+body, frame and correction identifiers are argument values checked against the
+loaded kernels \cite{spkposAPI}. These calls make scientific choices explicit
+and support a broad runtime frame graph.
+
+In the Siderust listing, \texttt{Position<Selenocentric, EclipticMeanJ2000,
+Kilometer>} carries center, frame and unit in its type, and the epoch is
+\texttt{JulianDate<TT>}. An explicit sign reversal constructs Earth's
+selenocentric position from the Moon's geocentric vector. The surface operation
+then selects the frame transformation and preserves the Moon observer identity.
+Site longitude, latitude and height, epoch value, loaded BSP and model context
+remain runtime values. The compiler rejects incompatible position arithmetic;
+fallible calls check site admissibility and kernel access. It cannot establish
+that the sign reversal represents the intended target, that two supplied epochs
+coincide, or that a selected orientation is adequate for an observation.
+
+Both implementations retain scientific context through different mechanisms.
+The distinguishing contribution here is carrying selected contracts across
+independently reusable quantity, geometry and time components, then testing their
+composition in a domain application. The comparison concerns interface structure;
+productivity, error frequency and comparative workflow speed were not measured.

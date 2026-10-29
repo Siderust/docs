@@ -1,0 +1,115 @@
+% Siderust software article for Astronomy and Computing.
+\documentclass[final,5p,times,twocolumn,nonatbib]{elsarticle}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{microtype}
+\usepackage[english]{babel}
+\usepackage{csquotes}
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx}
+\usepackage{dblfloatfix}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,positioning,fit}
+\usepackage{booktabs,tabularx,array}
+\usepackage{placeins}
+\newcolumntype{Y}{>{\raggedright\arraybackslash}X}
+\setcounter{topnumber}{4}
+\setcounter{bottomnumber}{2}
+\setcounter{totalnumber}{6}
+\setcounter{dbltopnumber}{4}
+\renewcommand{\topfraction}{0.95}
+\renewcommand{\bottomfraction}{0.85}
+\renewcommand{\textfraction}{0.05}
+\renewcommand{\floatpagefraction}{0.75}
+\renewcommand{\dbltopfraction}{0.95}
+\renewcommand{\dblfloatpagefraction}{0.75}
+\usepackage{xcolor}
+\usepackage{listings}
+\definecolor{codebg}{RGB}{248,248,248}
+\definecolor{coderule}{RGB}{210,210,210}
+\definecolor{codekw}{RGB}{0,70,140}
+\definecolor{codestr}{RGB}{130,60,0}
+\definecolor{codecomment}{RGB}{90,90,90}
+\lstdefinelanguage{Rust}{
+  morekeywords={as,break,const,continue,crate,else,enum,extern,false,fn,for,if,impl,in,let,match,mod,move,mut,pub,ref,return,self,Self,static,struct,super,trait,true,type,unsafe,use,where,while},
+  sensitive=true,
+  morecomment=[l]{//},
+  morecomment=[s]{/*}{*/},
+  morestring=[b]"
+}
+\lstset{
+  language=Rust,
+  basicstyle=\ttfamily\footnotesize,
+  keywordstyle=\color{codekw}\bfseries,
+  stringstyle=\color{codestr},
+  commentstyle=\color{codecomment}\itshape,
+  backgroundcolor=\color{codebg},
+  frame=single,
+  rulecolor=\color{coderule},
+  columns=fullflexible,
+  breaklines=true,
+  keepspaces=true,
+  showstringspaces=false,
+  captionpos=b
+}
+
+\usepackage[
+  backend=biber,
+  style=numeric,
+  sorting=nyt,
+  maxbibnames=99
+]{biblatex}
+\addbibresource{bib/references.bib}
+\usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
+
+\hypersetup{pdfkeywords={astronomical software, Rust, type safety, astronomical coordinates, ephemerides, scientific computing, reproducibility}}
+
+\journal{Astronomy and Computing}
+
+\input{tables/release-values}
+
+\begin{document}
+\begin{frontmatter}
+
+\title{Siderust: Type-Safe Astronomical Computing in Rust}
+
+\author[ice,ieec,uab]{Ramon Vall{\'e}s Puig}
+\ead{vallespuigramon@gmail.com}
+
+\affiliation[ice]{organization={Institut de Ciències de l'Espai (ICE-CSIC)},
+  city={Cerdanyola del Vallès}, country={Spain}}
+\affiliation[ieec]{organization={Institut d'Estudis Espacials de Catalunya (IEEC)},
+  city={Castelldefels}, country={Spain}}
+\affiliation[uab]{organization={Universitat Autònoma de Barcelona (UAB)},
+  city={Cerdanyola del Vallès}, country={Spain}}
+
+\input{chapters/0_abstract}
+
+\begin{keyword}
+astronomical software \sep{} Rust \sep{} type safety
+\sep{} astronomical coordinates \sep{} ephemerides
+\sep{} scientific computing \sep{} reproducibility
+\end{keyword}
+
+\end{frontmatter}
+
+\input{chapters/1_introduction}
+\input{chapters/2_state_of_the_art}
+\input{chapters/3_architecture}
+\input{chapters/4_api}
+\input{chapters/5_ffi}
+\input{chapters/6_application}
+\input{chapters/7_performance}
+\input{chapters/8_results}
+\input{chapters/9_discussion}
+\input{chapters/10_conclusion}
+
+\input{chapters/90_acknowledgments}
+
+
+\printbibliography{}
+
+\input{chapters/99_appendices}
+
+\end{document}

@@ -1,0 +1,12 @@
+[package]
+name = "siderust-paper-v016-release"
+version = "0.1.0"
+edition = "2021"
+publish = false
+
+# The article's examples use the published Siderust v0.16.0 crate.
+[dependencies]
+siderust = "=0.16.0"
+qtty = "=0.8.6"
+tempoch = "=0.11.1"
+chrono = "=0.4.45"

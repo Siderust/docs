@@ -1,0 +1,15 @@
+\begin{tabularx}{\textwidth}{@{}YYYY@{}}
+\toprule
+Constraint & API & Mechanism & Outcome \\
+\midrule
+observer\_\allowbreak{}body & horizontal\_\allowbreak{}observation\_\allowbreak{}to\_\allowbreak{}direction$<$B$>$ & static type/trait compatibility & rejected: E0308 \\
+center & Position$<$C,F,U$>$ subtraction & static type/trait compatibility & rejected: E0277 \\
+dimension & Quantity$<$U,S$>$ addition & static type/trait compatibility & rejected: E0308 \\
+frame & Position$<$C,F,U$>$ subtraction & static type/trait compatibility & rejected: E0277 \\
+scale & gmst\_\allowbreak{}iau2006(UT1,TT) & static type/trait compatibility & rejected: E0308 \\
+observer values & Position::checked\_\allowbreak{}sub & runtime Result & valid accepted; invalid rejected \\
+finite inputs / surface domain & SurfaceSite::new & runtime Result & valid accepted; invalid rejected \\
+zero/nonfinite direction & SurfaceHorizontalExt::observe\_\allowbreak{}direction & runtime Result & valid accepted; invalid rejected \\
+surface observer values & horizontal\_\allowbreak{}observation\_\allowbreak{}to\_\allowbreak{}direction & runtime Result & valid accepted; invalid rejected \\
+\bottomrule
+\end{tabularx}

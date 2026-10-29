@@ -1,0 +1,149 @@
+\section{Results}
+
+\subsection{Transformations and ephemeris composition}
+
+All sampled interior comparisons pass their declared acceptance bounds
+(Table~\ref{tab:validation}). Earth rotation and GMST agree with ERFA to below
+$\RotationBound$ rad, and the maximum bias--precession--nutation matrix-element
+residual is below $\BpnBound$. The terrestrial application's altitude
+and azimuth agreement extends this check to the composition of time conversion,
+sidereal rotation and local horizon geometry.
+
+The time supplement additionally verifies civil leap-second handling and
+interpolation of measured IERS data (Table~\ref{tab:time-extension}). The six UT1
+comparisons pass a $1\,\mu$s bound. Rotations use full-JD inputs and agree
+within $4\times10^{-9}$ rad with split-date references. One EOP coverage test
+identifies a released boundary defect: a fractional day beyond the last sample
+repeats that sample. In Tempoch 0.11.1 the last sample is MJD 60678,
+whereas querying MJD 60678.0001 still returns its EOP values.
+This outcome is classified as a failure rather than numerical agreement. Callers must reject nonfinite
+epochs and enforce the closed interval between the first and last sample
+before lookup. Stale DUT1 can affect UT1, Earth rotation and sidereal time;
+stale polar-motion values can affect frame chains that consume them. This path is separate from the two
+geometric applications.
+
+\begin{table}[!tbp]
+\centering
+\caption{Supplemental time comparisons with split-date ERFA and IERS-derived
+references. Maxima are absolute residuals; bounds are acceptance tolerances.
+The separate EOP endpoint failure is not included among the numerical successes.}
+\label{tab:time-extension}
+\footnotesize
+\input{tables/release-time}
+\end{table}
+
+The same-kernel ephemeris results combine kernel interpretation, body-center
+chains, time handling and reference-frame conversion. Agreement over 1,002
+interior epochs supports the implementation of this composed path. Exact
+coverage endpoints return out-of-range errors, while points one second inside
+succeed; this boundary behavior requires an interior margin for
+these queries. Requests one day outside also return
+coverage errors.
+
+\begin{table*}[!tbp]
+\centering
+\caption{Independent comparisons for published Siderust v0.16.0. Time/frame
+rows use ERFA; ephemeris rows use CSPICE with the same DE440s kernel and aligned
+frames. Position residuals are Euclidean vector norms; BPN residuals are
+maximum absolute matrix-element differences per epoch.
+$^{*}$UTC rows compare full-JD \texttt{f64} outputs with a
+$50\,\mu$s acceptance bound; zero denotes no resolved difference, not
+exact time-scale agreement. Near J2000, one full-JD spacing is about
+$40\,\mu$s.}
+\label{tab:validation}
+\footnotesize
+\input{tables/release-validation}
+\end{table*}
+
+The analytical backend offers an alternative model path through the same
+public ephemeris interface. Table~\ref{tab:models} reports its differences
+from DE440s at the first 1,000 ephemeris epochs. These values characterize
+the released analytical outputs relative to the SPK
+backend over the sampled interval, including their frame-realization effects.
+Separating them from same-kernel residuals makes the scientific
+consequence of selecting an ephemeris backend explicit.
+
+\begin{table*}[!tbp]
+\centering
+\caption{Backend-output differences from DE440s for v0.16.0 at 1,000 TT
+epochs, eight days apart from J2000. Residuals are Euclidean vector norms and
+include native analytical versus IAU 2006 frame-realization effects. Earth is
+heliocentric and Moon geocentric; both paths compute geometric positions.}
+\label{tab:models}
+\footnotesize
+\input{tables/release-models}
+\end{table*}
+
+\subsection{Generic surface observations}
+
+The lunar and Mars comparisons pass their surface-geometry bounds
+(Table~\ref{tab:candidate-surface}). The lunar rotation-matrix residual is
+below $\LunarMatrixBound$ per element; distant and finite-target angles agree
+within $\SurfaceAngleBound$ degrees. The finite-target comparison exercises
+observer displacement and range together with orientation. A small rotation
+residual can produce a larger Cartesian component difference at a large target
+distance, explaining the different scales of the angle, range and component
+rows.
+
+All 80 additional analytic boundary cases pass, including 12 undefined-azimuth
+cases returning the documented zero convention. The comparisons use separately
+constructed reference geometry and the tolerances specified in the experimental
+method. Small residuals are not estimates of physical surface or pointing
+uncertainty.
+
+The Earth-from-Moon result in Section~\ref{sec:lunar-example} demonstrates the
+same pipeline with an ephemeris-derived target. Its independent agreement and
+observable parallax connect the generic surface abstraction to a concrete
+astronomical calculation. The cardinal diagnostic also verifies the released
+Cartesian north/east/up convention.
+
+\begin{table*}[!tbp]
+\centering
+\caption{Independent surface comparisons for published v0.16.0. Lunar rows
+use analytical CSPICE \texttt{IAU\_MOON}; Mars rows check reference-ellipsoid
+geometry. Matrix epochs and finite-target geometries are counted once each;
+the ten finite-target geometries were each executed three times. Angular
+residuals combine altitude and wrapped azimuth; component and basis rows use
+maximum absolute component differences, and range uses an absolute difference.}
+\label{tab:candidate-surface}
+\footnotesize
+\input{tables/release-surface}
+\end{table*}
+
+\subsection{Executable semantics and arithmetic cost}
+
+The compiler rejects the five demonstrated dimension, frame, center, time-scale
+and observer-body mismatches with the recorded \texttt{E0308} or
+\texttt{E0277} diagnostics. Compatible operations execute successfully;
+observer-site checks distinguish matching from mismatched runtime parameters.
+These results connect the interface distinctions in Table~\ref{tab:guarantees}
+to executable behavior.
+
+Typed and scalar arithmetic costs are closely matched for the two measured
+operations (Table~\ref{tab:cost}). The results support the practical use of
+unit-bearing arithmetic in these kernels, with ordinary compiler optimization
+and the same numerical outputs as their scalar counterparts.
+
+\begin{table}[!tbp]
+\centering
+\caption{Paired arithmetic measurements for the published dependency graph:
+30 rounds of $10^6$ operations per row. SD describes round-to-round variation
+on the recorded host.}
+\label{tab:cost}
+\footnotesize
+\input{tables/release-cost}
+\end{table}
+
+\begin{table}[!tbp]
+\centering
+\caption{Typed/scalar ratios within the original 30 paired rounds per operation.
+The p5--p95 range is empirical round variability, not a confidence interval.}
+\label{tab:ratios}
+\footnotesize
+\input{tables/release-ratios}
+\end{table}
+
+The paired medians in Table~\ref{tab:ratios} are close to unity. Variation across
+rounds bounds the interpretation of differences at this scale on the recorded
+host. These two kernels support no speed conclusion about full astronomical
+workflows or other software systems.

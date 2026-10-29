@@ -1,0 +1,102 @@
+\section{Software Architecture}
+
+The Siderust architecture separates reusable scientific mechanisms from
+astronomy-specific interpretation. The lower layers represent quantities,
+geometry and time; numerical components operate on these representations; and
+the domain crate supplies astronomical models and composes complete workflows.
+Figure~\ref{fig:architecture} illustrates this composition for a surface
+observation. The separation gives each component a clear responsibility while
+allowing scientific information to cross its interfaces.
+
+\begin{figure*}[!tbp]
+\centering
+\input{figures/architecture}
+\caption{Scientific composition in a surface-observation workflow. Typed
+quantities, epochs and reference systems connect ephemeris and orientation
+models to observer-relative geometry. Reusable libraries supply the mechanisms;
+the Siderust domain layer selects and combines the astronomical operations.
+The diagram was prepared with AI-assisted TikZ authoring.}
+\label{fig:architecture}
+\end{figure*}
+
+\subsection{Shared scientific representations}
+
+\texttt{qtty} provides dimensional quantities with unit and scalar parameters.
+Conversion changes the unit representation explicitly, while multiplication and
+division construct compound quantities. \texttt{affn} provides generic Cartesian,
+spherical and ellipsoidal containers, reference-frame and reference-center
+traits, affine operators and conic geometry. \texttt{tempoch} supplies
+scale-parameterized instants, durations, intervals and encoded epoch views.
+Together, these libraries define the vocabulary shared by the scientific layers.
+
+For example, a position uses quantities for its components and carries frame
+and center markers through transformations. An epoch remains typed when passed
+to an orientation model. The result of a local observation retains its observer
+parameters while presenting altitude, azimuth and range as quantities.
+This arrangement supports consistent reuse: the geometry library handles
+coordinate structure, the time library handles temporal representation, and
+the domain layer interprets both for a particular astronomical calculation.
+
+\subsection{Models, numerical components and domain composition}
+
+\texttt{siderust-archive} supplies scientific datasets, manifests, checksums
+and generated accessors. Analytical ephemerides and time conversions consume
+these data through their respective implementations. \texttt{cheby} supplies
+Chebyshev approximation and interpolation; \texttt{keplerian} supplies
+central-force mechanics, conic propagation and Lambert solvers;
+\texttt{principia} supplies numerical dynamics, integration and variational
+equations; and \texttt{optica} supplies optical and radiometric primitives.
+These components can be reused independently or assembled by the domain crate
+(Table~\ref{tab:crate-products}).
+
+The \texttt{siderust} crate adds celestial bodies, observatories, astronomical
+transformations, analytical and runtime ephemerides, observing-event searches
+and feature-gated orbital workflows. Generic surface observers illustrate
+this division particularly well: a common projection pipeline operates on a
+body-specific reference surface and orientation provider. Extending the
+observer model therefore reuses the quantity, epoch and geometry layers
+alongside the local-horizon calculation.
+This separates two extension tasks: a new surface model supplies scientific
+parameters, while the existing projection consumes the shared typed geometry.
+The boundary cases described in Section~\ref{sec:evaluation} examine this
+separation without changing the underlying orientation or ephemeris implementation.
+
+\begin{table}[!tbp]
+\centering
+\caption{Reusable components and their role in scientific composition. Exact
+versions and licensing terms are available from the published software releases.}
+\label{tab:crate-products}
+\footnotesize
+\begin{tabularx}{\columnwidth}{@{}lY@{}}
+\toprule
+Component & Scientific responsibility \\
+\midrule
+\texttt{qtty} & Quantities, units and dimensional arithmetic \\
+\texttt{affn} & Geometry, coordinate containers, frames and centers \\
+\texttt{tempoch} & Epochs, time scales, durations and conversions \\
+\texttt{siderust-archive} & Scientific datasets and provenance \\
+\texttt{cheby} & Approximation, interpolation and calculus \\
+\texttt{keplerian} & Analytic orbital mechanics and transfers \\
+\texttt{principia} & Numerical dynamics and state transport \\
+\texttt{optica} & Optical and radiometric operations \\
+\texttt{siderust} & Astronomical models and integrated workflows \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\subsection{Memory safety and scientific semantics}
+
+Rust's ownership, borrowing and lifetime rules provide the memory and sharing
+foundation for these components. Safe Rust prevents important classes of
+invalid memory access and data races, assuming sound implementations of the
+unsafe abstractions on which it relies \cite{rustbook,rustbelt2018}.
+Siderust adds domain-level structure: unit, scale, frame and center types
+constrain scientific operations, while fallible constructors and explicit
+errors handle value-dependent conditions.
+
+The released domain crate inherits a workspace
+\texttt{unsafe\_code = "forbid"} lint. Its FFI package has a separate lint
+configuration allowing unsafe code at the foreign boundary; dependencies have
+their own implementation policies. This source policy complements API design
+and testing. Scientific validity additionally depends on choosing suitable
+models, data and inputs, as discussed in Section~9.

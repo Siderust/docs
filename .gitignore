@@ -1,0 +1,33 @@
+# LaTeX output and auxiliary files
+main.pdf
+*.aux
+*.log
+*.bbl
+*.blg
+*.bcf
+*.run.xml
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+*.lof
+*.lot
+*.toc
+*.out
+*.xdv
+*.spl
+
+# Local build output and caches
+target/
+build/
+__pycache__/
+*.py[cod]
+/tmp/
+
+# Editors, OS and temporary files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+*~
+*.swp
+*.swo

@@ -1,0 +1,114 @@
+\section{Discussion}
+
+\subsection{Implications for astronomical software design}
+
+Native Rust types connect Siderust's numerical components with explicit
+astronomical semantics. Units, epochs, frames and centers participate in the
+interfaces that join a calculation's stages.
+Developers can therefore follow both the numerical data flow and the scientific
+interpretation of its intermediate values. Explicit transformations provide
+natural places to select a reference system, epoch or model context.
+
+The observing applications illustrate this benefit in two settings. The
+terrestrial workflow connects UTC input, TT and UT1 arguments, sidereal rotation
+and altitude selection. The lunar workflow connects a kernel-derived position,
+a selenocentric origin, body orientation and observer-relative projection.
+Their shared representations support coherent application code while allowing
+the astronomical models to differ.
+
+\subsection{Genericity and extensibility}
+
+Generic surface observers separate local geometry from the physical model of
+the body. A body supplies its center, fixed frame and reference surface; the
+common pipeline performs observer subtraction and horizontal projection.
+The same structure serves a spherical Moon and an ellipsoidal Mars, including
+both planetocentric and planetographic site representations. This is a concrete
+example of extending astronomical capability by composing existing abstractions.
+
+The modular structure also supports partial adoption. Applications may use
+\texttt{qtty}, \texttt{affn} or \texttt{tempoch} directly, or combine numerical
+components with their own models. A shared geometric vocabulary reduces
+translation between component-specific containers, while explicit contexts
+allow applications to control scientific data and model selection.
+
+An existing downstream application is NSB v0.3.0, for night-sky radiance
+evaluation and observation planning \cite{Valles_Puig_NSB_Night-Sky_Background}.
+Its public observer is \texttt{Geodetic<ECEF>}; target directions retain their
+frame, epochs use Tempoch's \texttt{Time<UTC>}, and radiometric quantities use
+Siderust's quantity re-exports. NSB adds sky-model composition, radiance evaluation
+and planning logic on this shared vocabulary. The tagged version depends on
+Siderust v0.15.1, so it demonstrates existing ecosystem reuse rather than
+validation of v0.16.0 or use of its new surface APIs. NSB shares authorship with
+Siderust; it is not independent external adoption, and its observational results
+are not used as a Siderust accuracy reference.
+
+\subsection{Performance and practical integration}
+
+The matched arithmetic measurements show that expressive dimensional interfaces
+can compile to costs close to scalar arithmetic for the tested operations.
+This result is useful for applications that perform unit-bearing calculations
+frequently. Complete observing and dynamics workloads also include model
+evaluation, context access and data loading, which motivate further workflow
+benchmarks across hardware and application settings.
+
+C-compatible interfaces extend the architecture's reuse to other languages by
+sharing the Rust computation. Host-language adapters additionally handle
+marshalling, resource ownership and error translation. Pinning wrapper releases
+and testing the corresponding host-language workflows will extend the present
+Rust evaluation into a
+cross-language assessment.
+
+\subsection{Compiler-guided development}
+
+Typed interfaces also provide structured feedback during implementation.
+Type-directed synthesis uses specifications to constrain program construction
+\cite{polikarpova2016}; systems such as RustAssistant use compilation feedback
+for iterative repair of Rust programs \cite{deligiannis2025rustassistant}.
+Siderust supplies a scientific instance of this mechanism: incompatible units,
+frames, centers or scales produce deterministic compiler diagnostics.
+
+Our frame-mismatch fixture produces \texttt{E0277} when subtracting positions
+in different frames. Listing~\ref{lst:frame-repair} repairs the operation with
+an explicit transformation while retaining its frame, center and unit
+information. These reproducible diagnostics can guide both a developer and
+an automated programming tool through an iterative compile--revise--test loop.
+A successful compilation confirms the expressed contracts; choosing a
+physically suitable model and consistent epoch remains the developer's task.
+Together with runtime checks and numerical validation, these interfaces provide a
+structured foundation for constructing astronomical applications. Measuring
+their effect on AI-assisted development is a further research direction.
+
+\lstinputlisting[float=tbp,caption={Explicit frame alignment before position subtraction. Type aliases improve readability while preserving the scientific distinctions.},label={lst:frame-repair}]{../examples/src/bin/frame_repair.rs}
+
+\subsection{Scientific scope and future directions}
+
+The evaluation checks the specified operations and reference models over
+deterministic samples. Same-kernel agreement validates the implemented
+ephemeris path rather than the underlying physical ephemeris. Lunar pointing
+uses analytical \texttt{IAU\_MOON}, with accuracy tied to that orientation
+model and the chosen reference surface. Apparent-place corrections and terrain
+are separate additions to the geometric observing workflows.
+
+In the published v0.16.0 implementation, the analytical and SPK ephemerides
+share an \texttt{EclipticMeanJ2000} type marker without an explicit transformation
+between their native physical frame realizations. Type-level compatibility
+therefore does not by itself establish physical realization equivalence. The
+analytical-versus-SPK table reports backend-output differences including this
+convention effect; resolving the physical-frame contract is separate from the
+same-kernel SPK validation.
+
+The original rotation grid uses prescribed UT1, while the compact time
+extension checks measured IERS interpolation, EOP-backed UT1 and inserted-second
+labels independently. Full-JD \texttt{f64} outputs have coarser temporal resolution than the native
+split-second representation, so a zero residual in the table must be
+interpreted at the full-JD resolution.
+The EOP final-day extension and exact SPK endpoint rejection are identified
+implementation boundaries. An exact-range guard in the EOP caller is a
+practical mitigation; any upstream correction would require separate
+verification. The evaluated v0.16.0 dependency graph is unchanged.
+Complete polar-motion-corrected frame chains and
+relativistic time transformations would extend the present coverage. More extensive dynamics and comparative
+workflow benchmarks would complement the present arithmetic measurements.
+These directions fit the architecture's separation of representations,
+scientific models and application workflows. Public deposition of the underlying research data and independent technical
+review remain relevant to publication and subsequent reproduction.

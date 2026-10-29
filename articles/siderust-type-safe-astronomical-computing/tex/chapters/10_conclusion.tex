@@ -1,0 +1,22 @@
+\section{Conclusions}
+
+The central contribution is architectural: Siderust connects reusable
+numerical components through explicit astronomical semantics. Quantity,
+geometry and time abstractions support a Rust domain layer that combines
+reference-system transformations, ephemerides and astronomical workflows.
+The resulting interfaces support reuse, express intermediate scientific
+meaning and permit compiler checking of selected constraints.
+
+The terrestrial viewing-window and Earth-from-Moon applications demonstrate
+this composition across different observers, reference systems and model
+paths. Independent ERFA and CSPICE comparisons substantiate representative
+transformations, ephemeris operations and surface geometry in published
+v0.16.0. Matched arithmetic measurements show closely similar typed and scalar
+costs for two common quantity operations. Executable compiler diagnostics
+provide an additional development mechanism alongside runtime and scientific
+validation.
+
+Together, these contributions provide a reusable and extensible foundation
+for astronomical computing. By connecting scientific representations to the
+operations that consume them, Siderust helps developers construct applications
+whose computational structure also communicates their astronomical meaning.

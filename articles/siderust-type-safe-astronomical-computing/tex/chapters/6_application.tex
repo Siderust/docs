@@ -1,0 +1,90 @@
+\section{Applications in Observer Geometry}
+\label{sec:application}
+
+\subsection{A terrestrial viewing window}
+
+For the terrestrial application, we determine when a target exceeds
+$30^\circ$ altitude during 2025 January 1 UTC at a site with longitude $1.5^\circ$ east, geodetic latitude $42^\circ$
+north and zero ellipsoidal height. The prescribed direction has right ascension
+$120^\circ$ and declination $20^\circ$ in the true equator and equinox of date.
+It defines a reproducible pointing scenario with fixed angular coordinates.
+
+The calculation constructs a UTC epoch, converts it to TT and calls
+\texttt{to\_horizontal\_precise} with a separately typed UT1 epoch and the
+site. We prescribe $\mathrm{UT1}-\mathrm{UTC}=0$ for this example and sample
+\ViewingSampleCount{} epochs at five-minute spacing, including both day
+endpoints. Selection above the threshold produces \ViewingSelectedCount{}
+samples spanning \ViewingSpans{} UTC.
+Figure~\ref{fig:viewing-window} displays the complete grid.
+These are selected sample spans; threshold crossings lie between adjacent
+five-minute samples and are not root-refined rise or set times.
+
+The independent reduction combines ERFA \texttt{gst06a} and \texttt{hd2ae}
+with the same inputs. The maximum altitude difference is below
+$\AltitudeBound$ degrees. Site geometry, angular units, frame and time scales
+remain explicit throughout the selection, illustrating how a simple planning
+operation composes several scientific representations.
+
+\begin{figure}[!tbp]
+\centering
+\input{figures/observing-window}
+\caption{All 289 terrestrial altitude samples. The line joins sampled values;
+dots mark the 109 selected samples, and the dashed line is the $30^\circ$
+threshold. Shaded five-minute brackets contain the two crossings; no refined
+event times are implied. The plot is based on the 289 evaluated samples;
+its plotting code was AI-assisted.}
+\label{fig:viewing-window}
+\end{figure}
+
+\subsection{Earth seen from a lunar surface site}
+\label{sec:lunar-example}
+
+Our second application computes Earth's geometric altitude, azimuth and range
+from a lunar station at $20^\circ$ east longitude and $-3.5^\circ$
+planetocentric latitude at TT JD $2460000.5$. The observer lies on the
+$1737.4$ km reference sphere, so the local vertical is radial. This calculation
+combines a finite-distance ephemeris target with the generic surface-observer
+architecture introduced in Siderust v0.16.0.
+
+Listing~\ref{lst:moon-surface} loads the DE440s kernel and evaluates the Moon's
+geocentric position. Reversing that vector gives Earth's selenocentric position
+in the same mean-ecliptic J2000 frame. The explicit \texttt{EarthFromMoon}
+alias retains the target's center, frame and length unit. The surface API
+rotates the target into the lunar body-fixed frame, subtracts the observer
+position and projects the resulting line of sight onto the local horizon.
+The target remains a position throughout, preserving range and parallax.
+Writing $\boldsymbol r$ for Earth's selenocentric inertial vector,
+$R$ for the inertial-to-body-fixed rotation, and $\boldsymbol s$ for the
+body-fixed site, the local vector is
+\begin{equation}
+ \boldsymbol\ell =
+ \begin{pmatrix}\boldsymbol n^{\mathsf T}\\
+                 \boldsymbol e^{\mathsf T}\\
+                 \boldsymbol u^{\mathsf T}\end{pmatrix}
+ (R\boldsymbol r-\boldsymbol s),
+\end{equation}
+where $\boldsymbol n$, $\boldsymbol e$ and $\boldsymbol u$ are the local
+north, east and up unit vectors. Range is $\lVert\boldsymbol\ell\rVert$;
+altitude is $\operatorname{atan2}(\ell_u,\sqrt{\ell_n^2+\ell_e^2})$
+and azimuth is $\operatorname{atan2}(\ell_e,\ell_n)$ modulo $2\pi$.
+This ordering makes the observer subtraction and azimuth signs explicit.
+
+\lstinputlisting[float=tbp,caption={Earth from a lunar observer using published v0.16.0 APIs. The argument supplies the DE440s BSP file. The output is altitude and azimuth in degrees, followed by range in kilometres.},label={lst:moon-surface}]{../examples/src/bin/earth_from_moon.rs}
+
+The result is altitude $\EarthAltitude^\circ$, azimuth $\EarthAzimuth^\circ$ and range
+$\EarthRange$ km. An independent CSPICE reduction of the same ephemeris and
+surface geometry agrees within $\EarthAngleBound$ degrees and
+$\EarthRangeBound$ km. The corresponding Moon-center direction has altitude
+$\CentreAltitude^\circ$: observer displacement changes the altitude by about
+$\EarthParallax^\circ$. This difference demonstrates why a nearby target requires
+finite-distance geometry. The selected Earth position is above the horizon;
+the example computes a pointing state rather than an Earthrise event.
+
+We use the analytical text-PCK \texttt{IAU\_MOON} orientation,
+which approximates the lunar mean-Earth/polar-axis convention and is exposed as \texttt{MoonIauMeanEarth}. Its periodic arguments use
+TDB converted from the supplied TT epoch. This model is distinct from
+DE-specific \texttt{MOON\_PA} and binary-PCK \texttt{MOON\_ME} realizations
+\cite{archinal2011,naiflunarframes}. Azimuth increases from north through east.
+Both applications compute geometric quantities, with atmospheric refraction,
+light time, aberration, deflection and terrain masking omitted. These model
+choices define the observables used in the comparisons.

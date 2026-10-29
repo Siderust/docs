@@ -1,0 +1,5 @@
+- Reusable scientific components preserve units, epochs, frames and centers.
+- Typed interfaces compose terrestrial and lunar observing geometry in Rust.
+- Independent ERFA and CSPICE comparisons evaluate published Siderust v0.16.0.
+- Finite-distance lunar observations retain observer displacement and range.
+- Two paired arithmetic kernels show closely matched typed and scalar costs.

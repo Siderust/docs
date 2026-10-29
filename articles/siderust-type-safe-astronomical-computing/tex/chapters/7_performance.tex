@@ -1,0 +1,126 @@
+\section{Experimental Method}
+\label{sec:evaluation}
+
+Published Siderust v0.16.0 is evaluated through independent numerical comparisons,
+executable controls and paired arithmetic measurements. The evaluated package
+corresponds to release revision \texttt{3e0069d3}. A committed Cargo lockfile
+pins the published crate versions used by the accompanying executable examples,
+which supply every printed listing. Reference methods, test inputs and tolerances
+are described below. Original raw measurements, independent reference
+fixtures and reproduction scripts are preserved in a separate, version-pinned
+supplement branch rather than in the publication-source tree.
+The full experimental execution infrastructure is not required for building the manuscript.
+
+\subsection{Reference transformations and ephemerides}
+
+We compare time and frame operations with ERFA 2.0.1 through PyERFA 2.0.1.5,
+and kernel-backed positions with CSPICE N0067 through SpiceyPy 6.0.0.
+Earth rotation angle, IAU 2006 GMST, mean obliquity and the IAU 2006/2000A
+bias--precession--nutation matrix are evaluated at 1,000 deterministic Julian
+dates $2451545-36525+73.125i$, $0\leq i<1000$. These isolated rotation tests
+supply equal numerical TT and UT1 dates as controlled arguments. Ten UTC dates
+from 1972 to 2025 exercise UTC--TAI and UTC--TT around selected leap-second
+changes; full-JD comparisons use a $50\,\mu$s tolerance.
+A separate pinned feature graph enables runtime time-data loading for a compact
+IERS extension: 13 civil UTC labels include the 1972, 2015 and 2016 inserted
+seconds, and six epochs compare EOP-backed UT1, Earth rotation and GMST.
+Independent ERFA two-part UTC quasi-JD references are converted to continuous
+TAI, TT and UT1 before differencing. The native time interface retains split
+seconds; scalar UTC JD is rejected during an inserted second.
+IERS daily samples also test polar-motion values and leap-aware interpolation
+of UT1--TAI across the 2016 step. The evaluation used fixed IERS inputs, documented coverage limits and
+specified acceptance tolerances.
+
+For ephemerides, we compare Earth heliocentric and Moon geocentric positions
+with the same DE440s kernel \cite{park2021de440,naifspk}. The sample contains
+1,000 eight-day-spaced TT epochs beginning at J2000 and one-second interior
+points near both coverage endpoints. CSPICE converts TT to ET using the NAIF
+leap-second kernel. ERFA's \texttt{ecm06} aligns the reference ICRF vectors
+with Siderust's IAU 2006 mean-ecliptic J2000 convention; SPICE's
+\texttt{ECLIPJ2000} uses a different obliquity. Exact endpoints and one-day
+out-of-coverage requests are tested separately.
+
+Acceptance bounds are $2\times10^{-11}$ rad for Earth rotation and GMST,
+$10^{-14}$ rad for obliquity, $2\times10^{-12}$ per matrix element,
+$2\times10^{-12}$ au for Earth and $2\times10^{-4}$ km for the Moon.
+They measure implementation agreement with the specified references.
+The analytical VSOP87A and ELP2000-82B outputs are compared separately with
+DE440s as backend-output differences. VSOP87A retains its native dynamical
+ecliptic and equinox of J2000; ELP2000-82B retains its dynamical ecliptic J2000
+coordinates after the implemented Laskar rotation
+\cite{bretagnon1988vsop87,chapront1988elp85}. Both are returned with the
+\texttt{EclipticMeanJ2000} marker in v0.16.0, while the SPK path uses the
+IAU 2006 realization above. The recorded comparison therefore includes
+frame-realization effects as well as orbital-model differences.
+
+For ephemeris positions, the residual is the Euclidean norm
+\begin{equation}
+ \Delta r=\left\|\boldsymbol r_{\mathrm{Siderust}}
+                  -\boldsymbol r_{\mathrm{reference}}\right\|_2.
+\end{equation}
+Matrix residuals are maximum absolute element differences. Altitude and time
+residuals are absolute scalar differences; azimuth differences are wrapped
+to the shorter angular separation.
+
+\subsection{Surface geometry and integrated observations}
+
+The terrestrial application is evaluated on its complete 289-epoch grid.
+Thirty lunar direction cases combine five epochs in TT spanning 1900--2050,
+two sites and three ICRS directions. A fixed synthetic finite target gives
+ten distinct epoch/site/target geometries, each executed three times. Independent
+CSPICE \texttt{IAU\_MOON} rotations and separately constructed local bases
+provide references for angles, range and Cartesian components. Four Mars cases
+exercise ellipsoid intersections and surface-normal verticals under both
+planetographic and planetocentric latitude conventions. The reference surface
+is an oblate ellipsoid of revolution with equatorial radius
+$a=3\,396\,190$ m and polar radius $b=3\,376\,200$ m, matching
+\texttt{BODY499\_RADII} in NAIF \texttt{pck00011.tpc} \cite{naifpck00011}.
+The Earth-from-Moon application additionally combines
+CSPICE DE440s geometry, lunar orientation and observer displacement in one
+reference calculation.
+
+Lunar acceptance bounds are $10^{-10}$ per rotation-matrix element,
+$2\times10^{-8}$ degrees for angles, $10^{-3}$ m for range and $0.1$ m for
+Cartesian components. Surface position, Cartesian-component and basis residuals
+use the maximum absolute component difference; range uses the absolute scalar
+difference, and angular rows take the maximum altitude/wrapped-azimuth residual.
+Mars geometry bounds are $10^{-8}$ m for positions and
+$10^{-14}$ for basis components. A separate cardinal test checks the Cartesian
+north/east/up convention. The numerical comparisons used the same stated geometry and model
+conventions for each case.
+
+An additional analytic boundary suite isolates local geometry from orientation.
+Its 48 lunar projections cover six sites, including exact and near poles,
+longitudes at or near $\pm180^\circ$, heights from $-100$ to $10^4$ m,
+four cardinal horizon directions, altitudes $\pm10^{-6}$ degrees, and
+zenith/nadir. Finite slant ranges are $10^3$, $10^6$ and $3.8\times10^8$ m.
+Targets are constructed in the body-fixed frame from an independent analytic
+spherical basis. Twelve vertical cases expect the documented zero azimuth
+convention, since physical azimuth is undefined. A further 32 Mars cases
+combine eight sites, both latitude conventions and two heights on this
+oblate ellipsoid. Independent radial intersections and surface-normal formulas
+supply positions and bases. Bounds allow floating-point rounding: $2\times10^{-6}$ m
+for lunar components/ranges, $2\times10^{-8}$ degrees for defined angles,
+$10^{-8}$ m for Mars positions and $10^{-14}$ for basis components.
+These tests isolate reusable geometry; the earlier CSPICE cases separately
+exercise time-dependent lunar orientation.
+
+\subsection{Cost of dimensional interfaces}
+
+We compare kilometre-to-metre conversion and distance divided by a three-second
+duration with matched scalar \texttt{f64} arithmetic. Both implementations use
+the same inputs and outputs, with an equality check on 1,000 inputs before
+timing. A single Rust 1.93.1 release binary uses default optimization and
+\texttt{black\_box} around inputs and outputs. Five warm-up rounds precede
+30 paired rounds of $10^6$ operations, alternating measurement order.
+We report median cost and sample standard deviation across rounds, including
+loop and measurement overhead in both implementations. The recorded host is an
+Intel Core Ultra 9 185H running Linux. These kernels characterize the cost of
+two common quantity operations on that host.
+
+Typed/scalar cost ratios are formed within each paired round. Their median and
+empirical p5--p95 interval describe the observed variability, without assuming
+independent typed and scalar samples or interpreting quantiles as confidence
+intervals. The kernels include scalar arithmetic, quantity construction and
+conversion, loop and measurement overhead; they exclude ephemeris evaluation,
+I/O and observer transformations.

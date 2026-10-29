@@ -1,0 +1,16 @@
+\section{Language Interfaces}
+
+External applications access selected scientific operations through
+C-compatible entry points in
+\texttt{qtty-ffi}, \texttt{tempoch-ffi} and \texttt{siderust-ffi}. Values,
+handles and explicit status codes connect foreign applications to the Rust
+implementation. This architecture centralizes scientific computation while
+allowing host-language adapters to provide their own application interfaces.
+
+Rust trait constraints are enforced within the Rust implementation; a foreign
+boundary expresses its contract through value validation, ownership rules and
+error translation. The numerical results reported here evaluate the Rust APIs.
+The available FFI source interfaces are distinct from separately maintained
+C++, Python and JavaScript/WASM adapters. Testing corresponding host workflows
+and freezing wrapper releases are further steps toward broader cross-language
+deployment.

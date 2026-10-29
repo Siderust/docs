@@ -1,0 +1,57 @@
+\section{Introduction}
+
+Predicting the direction of Earth from a lunar station connects several familiar
+astronomical operations: evaluating an ephemeris, identifying the coordinate
+origin, rotating into the Moon's body-fixed frame and projecting a finite line
+of sight onto a local horizon. The calculation also connects distinct kinds of
+scientific information. Its epoch has a time scale; its vector has units, a
+frame and a center; and its observer belongs to a reference surface with a
+particular orientation model. Preserving these relationships is a central
+software design problem in astronomical computing.
+
+Scientific libraries address this problem through quantity objects, coordinate
+classes, frame metadata and domain-specific interfaces. As workflows grow,
+these representations must also compose across numerical components and
+application boundaries. A useful architecture should let a developer reuse a
+coordinate container or time representation while retaining the information
+needed by the next scientific operation. This supports both the development of
+new algorithms and the assembly of reliable astronomical applications.
+
+We present Siderust~\cite{Valles_Puig_Siderust_Type-Safe_Astronomy}, an open-source Rust ecosystem organized around this form
+of scientific composition. We separate reusable quantity, geometry, time and
+numerical abstractions from astronomy-specific models and workflows. The domain
+crate combines these components into reference-system transformations,
+ephemerides, surface observations and astrodynamical calculations. Scientific
+concepts are visible in public types, while explicit contexts supply values
+such as observer parameters, Earth orientation and ephemeris choices.
+
+Rust provides a practical basis for this design. Generic types express units,
+time scales, frames and centers; traits define compatible scientific
+operations; and ownership and borrowing support controlled sharing of data.
+Consequently, a frame transformation can change a vector's representation
+explicitly, a time conversion can preserve its scale information, and a surface
+observation can retain its celestial-body identity. These mechanisms make
+assumptions visible to both application authors and the compiler.
+
+Siderust introduces a composable scientific-software architecture in which
+reusable mathematical and numerical components are connected through explicit
+astronomical semantics. Our contribution has three complementary parts.
+First, we design and implement
+a modular scientific architecture in which independently reusable mathematical
+components are composed through a common astronomical domain layer. Second,
+we provide expressive interfaces that carry physical and astronomical semantics
+across component boundaries and permit static checking of selected constraints.
+Third, we demonstrate integrated terrestrial and lunar observing workflows and
+evaluate representative transformations, ephemerides and computational costs
+against established references and matched arithmetic baselines.
+
+These parts form one design: reusable components supply the operations, semantic
+interfaces preserve their interpretation, and integrated applications test their
+composition. The scientific contribution is this implemented connection across
+layers, rather than a new ephemeris or a claim that typed quantities are novel.
+Researchers can build new domain calculations on the same representations
+without reimplementing quantities, time conversion or local geometry. Section~2 positions the design among
+related systems. Sections~3--5 describe composition, public interfaces and
+language integration. Section~6 develops the observing applications;
+Sections~7--8 present the evaluation and results. We discuss architectural
+implications and future directions in Section~9.

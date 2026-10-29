@@ -1,0 +1,18 @@
+\begin{tikzpicture}[
+  node distance=8mm,
+  stage/.style={draw,rounded corners,align=center,text width=33mm,minimum height=13mm,font=\small},
+  layer/.style={align=center,font=\footnotesize,text width=33mm},
+  flow/.style={-{Latex[length=2mm]},thick}
+]
+\node[stage] (input) {Quantities and epoch\\Units, TT time, site};
+\node[stage,right=of input] (reference) {Typed reference systems\\Center and frame};
+\node[stage,right=of reference] (models) {Scientific models\\Ephemeris, orientation};
+\node[stage,right=of models] (observable) {Observer geometry\\Altitude, azimuth, range};
+\draw[flow] (input)--(reference);
+\draw[flow] (reference)--(models);
+\draw[flow] (models)--(observable);
+\node[layer,below=3mm of input] {\texttt{qtty}, \texttt{tempoch}};
+\node[layer,below=3mm of reference] {\texttt{affn}};
+\node[layer,below=3mm of models] {\texttt{siderust-archive}\\Numerical components};
+\node[layer,below=3mm of observable] {\texttt{siderust}\\Body-specific surface model};
+\end{tikzpicture}

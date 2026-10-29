@@ -1,0 +1,133 @@
+\section{Scientific Interfaces and Operations}
+
+Astronomical operations in Siderust combine typed quantities, epochs and
+coordinate containers. A transformation receives the scientific context it
+needs and returns a value with the resulting representation. The listings
+below are included directly from executable sources, all checked against the
+published v0.16.0 dependency graph during CI.
+
+\subsection{Quantities and units}
+
+\texttt{qtty} represents a quantity as \texttt{Quantity<U,S>}, where
+\texttt{U} identifies the unit and \texttt{S} the scalar. Compatible
+conversions are explicit, and multiplication or division constructs compound
+units. This lets an application compute a velocity directly from a distance and an
+elapsed time, with the compound unit carried by the result.
+
+\lstinputlisting[float=tbp,caption={Computing a velocity from typed distance and duration quantities.},label={lst:qtty}]{../examples/src/bin/qtty.rs}
+
+The local \texttt{Speed} alias names an existing velocity type; it introduces
+neither a new nominal type nor an additional guarantee. We use such aliases
+in applications to shorten notation while retaining the unit parameters.
+
+Dimensional checking supports these operations automatically. Higher layers
+add domain distinctions such as longitude and azimuth where their roles differ
+scientifically, since a common angle unit alone does not distinguish them.
+
+\subsection{Astronomical time}
+
+\texttt{tempoch} represents an instant as a scale- and encoding-parameterized
+\texttt{Time}. Subtracting two compatible instants produces a duration, and
+shifting an instant by a duration produces another instant. JD, MJD, Unix, GPS,
+and J2000-second markers are conversion targets rather than unlabelled numeric
+epochs.
+
+\lstinputlisting[float=tbp,caption={Typed time-scale and encoding conversion using \texttt{tempoch}.},label={lst:tempoch}]{../examples/src/bin/tempoch.rs}
+
+UTC conversion uses the active UTC--TAI table. UT1 conversion requires an Earth-orientation or
+$\Delta T$ context, whose source, interpolation policy and coverage interval
+are part of the evaluated configuration \cite{iers2010}. The context exposes the available interval; callers of the evaluated EOP
+lookup must additionally check its exact upper bound because of the endpoint
+defect documented in Section~8.
+
+\subsection{Coordinates, frames, and centers}
+
+\texttt{affn} defines \texttt{Position<C,F,U>}, where \texttt{C} is the
+reference center, \texttt{F} the frame, and \texttt{U} the length unit.
+A position transformation changes its frame or center marker explicitly.
+Directions carry orientation independently of an origin, making them suitable
+for distance-free pointing operations. Incompatible markers are checked when
+values are combined.
+
+Reference-center types may carry runtime parameters. In the evaluated snapshot,
+\texttt{Topocentric} uses a \texttt{Geodetic<ECEF>} site as its parameter type.
+\texttt{Bodycentric} instead uses a \texttt{BodycentricParams} value containing
+an elliptic orbit, its reference center, and a gravitational parameter.
+Coordinates with the same center type can therefore still carry different
+parameters. Cartesian position subtraction is available as an operator only for
+centers whose parameter type is \texttt{()}. For parameterized centers,
+\texttt{checked\_sub} returns an error when the stored values differ.
+The accompanying tests exercise both matching and mismatched sites.
+Transform methods preserve or explicitly replace the
+stored parameters. Site values identify the geometric observer; external station metadata and
+site epochs are managed by the application.
+
+\subsection{Generic surface observers}
+\label{sec:surface}
+
+We generalize surface observers through
+\texttt{SurfaceSite<B>}. A body model associates \texttt{B} with a center,
+body-fixed frame and default reference surface. The same transformation
+infrastructure then serves lunar, terrestrial and other supported surfaces.
+The body parameter is static; longitude, latitude, height, surface parameters
+and their admissibility are checked values. Planetographic latitude identifies
+the ellipsoid normal, whereas planetocentric latitude selects a radial
+intersection with the surface. Height and local vertical follow the surface
+normal in both cases; on a sphere, these latitude definitions coincide.
+
+A finite position is translated to the body's center and the observer's
+location is subtracted before local angular extraction, retaining range and
+parallax. A distance-free direction undergoes rotation only. The local east--north--up
+basis is right-handed; the public \texttt{Horizontal} Cartesian ordering is
+north, east, up, consistent with azimuth measured from north through east.
+The component order is explicit at the public interface.
+
+The high-level direction observation retains both \texttt{B} and the site
+values. Checked inversion rejects a different site, while a different body
+is rejected by the type system. Low-level \texttt{Direction<Horizontal>}
+values do not themselves retain the observer. The epoch and orientation context are supplied explicitly to each observation.
+This design connects static body identity with value-dependent observer geometry.
+
+\subsection{Astronomy workflows}
+
+The domain crate supplies transforms, ephemerides, bodies, observatories,
+altitude calculations, observing-event searches, and feature-gated dynamics
+workflows. Analytical planetary and lunar paths use archive-backed VSOP87 and
+ELP2000-82B data \cite{bretagnon1988vsop87,chapront1983elp2000}; runtime paths
+load externally supplied JPL/NAIF BSP kernels \cite{naifspk,park2021de440}.
+
+\lstinputlisting[float=tbp,caption={Runtime SPK-backed ephemeris access. The application supplies the BSP file at execution time.},label={lst:runtime-eph}]{../examples/src/bin/runtime_ephemeris.rs}
+
+The common ephemeris interface lets an application select an analytical model
+or a supplied SPK kernel through common frame and center types. Their physical
+frame realizations are specified in Section~7.1.
+The evaluation records that choice together with the body definition and
+correction mode, connecting each result to its scientific model.
+
+
+\subsection{Three levels of scientific contract}
+
+Static contracts constrain compatible unit, frame, center, scale and observer-body
+parameters. Dynamic contracts validate values sharing those types: two sites
+can have different coordinates, a vector can be degenerate, and a query can exceed
+a dataset's coverage. Scientific contracts concern the intended observable:
+ephemeris choice, frame realization, geometric or apparent corrections, body
+orientation, surface definition and data accuracy. These require model selection
+and numerical validation rather than type checking.
+
+Table~\ref{tab:guarantees} summarizes the executed static and dynamic controls.
+The semantic matrix below summarizes the observed enforcement mechanisms and
+outcomes for the evaluated public APIs.
+The evaluation included five compiler-failure controls; runtime cases covered
+nonfinite values, invalid latitude, a surface-normal singularity, zero direction
+and mismatched observers. Dataset coverage was examined separately, revealing
+the EOP and exact SPK endpoint behaviors described in the results.
+
+\begin{table*}[!tbp]
+\centering
+\caption{Static and runtime semantic controls observed with published v0.16.0.
+Scientific model adequacy is assessed by numerical references, not by these contracts.}
+\label{tab:guarantees}
+\footnotesize
+\input{tables/semantic-matrix}
+\end{table*}
