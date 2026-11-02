@@ -1,0 +1,20 @@
+\section{Language Interfaces}
+
+External applications access Siderust through a C ABI and Python bindings. The
+\texttt{siderust-ffi} crate exports C-compatible coordinate values, tagged target descriptions,
+opaque resource handles and status codes. Runtime ephemeris and transformation contexts are created
+and released through explicit functions. Coordinate metadata identify the frame, center and unit;
+errors distinguish invalid arguments, unsupported representations, missing data and out-of-range
+queries. The C header is generated from the Rust definitions with \texttt{cbindgen}, and the C++
+interface is built on this ABI.
+
+The Python implementation uses PyO3 to expose observers, directions, positions, ephemerides and
+observing-event operations. Numerical routines remain in Rust. Python positions carry frame, center
+and unit attributes that are checked by the bindings. The time facade reuses Tempoch's Python
+package, although observation functions that take numerical MJD or JD arguments still rely on their
+documented scale conventions. Coverage and representations vary by entry point; the bindings do not
+expose Rust's generic parameters as host-language compile-time constraints.
+
+The experiments in Sections~7--8 evaluate the native Rust interfaces. They provide the numerical
+reference cases for future tests of the corresponding foreign-language calls; cross-language
+residuals are not reported here.

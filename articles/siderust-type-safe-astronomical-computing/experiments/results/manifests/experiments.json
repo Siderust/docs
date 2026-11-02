@@ -1,0 +1,78 @@
+{
+  "path_base": "experiments/results",
+  "full_command": "bash experiments/reproduce.sh --full RUN_ID",
+  "experiments": [
+    {
+      "id": "time-rotation",
+      "population": "1000 TT/UT1 epochs; 13 UTC labels including inserted seconds",
+      "source": "runner/src/bin/validation.rs",
+      "records": "rotations.csv, utc.csv",
+      "reference": "reference/extended.py",
+      "outputs": "release-validation.tex, release-time.tex"
+    },
+    {
+      "id": "ephemerides",
+      "population": "1000 TT epochs, JD 2451545 + 8 i; DE440s; IAU 2006 ecm06 J2000 axes",
+      "source": "runner/src/main.rs",
+      "records": "ephemeris.csv, reference.csv, *-residuals.csv",
+      "reference": "reference/ephemeris.py",
+      "outputs": "release-validation.tex, release-models.tex"
+    },
+    {
+      "id": "surface",
+      "population": "5 lunar matrices, 30 directions, 10 finite targets, 4 Mars sites/conventions",
+      "source": "runner/src/bin/validation.rs",
+      "records": "lunar-surface.csv, mars.csv, lunar-surface-reference.csv",
+      "reference": "reference/extended.py",
+      "outputs": "release-surface.tex"
+    },
+    {
+      "id": "boundaries",
+      "population": "48 lunar (12 vertical subset) + 32 Mars; zero azimuth at vertical",
+      "source": "runner/src/bin/validation.rs",
+      "records": "boundary-input.csv, boundary-reference.csv, boundaries.csv",
+      "reference": "reference/extended.py --prepare, reference/extended.py",
+      "outputs": "results-values.tex"
+    },
+    {
+      "id": "semantic",
+      "population": "5 compile failures E0308/E0277, runtime contracts",
+      "source": "controls/src/bin/*.rs, runner/src/bin/runtime_controls.rs",
+      "records": "controls-summary.json, runtime-controls.log",
+      "reference": "check_controls.py",
+      "outputs": "results-values.tex"
+    },
+    {
+      "id": "coverage",
+      "population": "6 converted-TT probes; native closed bounds are a distinct regression",
+      "source": "runner/src/bin/coverage.rs",
+      "records": "coverage.log",
+      "reference": "upstream tests/test_spk_runtime.rs",
+      "outputs": "Chapter 8 coverage prose"
+    },
+    {
+      "id": "upstream",
+      "population": "10 EOP; 11 frame; 36 surface + 11 SPK regressions",
+      "source": "manifests/upstream.json",
+      "records": "eop-tests.log, frame-tests.log, spk-surface-tests.log",
+      "reference": "reproduce.py core()",
+      "outputs": "Chapter 8 semantic prose"
+    },
+    {
+      "id": "antares",
+      "population": "1896-07-14 UT1, fixed ICRS catalog; 289 grid samples, 56 selected, native 1 s planning",
+      "source": "../../examples/src/antares.rs, ../../examples/src/bin/viewing*.rs",
+      "records": "../terrestrial/catalog.json, ../terrestrial/recorded/*",
+      "reference": "../../scripts/validate_antares.py",
+      "outputs": "release-validation.tex, release-values.tex, observing-window.tex"
+    },
+    {
+      "id": "earth-from-moon",
+      "population": "2017-10-01 17:14 TT; DE440s, IAU_MOON, 1737.4 km sphere, matched TT-to-TDB",
+      "source": "../../examples/src/lunar_application.rs",
+      "records": "../lunar/inputs.json, ../lunar/recorded/*",
+      "reference": "../../scripts/validate_lunar_application.py",
+      "outputs": "release-values.tex"
+    }
+  ]
+}

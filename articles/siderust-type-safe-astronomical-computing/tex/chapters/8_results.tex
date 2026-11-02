@@ -1,0 +1,129 @@
+\section{Results}
+\input{tables/results-values}
+
+All primary numerical comparisons satisfy their declared acceptance criteria. The five negative
+compiler fixtures fail with the expected diagnostics, and the runtime controls pass. The converted
+TT kernel-endpoint probes and alternative lunar time-conversion diagnostic are reported separately
+below.
+
+\subsection{Numerical agreement with reference implementations}
+
+\begin{table*}[!tbp]
+    \centering
+    \caption{Residual distributions against independent references. Time and
+        reference-system rows use ERFA; positions use CSPICE with the same DE440s
+        kernel and aligned frames. BPN denotes bias--precession--nutation; its residual
+        is the maximum absolute matrix-element difference per epoch. Position
+        residuals are Euclidean norms; p95 and p99 denote empirical percentiles.
+        Unit $1$ denotes a dimensionless quantity.
+        $^{*}$Full-JD UTC outputs have a $50\,\mu\mathrm{s}$ acceptance bound;
+        zero means no difference resolved at that representation's precision.
+        Higher-resolution time results appear in Table~\ref{tab:time-extension}.}
+    \label{tab:validation}
+    \footnotesize
+    \input{tables/release-validation}
+\end{table*}
+
+Earth rotation angle and IAU 2006 Greenwich mean sidereal time agree with ERFA to below
+$\RotationBound$ rad on the evaluated grid. Mean obliquity and the bias--precession--nutation
+matrix likewise show small residuals, with maximum matrix-element differences below $\BpnBound$
+(Table~\ref{tab:validation}). The Antares altitude and azimuth rows report the composed stellar and
+local-horizon transformations.
+
+For the 13 civil UTC labels, including three inserted seconds, the native split-second
+representation preserves agreement at a finer resolution than a single floating-point Julian date.
+Maximum differences from split-date ERFA are $\UtcTaiSplitMax$ s for TAI and $\UtcTtSplitMax$ s for
+TT (Table~\ref{tab:time-extension}). The evaluated EOP implementation also accepts valid dataset
+endpoints and rejects out-of-range or nonfinite queries. These coverage controls use synthetic EOP
+samples.
+
+\begin{table}[!tbp]
+    \centering
+    \caption{Native split-second time residuals against split-date ERFA for 13
+        civil labels, including three inserted seconds. Maximum absolute differences
+        and their declared acceptance bounds are reported in seconds.}
+    \label{tab:time-extension}
+    \footnotesize
+    \input{tables/release-time}
+\end{table}
+
+With the same DE440s kernel, maximum Earth heliocentric and Moon geocentric position residuals are
+$\EarthSpkMax$ au and $\MoonSpkMax$ km. Coverage probes one second inside each boundary succeed,
+while probes one day outside return errors. The recorded endpoint probes first convert
+kernel-native TDB dates to TT and are then rejected by the runtime ephemeris path after its time
+conversion and representation steps. They therefore concern converted TT queries, rather than
+direct evaluation of the native TDB endpoints; the native evaluator uses closed coverage bounds.
+
+Analytical and kernel-backed positions can also be compared through their aligned public coordinate
+representations. VSOP87A Earth positions differ from DE440s by at most $\EarthAnalyticalMax$ au,
+and ELP2000-82B Moon positions by $\MoonAnalyticalMax$ km over the sampled interval
+(Table~\ref{tab:models}). These are differences between the selected theories and their realization
+ties, rather than same-model implementation residuals.
+
+\begin{table}[!tbp]
+    \centering
+    \caption{Analytical-model differences from independent DE440s positions at
+        1,000 TT epochs. Both paths use geometric positions in aligned canonical
+        IAU 2006 mean-ecliptic J2000 axes. Statistics describe Euclidean position
+        differences over the evaluated interval.}
+    \label{tab:models}
+    \small
+    \setlength{\tabcolsep}{3pt}
+    \input{tables/release-models}
+\end{table}
+
+\subsection{Integrated astronomical applications}
+
+The Antares altitude series has maximum ERFA residual $\ViewingAltitudeResidual$ degrees, within
+the $\AltitudeBound$-degree bound. Independently located threshold crossings differ by at most
+$\ViewingEventResidual$ s, within the \ViewingEventTolerance{} s search tolerance. The interval,
+culmination and sampled altitude curve are given in Section~\ref{sec:antares-example}.
+
+For the Earth-from-Moon observation in Section~\ref{sec:lunar-example}, the matched-convention
+CSPICE residuals are $\LunarAngleResidual$ degrees in angle and $\LunarRangeResidual$ km in range.
+Both meet the $\EarthAngleBound$-degree and $\EarthRangeBound$-km acceptance bounds. The reference
+also agrees on the intermediate inertial vector, body-fixed rotation, observer position and local
+coordinates within their declared bounds.
+
+Using CSPICE's native TT-to-TDB conversion instead changes the time argument by approximately
+$14.66\,\mu\mathrm{s}$ and gives a range residual of about $0.8$ mm. This diagnostic exceeds the
+$\EarthRangeBound$-km matched-convention range bound. The primary result retains the shared
+seven-term time prescription and the original tolerance.
+
+\subsection{Surface geometry and semantic validation}
+
+Table~\ref{tab:candidate-surface} reports residuals for spherical lunar and oblate Martian
+geometry. Lunar rotations agree within $\LunarMatrixBound$ per element, and distance-free and
+finite-target angles within $\SurfaceAngleBound$ degrees. Finite-target ranges and Cartesian
+components additionally test observer displacement, while Martian positions and tangent bases check
+both planetocentric and planetographic latitude conventions.
+
+\begin{table}[!tbp]
+    \centering
+    \caption{Maximum surface-geometry residuals and declared acceptance bounds.
+        Lunar references use analytical CSPICE \texttt{IAU\_MOON}; Mars references
+        use independent ellipsoid geometry. Angular residuals combine altitude and
+        wrapped azimuth per geometry; matrix, Cartesian and basis residuals use maximum
+        absolute element or component differences. Unit $1$ is dimensionless.
+        Counts refer to epochs or geometries, without multiplying by component count.}
+    \label{tab:candidate-surface}
+    \small
+    \setlength{\tabcolsep}{3pt}
+    \input{tables/release-surface}
+\end{table}
+
+All \BoundaryTotalCount{} additional analytical boundary cases satisfy their criteria. The
+\BoundaryLunarCount{} lunar cases have maximum angular residual $\BoundaryLunarAngleMax$ degrees;
+their \BoundaryVerticalCount{} vertical cases are a subset and return the documented zero-azimuth
+convention. The \BoundaryMarsCount{} Mars cases have maximum position and basis residuals
+$\BoundaryMarsPositionMax$ m and $\BoundaryMarsBasisMax$, respectively. Case-level inputs and
+residuals accompany the manuscript (\ref{sec:availability}).
+
+The \StaticControlCount{} compiler controls reject incompatible physical dimensions, frames,
+coordinate centers, time scales and observer-body identities before execution, with the recorded
+\texttt{E0308} or \texttt{E0277} diagnostics. Complementary runtime controls accept compatible
+values and distinguish mismatched observer parameters, invalid surface coordinates and degenerate
+directions. Table~\ref{tab:guarantees} identifies the API and enforcement mechanism for each
+control.
+
+\FloatBarrier{}

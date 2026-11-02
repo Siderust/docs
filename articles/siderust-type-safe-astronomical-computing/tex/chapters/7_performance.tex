@@ -1,0 +1,386 @@
+
+\section{Experimental Method}
+\label{sec:evaluation}
+
+Paired numerical reductions evaluate transformations, ephemerides and observation workflows under
+specified inputs and conventions. Compiler and runtime controls separately test representation
+compatibility, value-dependent validity and data coverage. Same-model comparisons assess
+implementation residuals; analytical ephemeris comparisons assess differences between physical
+models after frame alignment.
+
+\subsection{Experimental setup and validation strategy}
+
+All experiments use the published Siderust release \cite{Valles_Puig_Siderust_Type-Safe_Astronomy},
+with the corresponding dependency graph fixed by the committed Cargo lockfile. The evaluated
+software revision, compiler environment, dependency versions and reproduction commands are
+documented in \ref{sec:availability}.
+
+Independent numerical references use ERFA through PyERFA and CSPICE through SpiceyPy. ERFA provides
+reference implementations for astronomical time, Earth rotation and coordinate transformations,
+while CSPICE supplies ephemeris and planetary-orientation calculations. Additional analytical
+geometry calculations provide references for surface models and selected boundary cases.
+
+The experiments distinguish three forms of verification. Direct numerical comparisons measure
+residuals between implementations evaluating the same observable. Boundary and runtime controls
+examine value-dependent conditions, including invalid geometry and unavailable data. Compiler
+controls test whether incompatible scientific representations are rejected before execution. The
+outcomes of these complementary checks are presented in Section~8.
+
+Numerical comparisons use observable-specific residuals. Position differences are measured by the
+Euclidean norm
+
+\begin{equation}
+    \Delta r =
+    \left\|
+    \boldsymbol r_{\mathrm{Siderust}}
+    -\boldsymbol r_{\mathrm{reference}}
+    \right\|_2.
+\end{equation}
+
+Rotation matrices are compared using the maximum absolute element difference. Time and altitude
+residuals are absolute differences, while azimuth differences use the smaller wrapped angular
+separation.
+
+Acceptance limits are selected according to the numerical representation and scale of each
+observable. They account for floating-point evaluation and differences between equivalent
+implementations; they do not represent physical uncertainty budgets. All experimental inputs,
+reference implementations, numerical records, tolerances and reproduction instructions accompany
+the manuscript at \url{https://github.com/Siderust/docs}.
+
+\subsection{Astronomical transformations and ephemerides}
+\label{sec:ephemeris-method}
+
+The first group of experiments evaluates astronomical time, reference-system transformations and
+planetary ephemerides. The objective is to assess numerical agreement while controlling the
+conventions and data that determine the meaning of each computed quantity.
+
+\paragraph{Time and reference-system transformations}
+
+Earth rotation angle, IAU 2006 Greenwich mean sidereal time, mean obliquity and the IAU 2006/2000A
+bias--precession--nutation matrix are evaluated at 1,000 Julian dates,
+
+\begin{equation}
+    \mathrm{JD}_i =
+    2451545-36525+73.125i,
+    \qquad 0\leq i<1000.
+\end{equation}
+
+Equal numerical TT and UT1 dates are prescribed as controlled inputs for these transformation
+tests, isolating their numerical implementations from external Earth-orientation data.
+
+Time-scale conversion is examined separately using 13 civil UTC labels covering the beginning of
+the modern UTC regime, selected dates around J2000, the leap seconds introduced in 1972, 2015 and
+2016, and a contemporary epoch. Each selected leap-second transition includes the preceding second,
+the inserted second and the following midnight.
+
+The comparisons use Tempoch's bundled UTC--TAI data, whose source and checksum are recorded in the
+reproduction materials. ERFA two-part UTC representations are converted to uniform TAI and TT
+before differences are evaluated.
+
+Both conventional full-Julian-date outputs and split-second representations are examined. The
+latter retain the precision of the underlying two-part epochs, with residuals evaluated using
+50-digit decimal arithmetic. This distinction is important because a single floating-point Julian
+date near J2000 has a spacing of approximately $40\,\mu\mathrm{s}$, substantially coarser than a
+split representation.
+
+No measured Earth-orientation dataset is used in these controlled time and rotation tests.
+
+\paragraph{Ephemeris comparisons}
+
+Earth heliocentric and Moon geocentric positions are evaluated using the DE440s planetary ephemeris
+\cite{park2021de440,naifspk} at 1,000 TT epochs,
+
+\begin{equation}
+    \mathrm{JD}_i = 2451545+8i,
+    \qquad 0\leq i<1000.
+\end{equation}
+
+The independent CSPICE reduction converts TT to ephemeris time using \texttt{naif0012.tls} and
+evaluates the same kernel. Comparing the same ephemeris data isolates the implementation of kernel
+evaluation, time handling, coordinate transformations and center relationships from differences
+between physical ephemeris models.
+
+Reference-frame alignment is essential for these comparisons. Siderust exposes a canonical IAU 2006
+mean-ecliptic J2000 representation for supported analytical and kernel-backed ephemerides. CSPICE
+ICRF coordinates are transformed into this representation using ERFA \texttt{ecm06(2451545,0)}. The
+distinct SPICE \texttt{ECLIPJ2000} frame is not substituted.
+
+Runtime kernel evaluation also exercises coverage and metadata constraints. Supported SPK Type 2/3
+segments are checked for the required frame metadata, valid coverage and supported center
+relationships. Coverage probes include declared TDB endpoints, interior points one second from each
+boundary and exterior points one day beyond coverage.
+
+These metadata checks establish supported representations and query conditions. Their physical
+interpretation additionally depends on the documented frame realization and provenance of the
+supplied kernel. For the DE440s comparison, the ICRF realization is established from the ephemeris
+documentation rather than inferred solely from its frame ID.
+
+\paragraph{Analytical ephemeris normalization}
+
+A separate comparison evaluates the analytical VSOP87A and ELP2000-82B ephemerides against DE440s.
+Unlike the same-kernel comparison, the residuals here also reflect differences between astronomical
+theories.
+
+The analytical and kernel-backed calculations use the same target bodies, coordinate centers, 1,000
+TT epochs and geometric correction policy. Their native reference-frame realizations are explicitly
+mapped into the canonical Siderust representation.
+
+For column vectors, the transformations are
+
+\begin{align}
+    C & = R_x(-\epsilon_0)B_0,
+    \qquad \epsilon_0=84381.406'',                 \\
+    \boldsymbol r_{\mathrm{VSOP,pub}}
+      & = CHV\boldsymbol r_{\mathrm{VSOP,native}}, \\
+    \boldsymbol r_{\mathrm{ELP,pub}}
+      & = CHL\boldsymbol r_{\mathrm{ELP,Laskar}},  \\
+    \boldsymbol r_{\mathrm{SPK,pub}}
+      & = C\boldsymbol r_{\mathrm{ICRF}}.
+\end{align}
+
+Here $B_0$ denotes the J2000 bias matrix from ERFA \texttt{bp06}, so $C$ corresponds to
+\texttt{ecm06(2451545,0)}. The matrix $H$ provides the J2000 FK5-to-ICRS orientation, $V$ is the
+native VSOP-to-FK5 transformation, and $L$ is the corresponding ELP82B-to-FK5 realization tie.
+
+The ELP Laskar rotation is applied before the native-frame correction, without duplicating the
+transformation. Both analytical theories evaluate their required time arguments in TDB. The same
+fixed spatial mapping is applied to VSOP velocities.
+
+The implementation and native-frame conventions are documented in the versioned software references
+\cite{siderustFrameImplementation,siderustFrames}.
+
+\paragraph{Numerical acceptance criteria}
+
+Table~\ref{tab:method-tolerances} summarizes the acceptance limits used for the primary
+transformation and same-kernel ephemeris comparisons.
+
+\begin{table*}[!tbp]
+    \centering
+    \caption{Acceptance limits for the primary
+        numerical comparisons. The limits assess
+        implementation agreement under aligned
+        scientific conventions, not the physical
+        accuracy of the underlying models.}
+    \label{tab:method-tolerances}
+    \footnotesize
+    \begin{tabular}{@{}lll@{}}
+        \toprule
+        Observable & Acceptance limit      & Reference \\
+        \midrule
+        Earth rotation angle and GMST
+                   & $2\times10^{-11}$ rad & ERFA      \\
+        Mean obliquity
+                   & $10^{-14}$ rad        & ERFA      \\
+        BPN matrix elements
+                   & $2\times10^{-12}$     & ERFA      \\
+        UTC conversion, full JD
+                   & $50\,\mu\mathrm{s}$   & ERFA      \\
+        UTC conversion, split representation
+                   & $1\,\mu\mathrm{s}$    & ERFA      \\
+        Earth heliocentric position
+                   & $2\times10^{-12}$ au  & CSPICE    \\
+        Moon geocentric position
+                   & $2\times10^{-4}$ km   & CSPICE    \\
+        \bottomrule
+    \end{tabular}
+\end{table*}
+
+\subsection{Integrated observation workflows}
+\label{sec:observation-method}
+
+The independent reference calculations reproduce the complete observing geometry of the
+applications in Section~6.
+
+\paragraph{Terrestrial altitude-event search}
+
+The Antares application is evaluated on 1896 July 14 in the proleptic Gregorian calendar. The
+observing day is defined in UT1 and sampled at five-minute intervals, including both endpoints.
+
+Because the observation predates modern UTC, the required TT epochs are obtained from a historical
+model of
+
+\begin{equation}
+    \Delta T = \mathrm{TT}-\mathrm{UT1}.
+\end{equation}
+
+The adopted Tempoch model \cite{tempochHistoricalTime} uses three-point interpolation of a biennial
+historical $\Delta T$ table. Its source data, interpolation prescription, selected indices and
+checksums are preserved with the experimental records.
+
+For the selected date, the interpolated $\Delta T$ varies from $\ViewingDeltaTStart$ to
+$\ViewingDeltaTEnd$ s over the day. The model's documented conservative historical accuracy
+allowance is approximately $\pm15$ s, rather than a date-specific statistical uncertainty.
+
+The independent reference reconstructs UT1 epochs from ERFA calendar conversions and derives TT
+using the same prescribed historical time model. Neither calculation extrapolates modern UTC or
+measured Earth-orientation parameters into the nineteenth century.
+
+The stellar target uses the fixed ICRS catalog direction defined in
+Section~\ref{sec:antares-example}. Proper motion, stellar parallax, aberration and atmospheric
+refraction are omitted consistently in both implementations.
+
+The reference applies ERFA \texttt{pnm06a} for bias, precession and nutation, followed by sidereal
+rotation and \texttt{hd2ae} for horizontal projection. The Siderust calculation is compared using
+equivalent reference-system conventions.
+
+Altitude and wrapped-azimuth acceptance limits are $3\times10^{-11}$ and $10^{-10}$ degrees,
+respectively. An additional comparison with ERFA \texttt{gst06a} examines the effect of the
+equivalent sidereal-time formulation.
+
+A common altitude function supplies Siderust's threshold-crossing and culmination operations on a
+TT search axis. The adapter converts each trial epoch to UT1 with the same historical model; event
+times are reported in UT1. Independent ERFA-based bisection and extremum searches provide reference
+event times, separately from the sampling grid.
+
+The event search uses a numerical time tolerance of \ViewingEventTolerance{} s. The complete
+sampled altitude series, selected intervals, five-minute crossing brackets and refined event times
+are recorded and cross-checked against the corresponding figure.
+
+The historical $\Delta T$ uncertainty affects the physical interpretation of the resulting event
+times. It is distinct from the numerical agreement between implementations evaluating the same
+prescribed model.
+
+\paragraph{Earth observation from the lunar surface}
+
+The lunar application combines an ephemeris-derived finite target position, the Moon's analytical
+orientation and the observer's surface geometry.
+
+The selected TT epoch is constructed using separate calendar-day and within-day time components.
+Both the ephemeris calculation and the analytical lunar orientation use the documented seven-term
+TT-to-TDB approximation described in USNO Circular 179 \cite{kaplanCircular179}.
+
+The independent Python reference evaluates the same time prescription from the specified TT epoch.
+CSPICE then evaluates DE440s and the analytical \texttt{IAU\_MOON} orientation at the corresponding
+TDB argument.
+
+The high-level runtime ephemeris path converts TT through a full Julian date. To preserve
+input-epoch resolution, the application instead calls the public \texttt{SpkKernel} evaluator with
+explicit TDB seconds and checks segment frame, center, type and coverage metadata. The resulting
+selenocentric position is represented through the typed coordinate interface, retaining its center,
+frame and length unit.
+
+The independent reduction constructs the full geometric observation using CSPICE ephemerides and
+rotation matrices together with separately implemented observer subtraction and local-horizon
+projection.
+
+Comparison includes the inertial target vector, body-fixed rotation, observer position, local
+coordinates, altitude, azimuth and range. The principal acceptance limits are $3\times10^{-9}$
+degrees for angles and $2\times10^{-8}$ km for range.
+
+The calculation additionally compares the surface-observer altitude with the corresponding
+Moon-center direction, isolating the contribution of finite-distance observer parallax.
+
+A separate diagnostic uses CSPICE's native \texttt{unitim} TT-to-TDB conversion in place of the
+shared seven-term prescription. Its residuals are reported separately from the matched-convention
+comparison, using the original acceptance bounds.
+
+\subsection{Surface geometry and boundary cases}
+
+Additional experiments test body-fixed coordinates, local basis construction, observer displacement
+and finite-distance geometry, including geometric boundaries.
+
+Lunar references use CSPICE \texttt{IAU\_MOON} rotations with \texttt{pck00011.tpc} and
+\texttt{naif0012.tls}, combined with independently constructed surface positions and local tangent
+bases.
+
+Martian geometry uses an oblate reference ellipsoid with semiaxes
+
+\begin{equation}
+    a=3\,396\,190\ \mathrm{m},
+    \qquad
+    b=3\,376\,200\ \mathrm{m},
+\end{equation}
+
+consistent with the NAIF \texttt{BODY499\_RADII} values \cite{naifpck00011}.
+
+Independent ellipsoid intersections and surface-normal calculations provide references for
+planetocentric and planetographic latitude conventions.
+
+Table~\ref{tab:surface-method} summarizes the regression populations. The 12 vertical lunar cases
+are included in the 48 lunar boundary cases. These tests retain their original inputs and remain
+distinct from the terrestrial and lunar applications in Section~6.
+
+\begin{table*}[!tbp]
+    \centering
+    \caption{Surface-geometry regression
+        populations. The cases examine
+        complementary geometric properties
+        using independent astronomical
+        or analytical references.}
+    \label{tab:surface-method}
+    \footnotesize
+    \begin{tabularx}{\textwidth}{@{}lclX@{}}
+        \toprule
+        Experiment & Cases                      & Reference
+                   & Evaluated properties                        \\
+        \midrule
+        Lunar directions
+                   & 30                         & CSPICE
+                   & Body orientation and local
+        projection over multiple
+        epochs, sites and directions.                            \\
+        Lunar finite targets
+                   & 10                         & CSPICE / NumPy
+                   & Observer displacement,
+        finite-distance angles,
+        range and Cartesian geometry.                            \\
+        Mars surface geometry
+                   & 4                          & Analytical
+                   & Ellipsoid positions and
+        local bases under both
+        latitude conventions.                                    \\
+        Lunar geometric boundaries
+                   & 48                         & Analytical
+                   & Cardinal horizons,
+        near-horizon directions,
+        polar and longitude-boundary
+        configurations.                                          \\
+        Lunar vertical directions (subset)
+                   & 12 of 48                   & Analytical
+                   & Zenith/nadir behavior and
+        the defined azimuth convention
+        at vertical singularities.                               \\
+        Mars geometric boundaries
+                   & 32                         & Analytical
+                   & Surface geometry under
+        varying locations, heights
+        and latitude conventions.                                \\
+        \bottomrule
+    \end{tabularx}
+\end{table*}
+
+The primary lunar comparisons use acceptance limits of $10^{-10}$ per rotation-matrix element,
+$2\times10^{-8}$ degrees for angles, $10^{-3}$ m for range and $0.1$ m for Cartesian components.
+
+The analytical boundary suite applies a tighter $2\times10^{-6}$ m lunar range limit and the same
+$2\times10^{-8}$-degree angular limit where the angle is defined.
+
+For Mars, position and local-basis bounds are $10^{-8}$ m and $10^{-14}$, respectively.
+
+Different observables require different numerical scales. For a finite target, a rotation
+perturbation $\delta R$ contributes a Cartesian displacement of order
+
+\begin{equation}
+    \|\delta R\|\,\|\boldsymbol r\|.
+\end{equation}
+
+A small angular or matrix residual can therefore produce a larger Cartesian component difference
+when the target is distant. Local unit directions and surface bases do not carry the same distance
+factor.
+
+The full regression inputs and component residuals are included in the accompanying reproduction
+materials.
+
+\subsection{Compiler and runtime controls}
+
+Five negative fixtures are compiled separately with \verb|cargo check --locked| and the pinned
+Rust toolchain. They attempt quantity addition across dimensions, position subtraction across
+frames or centers, a TT argument in the UT1 slot of \texttt{gmst\_iau2006}, and inversion of a
+lunar observation using a Martian site. The control runner requires a nonzero exit status and the
+expected \texttt{E0308} or \texttt{E0277} diagnostic for each fixture.
+
+Runtime controls pair admissible inputs with nonfinite coordinates, invalid latitude, a
+surface-normal singularity, zero or nonfinite directions, and mismatched observer values. Separate
+upstream regressions test EOP sample endpoints, interior interpolation and rejection of
+out-of-coverage and nonfinite queries. The fixtures, runtime assertions and recorded diagnostics
+are included with the numerical records in \ref{sec:availability}.

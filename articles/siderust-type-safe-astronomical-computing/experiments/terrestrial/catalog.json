@@ -1,0 +1,75 @@
+{
+  "target": "Antares (alpha Scorpii)",
+  "simbad_identifier": "* alf Sco",
+  "source_url": "https://simbad.u-strasbg.fr/simbad/sim-basic?Ident=Antares",
+  "coordinate_reference": "2007A&A...474..653V",
+  "frame": "ICRS",
+  "reference_epoch": "J2000",
+  "ra_hms": "16 29 24.45970",
+  "dec_dms": "-26 25 55.2094",
+  "ra_deg": 247.35191541666669,
+  "dec_deg": -26.432002611111113,
+  "coordinate_quality": "A",
+  "proper_motion_mas_per_year": {
+    "mu_alpha_cos_delta": -12.11,
+    "mu_delta": -23.3,
+    "reference": "2007A&A...474..653V"
+  },
+  "parallax_mas": 5.89,
+  "v_magnitude": 0.91,
+  "adopted_model": "Fixed ICRS catalog direction; no proper motion, parallax, perspective acceleration, aberration, light deflection, light time or refraction. Precession-nutation is an orientation change, not stellar propagation.",
+  "observer": {
+    "longitude_east_deg": 2.15017,
+    "geodetic_latitude_north_deg": 41.35403,
+    "ellipsoidal_height_m": 0,
+    "reference_ellipsoid": "WGS 84",
+    "height_assumption": "Geometric simplification; not a measured elevation"
+  },
+  "cadence_seconds": 300,
+  "threshold_deg": 15,
+  "coordinate_error_ellipse": {
+    "major_axis_mas": 10.71,
+    "minor_axis_mas": 6.68,
+    "position_angle_deg": 90
+  },
+  "retrieved_date": "2026-11-02",
+  "retrieved_date_timezone": "Europe/Andorra",
+  "ut1_start": "1896-07-14T00:00:00",
+  "ut1_end": "1896-07-15T00:00:00",
+  "calendar": "proleptic Gregorian",
+  "earth_orientation": {
+    "polar_motion": "omitted",
+    "celestial_pole_corrections": "omitted; direct BPN path without UTC/EOP adapter"
+  },
+  "time_convention": "UT1 calendar labels -> native Tempoch UT1 axis -> TT through the pinned historical Delta T model. No UTC or leap-second conversion.",
+  "proper_motion_omission_note": "Fixed catalog direction retained; catalog motion would accumulate about 2.7 arcsec between 1896 and J2000. Numerical agreement is not an assessment of the historical stellar position.",
+  "event_search": {
+    "api": [
+      "above_threshold",
+      "crossings",
+      "culminations"
+    ],
+    "time_tolerance_seconds": 1.0,
+    "provider": "local HistoricalAntares implementing AltitudeProvider with the same geometric function as the grid"
+  },
+  "historical_delta_t": {
+    "model": "Tempoch 0.11.2 Meeus biennial three-point interpolation",
+    "source_url": "https://docs.rs/tempoch-core/0.11.2/src/tempoch_core/earth/delta_t.rs.html",
+    "table_origin_jd_ut1": 2312752.5,
+    "step_days": 730.5,
+    "selected_index": 138,
+    "selected_values_seconds": [
+      -6.1,
+      -4.7,
+      -2.7
+    ],
+    "alternative_index": 158,
+    "alternative_values_seconds": [
+      23.7,
+      24.0,
+      24.3
+    ],
+    "uncertainty": "Conservative historical-model accuracy allowance +/-15 s from the pinned scale documentation; not a statistical standard error or a measured EOP uncertainty.",
+    "pinned_source_sha256": "faa8d6218ff61f3090595eae4f5fdeceb0115797b71690d5d11d97c84a00e058"
+  }
+}

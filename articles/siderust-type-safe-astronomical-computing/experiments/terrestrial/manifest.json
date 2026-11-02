@@ -1,0 +1,188 @@
+{
+  "experiment": "Antares fixed-catalog geometric altitude, 1896-07-14 UT1",
+  "siderust_version": "0.18.1",
+  "reference_python": "3.12.13",
+  "data_policy": "Regenerated terrestrial subset; unrelated publication evidence retained. Replays write new runs/<id> directories.",
+  "files": [
+    {
+      "path": "examples/Cargo.toml",
+      "bytes": 275,
+      "sha256": "d18179548817c3530783a0ce92959aa970fa01c9f5a1e5fb6e96c9dbce81f4f5"
+    },
+    {
+      "path": "examples/Cargo.lock",
+      "bytes": 21769,
+      "sha256": "11d00d2bda0e7d7a311f0eea00cd42281e743d66a05dd7e9e5c64c8a78938371"
+    },
+    {
+      "path": "examples/src/antares.rs",
+      "bytes": 3975,
+      "sha256": "935a213919435b422b3ac6268200243a8de5c770f43d6885feeb20c18729b5ce"
+    },
+    {
+      "path": "examples/src/bin/viewing.rs",
+      "bytes": 3070,
+      "sha256": "62f4dc6ff0ca3ea1ba5e2b079ac6ad294240cb727f4ec1087d1e6cc67500eac7"
+    },
+    {
+      "path": "examples/src/bin/observe.rs",
+      "bytes": 1507,
+      "sha256": "126cf1546478f466fe5d84a87c2dee6b314dcbbb9ab643dff1356abd8544da84"
+    },
+    {
+      "path": "examples/src/bin/antares_diagnostics.rs",
+      "bytes": 975,
+      "sha256": "001d43cab2f1e06718e9dd061d72ca164506ed8228b6c79b16e91f65f719d10c"
+    },
+    {
+      "path": "examples/src/bin/viewing_events.rs",
+      "bytes": 2304,
+      "sha256": "a824667aff3bc2f940ccfe4ab153b3a1684249ebc81c44f2a61a16dac2e9740f"
+    },
+    {
+      "path": "examples/src/bin/historical_feasibility.rs",
+      "bytes": 999,
+      "sha256": "d3e9e230ee0ab91dec46870e242da2e5df94a1cc0f4e8df485c647743e59a9b1"
+    },
+    {
+      "path": "scripts/validate_antares.py",
+      "bytes": 11432,
+      "sha256": "650963c2588c4bcf8c70f1bfc7e11bf2560dabbbb63cc0fe5ac9af0fb8644325"
+    },
+    {
+      "path": "scripts/table_format.py",
+      "bytes": 814,
+      "sha256": "a56b26f3eaa4e04fa58963caf596a8df364eef0ffd32a4b23cf818e099844941"
+    },
+    {
+      "path": "scripts/generate_figures.py",
+      "bytes": 4510,
+      "sha256": "94d7707ac3e823aac8ac1af47fc1ccd2110886f5ee4cfaa32bb694d308188a9f"
+    },
+    {
+      "path": "scripts/generate_antares_macros.py",
+      "bytes": 2983,
+      "sha256": "aaa52cbdde6884997d9a0b6aa45d327b079540bc60f136650384ab6afcd4b60e"
+    },
+    {
+      "path": "scripts/verify_antares_figure.py",
+      "bytes": 2895,
+      "sha256": "1acb08aba49f796435e7c3b82d3d5ff61ce1e63daf53a937589f72cefd400067"
+    },
+    {
+      "path": "scripts/write_antares_manifest.py",
+      "bytes": 1907,
+      "sha256": "5e105378c3fd3ba21d277382520403b1161c2f1ead9cd354e2cb2800b27648d1"
+    },
+    {
+      "path": "experiments/terrestrial/catalog.json",
+      "bytes": 2966,
+      "sha256": "534462cd7370a750cde5a3a742569d98cd32efb9360965bbb49cc02c6e81d97a"
+    },
+    {
+      "path": "experiments/terrestrial/requirements.txt",
+      "bytes": 29,
+      "sha256": "d42b1e076b0024130286df67fe9db835eed33072eaee8f2d2884b50974475d11"
+    },
+    {
+      "path": "experiments/terrestrial/reproduce.sh",
+      "bytes": 2932,
+      "sha256": "81d43df78114c6811eb47e0c3a1987ffd353d9e98fc235b9924bc879797f4043"
+    },
+    {
+      "path": "experiments/terrestrial/recorded/figure-reference.csv",
+      "bytes": 22070,
+      "sha256": "0384b42271b5489fb0e0ffecd08e4c3dc4a815010566b192f05a7cadd11d3313"
+    },
+    {
+      "path": "experiments/terrestrial/recorded/historical-feasibility.csv",
+      "bytes": 195,
+      "sha256": "777ce53ebf382c8050ff01db118c2bbb78e3af952bd1d5fce45e8d185605cdb2"
+    },
+    {
+      "path": "experiments/terrestrial/recorded/sidereal-diagnostics.csv",
+      "bytes": 39233,
+      "sha256": "1ce3493b011e549c2b997a70c8752ff0bba28127c08d6157a31c1abed7ea501d"
+    },
+    {
+      "path": "experiments/terrestrial/recorded/terrestrial-cargo-tree.txt",
+      "bytes": 6533,
+      "sha256": "f645a29bc73c5a8b59ce8ec9ebcb01c0bab0ae8e927abb41ef82f25ee52dbf57"
+    },
+    {
+      "path": "experiments/terrestrial/recorded/terrestrial-cargo-version.txt",
+      "bytes": 36,
+      "sha256": "57d704d9ad73ec7cc1b1a79aed6703333615865be6e3dc1ce269ea4ca7068227"
+    },
+    {
+      "path": "experiments/terrestrial/recorded/terrestrial-python-version.txt",
+      "bytes": 61,
+      "sha256": "424bc78af72791a0e09dad53781f516adc7548246a83dab82191af98173d789d"
+    },
+    {
+      "path": "experiments/terrestrial/recorded/terrestrial-rustc.txt",
+      "bytes": 196,
+      "sha256": "b1008d5f7681db91d446d2bb0a07af00372bb6cb4d4599e95212e3a8edce4e11"
+    },
+    {
+      "path": "experiments/terrestrial/recorded/viewing-brackets.csv",
+      "bytes": 41,
+      "sha256": "bc8540c856192cbaf525696d5b684c7250afe471daa4374ae20ffa274fabb508"
+    },
+    {
+      "path": "experiments/terrestrial/recorded/viewing-epochs.csv",
+      "bytes": 40703,
+      "sha256": "ab79912dbfecc2efeaba10eaf28ae82655c5c2d5e413b10d8f8da02231966fdb"
+    },
+    {
+      "path": "experiments/terrestrial/recorded/viewing-events-reference.csv",
+      "bytes": 185,
+      "sha256": "d8f1bbdd4a6ca71cb211f9b2783f089f772e58bdb967e06ffbb0e1df28435987"
+    },
+    {
+      "path": "experiments/terrestrial/recorded/viewing-events.csv",
+      "bytes": 230,
+      "sha256": "1677426eaeccbe52bbbc8636ae08514c4d2507316d967f6f7825a8e2107f8e93"
+    },
+    {
+      "path": "experiments/terrestrial/recorded/viewing-gst06a-reference.csv",
+      "bytes": 14635,
+      "sha256": "a09d3b561034b3cac1dc6d3cf4cb7b95853a30c18c6d7dc78e196c9c4246f779"
+    },
+    {
+      "path": "experiments/terrestrial/recorded/viewing-reference-epochs.csv",
+      "bytes": 58640,
+      "sha256": "16311e8fdcc74184a9032e99bdf5fc5af27a8a015bd5e67aabb222ac0af12c9a"
+    },
+    {
+      "path": "experiments/terrestrial/recorded/viewing-reference.csv",
+      "bytes": 14635,
+      "sha256": "cfa955035f297e5fa4f6f11519eac65a0bbbbe273fd77db7c48c48b5de203e29"
+    },
+    {
+      "path": "experiments/terrestrial/recorded/viewing-residuals.csv",
+      "bytes": 21724,
+      "sha256": "b322e0e266c1a1c7b94d9f7380f3d2d28a898609c8c878cc51dcccd1088ba3f7"
+    },
+    {
+      "path": "experiments/terrestrial/recorded/viewing-selected.csv",
+      "bytes": 2543,
+      "sha256": "700fb55ad073b3eaf7fba03f2a3a97f6a35959a47ad801d1fe106083867d93bf"
+    },
+    {
+      "path": "experiments/terrestrial/recorded/viewing-spans.csv",
+      "bytes": 31,
+      "sha256": "6d761b6c091e466e299a3cbcccff05615d791eee95e84865994332f482b80b85"
+    },
+    {
+      "path": "experiments/terrestrial/recorded/viewing-summary.json",
+      "bytes": 3352,
+      "sha256": "32fa56faa7f01e7d0674ad5bcc2448881cbab0fd242845e04e5a6db4c5b485ec"
+    },
+    {
+      "path": "experiments/terrestrial/recorded/viewing.csv",
+      "bytes": 21056,
+      "sha256": "a688a409dab356f59a5975359e32c14327f24e449e3a4cb48e8c65139f818f57"
+    }
+  ]
+}

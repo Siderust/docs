@@ -1,0 +1,50 @@
+Repository license
+==================
+
+This repository contains both manuscript content and build/automation code.
+They are licensed separately:
+
+1. Manuscript text, bibliography metadata written for this repository, and
+   source figures are licensed under the Creative Commons Attribution 4.0
+   International License (CC BY 4.0), SPDX identifier: CC-BY-4.0.
+
+2. Author-written Rust examples, build scripts, CI configuration, Docker
+   configuration, data-to-table generation scripts and other repository
+   automation are licensed under the MIT License, SPDX identifier: MIT.
+   Original third-party scientific datasets and NAIF/IERS reference inputs in
+   the evidence directory retain their respective provenance and terms.
+
+Third-party references, cited works, upstream software names, journal names,
+logos, and external project documentation retain their own licenses and rights.
+This license file does not relicense third-party material cited by the paper.
+
+MIT License
+-----------
+
+Copyright (c) 2026 Ramon Vallés Puig
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of the build scripts and associated automation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+CC BY 4.0 notice
+----------------
+
+The manuscript material is licensed under CC BY 4.0. You may share and adapt it
+provided that appropriate credit is given, a link to the license is provided,
+and changes are indicated. The complete license text is available from Creative
+Commons as the Creative Commons Attribution 4.0 International Public License.

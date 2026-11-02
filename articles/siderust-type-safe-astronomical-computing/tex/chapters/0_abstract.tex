@@ -1,0 +1,18 @@
+\begin{abstract}
+
+    Astronomical calculations combine quantities, epochs, coordinate frames, ephemerides and observer
+    geometry whose conventions must remain consistent. We present Siderust, a Rust ecosystem that
+    composes independently reusable libraries for quantities, geometry, time and numerical methods
+    through interfaces that preserve astronomical semantics across component boundaries. Units, time
+    scales, reference frames, coordinate centers and observer-body identities enter type-level
+    contracts; runtime contexts supply ephemerides, orientation models and observational data. We
+    evaluate this composition through an Antares altitude-event search, Earth observation from a lunar
+    site, and lunar and Martian surface-geometry tests. Five compiler controls reject incompatible
+    scientific representations, while runtime controls check observer values, degenerate geometry and
+    data coverage. Independent ERFA and CSPICE reductions agree within the declared tolerances for the
+    evaluated time conversions, transformations, same-kernel ephemerides and geometric observations.
+    The lunar calculation retains finite-distance parallax; separate analytical ephemeris comparisons
+    quantify differences from DE440s under aligned frame conventions. These experiments verify both
+    interface enforcement and numerical behavior in composed astronomical calculations under the
+    specified models.
+\end{abstract}

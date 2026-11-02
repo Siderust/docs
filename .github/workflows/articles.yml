@@ -1,0 +1,52 @@
+name: Article checks
+on:
+  pull_request:
+  push:
+    branches: [main]
+permissions:
+  contents: read
+jobs:
+  discover:
+    runs-on: ubuntu-24.04
+    outputs:
+      articles: ${{ steps.discover.outputs.articles }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Test article discovery
+        run: python3 -m unittest discover -s scripts -p 'test_*.py'
+      - id: discover
+        name: Validate and discover articles
+        run: |
+          articles=$(python3 scripts/discover-articles.py)
+          echo "articles=$articles" >> "$GITHUB_OUTPUT"
+  article:
+    needs: discover
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    strategy:
+      fail-fast: false
+      matrix:
+        article: ${{ fromJSON(needs.discover.outputs.articles) }}
+    env:
+      ARTICLE: ${{ matrix.article }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install the article Rust toolchain when examples exist
+        run: |
+          if test -f "articles/$ARTICLE/examples/Cargo.toml"; then
+            toolchain=$(python3 -c 'import os,tomllib; print(tomllib.load(open("articles/"+os.environ["ARTICLE"]+"/rust-toolchain.toml", "rb"))["toolchain"]["channel"])')
+            rustup toolchain install "$toolchain" --profile minimal
+          fi
+      - name: Install reproduction launcher
+        run: |
+          python3 -m venv "$RUNNER_TEMP/reproduction-launcher"
+          "$RUNNER_TEMP/reproduction-launcher/bin/pip" install uv==0.12.0
+          echo "$RUNNER_TEMP/reproduction-launcher/bin" >> "$GITHUB_PATH"
+      - name: Build and validate article
+        run: make ARTICLE="$ARTICLE" check
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ${{ matrix.article }}-pdf
+          path: articles/${{ matrix.article }}/tex/build/main.pdf
+          if-no-files-found: error
+          retention-days: 14

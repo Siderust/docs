@@ -1,0 +1,23 @@
+\appendix
+\section{Software and Experimental Data Availability}
+\label{sec:availability}
+
+Siderust v0.18.1 is available at \url{https://github.com/Siderust/siderust/tree/v0.18.1}, revision
+\texttt{460681404501023dddf5c9838cd2496c2dcce933}. The manuscript, bibliography, executable
+examples, experimental records and reference implementations accompany the article at
+\url{https://github.com/Siderust/docs}. The committed Cargo lockfile resolves Tempoch and
+Tempoch-core v0.11.2; Rust 1.93.1 is pinned. Reproduction instructions identify the software
+revisions, compiler configuration, dependency graph, scientific inputs and SHA-256 checksums.
+
+The accompanying materials retain the original numerical measurements, compiler and runtime
+controls, independent Python references and table generators. Recorded evidence is kept separate
+from fresh reproduction outputs. The \texttt{experiments/} directory provides the terrestrial and
+lunar application inputs, reference reductions and replay commands, together with unchanged
+numerical records and generators for the Results tables. The historical terrestrial day uses UT1
+and an explicit $\Delta T$ model; the lunar epoch is independently specified on TT.
+
+The reference environment is Python 3.12.13, PyERFA 2.0.1.5 / ERFA 2.0.1, SpiceyPy 6.0.0 / CSPICE
+N0067 and NumPy 2.5.4. NAIF DE440s, \texttt{naif0012.tls} and \texttt{pck00011.tpc} are identified
+by URLs and checksums. Tempoch's UTC--TAI snapshot is pinned through \texttt{siderust-archive}
+v0.1.5, including its source-checksum manifest. No measured IERS/EOP snapshot is used in the
+independent comparisons; upstream EOP regressions use specified synthetic samples.

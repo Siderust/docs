@@ -1,0 +1,104 @@
+\section{Related Work and Positioning}
+
+Units, time scales, frames and coordinate centers enter astronomical libraries through runtime
+objects, identifiers or static type parameters. The systems below differ in how these
+representations constrain operations and connect to numerical models.
+
+Astropy provides an integrated Python ecosystem with quantities, time objects and an extensible
+coordinate transformation framework, preserving relevant frame attributes during computation
+\cite{astropy2022}. SOFA and ERFA supply standardized numerical routines for fundamental astronomy,
+with scientific conventions specified through documented interfaces \cite{sofa,erfa}. SPICE
+combines ephemeris kernels, reference frames, body identifiers and time-dependent transformations
+within a runtime geometry system \cite{acton1996spice,acton2018spice}. Orekit provides an
+object-oriented framework connecting dates, reference frames, spacecraft states and physical models
+for flight dynamics and estimation \cite{orekit2016,orekitSoftware}.
+
+Recent Rust-based scientific software explores related design choices. ANISE provides
+SPICE-inspired ephemeris and reference-frame operations, representing geometric context through
+frame descriptors that identify both the central body and orientation \cite{anise,aniseFrames}. Nyx
+integrates spacecraft dynamics, propagation and estimation into a mission-analysis framework
+\cite{nyx}, while Brahe provides Rust and Python interfaces for satellite dynamics, epochs,
+coordinate transformations and Earth-orientation data \cite{brahe}. At a more foundational level,
+Hifitime implements precise epoch and duration representations with explicit time-scale information
+\cite{hifitime}, and \texttt{uom} provides compile-time dimensional analysis and efficient
+arithmetic over physical quantities \cite{uom}.
+
+The main comparison is where scientific context is represented and checked. Astropy's runtime
+objects and transformation graph manage units and coordinate attributes. SPICE resolves body and
+frame relationships from identifiers and kernel data; ANISE frame descriptors identify the central
+body and orientation. Hifitime retains a time-scale identifier in an epoch value, while
+\texttt{uom} encodes dimensions statically and normalizes quantities to base units.
+
+Siderust composes separate quantity, geometry and time libraries through interfaces parameterized
+by unit, time scale, frame, center and observer body. For example, a surface observation accepts an
+\texttt{affn::Position} and a Tempoch epoch directly and returns an observation parameterized by
+body and length unit. Trait bounds require the necessary rotations and center translations; runtime
+providers supply their model data. This combination of shared types and configurable providers is
+the architectural focus of the present evaluation.
+
+Table~\ref{tab:positioning} compares representation, enforcement and composition mechanisms.
+
+\begin{table*}[!tbp]
+    \centering
+    \caption{Architectural approaches to preserving scientific
+        context through interface and composition mechanisms.}
+    \label{tab:positioning}
+    \footnotesize
+    \begin{tabularx}{\textwidth}{@{}lYYY@{}}
+        \toprule
+        System                                         &
+        Scientific context                             &
+        Enforcement mechanism                          &
+        Composition focus                                                                                                                                                  \\
+        \midrule
+        Astropy                                        &
+        Quantities, time and frame attributes          &
+        Runtime compatibility and transformation graph &
+        Integrated Python astronomy                                                                                                                                        \\
+
+        SOFA/ERFA                                      & Convention-specific numerical inputs               & Documented interfaces and caller conventions &
+        Reference astronomical algorithms                                                                                                                                  \\
+
+        SPICE                                          & Bodies, frames, epochs and kernels                 & Runtime frame and kernel resolution          & Planetary and
+        mission geometry                                                                                                                                                   \\
+
+        Orekit                                         & Dates, frames, states and models                   & Object interfaces and runtime model contexts & Flight
+        dynamics and estimation                                                                                                                                            \\
+
+        ANISE                                          & Frame origins, orientations and ephemeris data     & Frame descriptors and checked kernel
+        operations                                     & Navigation and ephemeris geometry                                                                                 \\
+
+        Nyx                                            & Trajectory states, epochs and dynamics             & Domain interfaces and model validation       &
+        Astrodynamics and mission analysis                                                                                                                                 \\
+
+        Brahe                                          & Epochs, frames, states and EOP data                & Rust/Python interfaces and runtime context   &
+        Satellite analysis and propagation                                                                                                                                 \\
+
+        Hifitime                                       & Precise epochs and time-scale identifiers          & Scale-aware epoch operations                 & Reusable time
+        infrastructure                                                                                                                                                     \\
+
+        \texttt{uom}                                   &
+        Dimension-typed quantities                     &
+        Static dimensional compatibility               &
+        Reusable physical quantities                                                                                                                                       \\
+
+        Siderust                                       & Typed units, scales, frames, centers and observers & Static compatibility and runtime
+        model validation                               & Cross-library astronomical composition                                                                            \\ \bottomrule
+    \end{tabularx}
+\end{table*}
+
+\subsection{Surface observation in SPICE and Siderust}
+
+The Earth-from-Moon calculation (Section~\ref{sec:lunar-example}) gives a concrete interface
+comparison. The independent CSPICE reduction calls the SpiceyPy interfaces
+\verb|spkpos("EARTH", et, "J2000", "NONE", "MOON")| and \verb|pxform("J2000", "IAU_MOON", et)|,
+then subtracts the observer position and projects onto the local horizon. Body identifiers, frame
+names and correction modes are runtime arguments; the epoch is TDB seconds past J2000 and the
+returned position is in kilometres \cite{spkposAPI}.
+
+The Siderust calculation constructs a \texttt{Position<Selenocentric, ICRS, Kilometer>} from the
+same kernel and supplies a \texttt{JulianDate<TT>} and \texttt{SurfaceSite<Moon>} to the generic
+observation interface. The result has type \texttt{HorizontalObservation<Moon, Kilometer>}. The
+types constrain the declared representation, while the kernel documentation supplies the physical
+realization of its axes. Section~\ref{sec:ephemeris-method} specifies the frame ties used in the
+comparisons.

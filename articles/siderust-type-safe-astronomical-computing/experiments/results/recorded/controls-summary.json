@@ -1,0 +1,22 @@
+{
+  "dimension": {
+    "expected_failure": true,
+    "diagnostic": "E0308"
+  },
+  "frame": {
+    "expected_failure": true,
+    "diagnostic": "E0277"
+  },
+  "center": {
+    "expected_failure": true,
+    "diagnostic": "E0277"
+  },
+  "scale": {
+    "expected_failure": true,
+    "diagnostic": "E0308"
+  },
+  "observer_body": {
+    "expected_failure": true,
+    "diagnostic": "E0308"
+  }
+}

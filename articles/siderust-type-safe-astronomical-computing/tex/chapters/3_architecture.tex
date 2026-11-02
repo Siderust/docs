@@ -1,0 +1,95 @@
+\section{Software Architecture}
+
+The Siderust ecosystem separates scientific representations, numerical methods, datasets and
+astronomical operations into Rust crates. The \texttt{siderust} domain crate depends on these
+components and supplies astronomical models and transformation providers. The lower-level crates
+can be used without the domain crate.
+
+\subsection{Components and dependencies}
+
+\texttt{qtty} defines unit-parameterized quantities and their arithmetic. \texttt{affn} uses these
+quantities in geometric containers whose type parameters identify frames and coordinate centers.
+\texttt{tempoch} provides scale- and encoding-parameterized epochs, durations and time-conversion
+contexts. These are the representations accepted by the astronomical APIs described in Section~4.
+
+The numerical crates have distinct roles. \texttt{cheby} supplies Chebyshev approximation and
+evaluation, used in ephemeris interpolation and altitude-crossing searches. \texttt{keplerian}
+provides anomaly solvers and orbital mechanics; Siderust's conic-equation routines delegate to its
+solvers. \texttt{principia} supplies state propagation and numerical integrators used by the
+feature-gated orbit-determination code. \texttt{optica} provides spectra, optical coefficients and
+scattering operations used in photometric and atmospheric modules. The latter workflows belong to
+the implemented ecosystem but are not evaluated by the observer-geometry experiments in this paper.
+
+\texttt{siderust-archive} supplies coefficient tables and dataset metadata, checksums and provenance.
+Its enabled data include VSOP87 and ELP2000-82B series, nutation coefficients and bundled time data.
+Runtime BSP files are supplied separately by the application. Figure~\ref{fig:architecture-overview}
+shows these responsibilities and the runtime inputs.
+
+\begin{figure*}[!tbp]
+    \centering
+    \input{figures/architecture-overview}
+    \caption{Modular architecture of Siderust. Independent libraries
+        provide scientific representations, numerical methods and
+        datasets, while the astronomical domain layer combines them
+        into computational workflows. Runtime providers supply the
+        models and observational data required by these operations.
+        The diagram illustrates architectural responsibilities rather
+        than an exhaustive dependency graph.}
+    \label{fig:architecture-overview}
+\end{figure*}
+
+\subsection{Representation and model interfaces}
+
+The domain layer uses \texttt{Quantity<U,S>}, \texttt{Position<C,F,U>} and typed Tempoch epochs
+directly. Transformations change the relevant parameters in their returned types: a rotation
+changes the frame, and a translation changes the center. Applications can therefore pass a
+transformed position to another component without reconstructing its unit or coordinate metadata.
+
+Numerical kernels may still operate on scalar coefficients and arrays. For example, ephemeris
+interpolation evaluates coefficients internally and constructs a typed position at the astronomical
+interface. This keeps the numerical representation local to the kernel while exposing the result's
+frame, center and unit to callers.
+
+Model providers supply ephemerides, orientation data and other context-dependent inputs.
+\texttt{AstroContext} connects these providers to transformations. Provider trait bounds identify
+supported operations, while checked calls report invalid values or unavailable data. Section~4
+specifies the boundary between these checks and the scientific choices made by an application.
+
+\subsection{Body models and surface observations}
+
+A surface observer has type \texttt{SurfaceSite<B>}, where \texttt{B} implements
+\texttt{BodySurfaceModel}. Associated types identify the body's center and fixed frame; model
+functions specify its reference surface and coordinate conventions. The site stores longitude,
+latitude, height and surface parameters.
+
+The generic observation operation combines the site with a target position, epoch and
+transformation context (Figure~\ref{fig:architecture}). It translates the target to the body's
+center, rotates into the fixed frame and projects the observer-relative vector onto the local
+horizon. The returned \texttt{HorizontalObservation<B,U>} retains the body parameter and length
+unit. A separate direction path performs rotation and projection without observer subtraction. The
+corresponding finite-distance and distance-free contracts are detailed in
+Section~\ref{sec:surface}.
+
+\begin{figure*}[!tbp]
+    \centering
+    \input{figures/architecture}
+    \caption{Cross-library composition in the generic
+        surface-observation interface. Typed positions from
+        \texttt{affn}, epochs from \texttt{tempoch} and physical
+        quantities from \texttt{qtty} are combined with a
+        body-specific observer model and astronomical context.
+        The result preserves the observer-model identity and
+        distance unit, while the calculation uses the appropriate
+        reference surface and orientation model.}
+    \label{fig:architecture}
+\end{figure*}
+
+Adding a body model requires a reference surface, coordinate conventions and supported frame and
+center providers. The local-horizon projection is shared. The lunar and Martian tests examine the
+geometry for a sphere and an oblate ellipsoid; the application-defined \texttt{SurveyMoon} example
+checks that an external body-model implementation can use the existing providers.
+
+Analytical and SPK-backed ephemerides similarly expose positions through common coordinate types.
+The adapters normalize supported native frame realizations into the public representation, using
+the explicit mappings in Section~\ref{sec:ephemeris-method}. The ephemeris source remains a model
+choice recorded with each experiment.

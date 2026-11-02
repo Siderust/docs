@@ -1,0 +1,1 @@
+use siderust::coordinates::{cartesian::Position,centers::Geocentric,frames::{ICRS,EclipticMeanJ2000}};use qtty::unit::Kilometer;fn main(){let a=Position::<Geocentric,ICRS,Kilometer>::new(1.,2.,3.);let b=Position::<Geocentric,EclipticMeanJ2000,Kilometer>::new(1.,2.,3.);let _=a-b;}

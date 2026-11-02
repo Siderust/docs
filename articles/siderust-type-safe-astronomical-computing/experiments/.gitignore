@@ -1,0 +1,4 @@
+runs/
+
+# Preserved scientific evidence, not transient build logs.
+!results/recorded/*.log

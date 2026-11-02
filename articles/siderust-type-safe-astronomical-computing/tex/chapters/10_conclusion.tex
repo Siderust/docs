@@ -1,0 +1,21 @@
+\section{Conclusions}
+
+Years of development in astronomical software have produced specialized libraries whose composition
+requires consistent scientific representations. Siderust connects independently reusable quantity,
+geometry and time types through astronomical interfaces that retain units, scales, frames, centers
+and observer-body identities. Explicit runtime contexts supply the selected models and data.
+
+The Antares altitude-event search and Earth-from-Moon observation exercise this composition. Five
+compiler controls reject incompatible representations, while runtime controls distinguish invalid
+values and unavailable data. ERFA and CSPICE comparisons meet the declared acceptance criteria for
+the evaluated time, reference-system, same-kernel ephemeris and surface-geometry calculations. The
+Earth-from-Moon workflow combines DE440s with analytical lunar orientation and retains the
+approximately $\EarthParallax^\circ$ altitude shift caused by the observer's finite displacement.
+Separate VSOP87A and ELP2000-82B comparisons retain the distinction between implementation
+residuals and physical-model differences.
+
+The evaluated workflows compose independently reusable scientific libraries through typed
+astronomical interfaces that retain units, time scales, reference frames, coordinate centers and
+observer-body identities. Compile-time contracts constrain compatible representations, runtime
+validation checks values and data coverage, and ERFA and CSPICE comparisons establish numerical
+consistency under the specified models.

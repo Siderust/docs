@@ -1,0 +1,1 @@
+Earth: Center: Heliocentric, Frame: EclipticMeanJ2000, X: -0.17713513107794004 au, Y: 0.9672416809426168 au, Z: -0.000003902226345001955 au; Moon: Center: Geocentric, Frame: EclipticMeanJ2000, X: -291608.3719320198 km, Y: -274979.7568954156 km, Z: 36271.17949796659 km

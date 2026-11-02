@@ -1,0 +1,8 @@
+defaultIndent: "    "
+modifyLineBreaks:
+  textWrapOptions:
+    columns: 100
+    huge: overflow
+    separator: ""
+    beforeSentence: 1
+    afterSentence: 1

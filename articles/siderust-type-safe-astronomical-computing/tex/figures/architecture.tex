@@ -1,0 +1,33 @@
+% Specialization exercised by examples/src/bin/surface_contract.rs (v0.18.1).
+\begin{tikzpicture}[
+    box/.style={draw,align=center,text width=46mm,minimum height=17mm,
+            inner sep=2mm,font=\small},
+    typed/.style={-{Latex[length=2mm]},semithick},
+    runtime/.style={typed,dashed}
+    ]
+    \node[box] (q) at (0,0)
+    {\texttt{qtty::Quantity<U,S>}\\Unit \texttt{U}; scalar \texttt{S}\\Position components use \texttt{f64}};
+    \node[box] (p) at (5.6,0)
+    {\texttt{affn::Position<}\\\texttt{B::Center,ICRS,U>}\\Finite target coordinates};
+    \node[box] (b) at (11.2,0)
+    {\texttt{B: BodySurfaceModel}\\Associated \texttt{Center}, \texttt{FixedFrame}\\Surface defaults and conventions};
+    \node[box] (t) at (0,-2.3)
+    {\texttt{tempoch::JulianDate<TT>}\\Typed time scale\\Runtime epoch value};
+    \node[box,fill=black!6] (obs) at (5.6,-2.3)
+    {\textbf{Domain composition}\\\texttt{site.observe\_position}\\\texttt{(\&target,\&epoch,\&ctx)}\\via \texttt{SurfaceHorizontalExt}};
+    \node[box] (site) at (11.2,-2.3)
+    {\texttt{SurfaceSite<B>}\\Runtime longitude, latitude, height;\\surface and latitude convention};
+    \node[box] (ctx) at (0,-4.6)
+    {\texttt{ctx: AstroContext}\\Default provider types\\EOP provider\\Runtime data access};
+    \node[box] (out) at (5.6,-4.6)
+    {\texttt{Result<}\\\texttt{HorizontalObservation<B,U>,}\\\texttt{SurfaceError>}\\Body \texttt{B}, unit \texttt{U}, runtime site};
+    \node[align=left,font=\footnotesize,text width=47mm] at (11.2,-4.6)
+    {\textbf{Contract boundaries}\\Solid: typed interface / association\\Dashed: runtime configuration\\\smallskip Provider bounds enable transforms;\\value checks validate geometry.};
+    \draw[typed] (q) -- (p);
+    \draw[typed] (p) -- (obs);
+    \draw[typed] (b) -- (site);
+    \draw[typed] (t) -- (obs);
+    \draw[runtime] (site) -- (obs);
+    \draw[runtime] (ctx.north east) -- (obs.south west);
+    \draw[typed] (obs) -- (out);
+\end{tikzpicture}

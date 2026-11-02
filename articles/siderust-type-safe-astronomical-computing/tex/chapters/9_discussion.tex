@@ -1,0 +1,80 @@
+\section{Discussion}
+
+\subsection{What the composition tests establish}
+
+Native interface tests and numerical comparisons examine different consequences of Siderust's
+representation choices. The compiler controls locate incompatibilities where quantities or
+coordinates meet: subtraction requires aligned frames and centers, sidereal-time evaluation
+requires the prescribed time scales, and checked observation inversion requires the same body
+parameter. These constraints make the required conversion visible in the application, as in
+Listing~\ref{lst:frame-repair}. Runtime observer checks cover a different case: two sites can share
+a body type while having different coordinates.
+
+The numerical experiments then exercise the conversions that make those interfaces compose.
+Same-kernel agreement checks the path from a time argument and SPK segment to a position in the
+specified center and axes. The lunar application extends that path through body orientation,
+observer subtraction and local projection. Its altitude difference from the Moon-center direction
+shows why the position's finite distance must survive this composition. A direction-only interface
+would omit that translation and yield a different observable.
+
+Two high-level adapter limitations require more explicit public evaluation paths in these
+applications. The historical Antares workflow calls public BPN and explicit TT/UT1 horizontal
+operations to avoid the context adapter's redundant TT-to-UTC lookup. The lunar workflow supplies
+TDB seconds directly to the public SPK evaluator to preserve the split epoch's resolution. Both
+calculations use supported public components; the application code selects paths that retain the
+required time conventions and epoch resolution while leaving the adopted astronomical models
+unchanged. The rejected converted-TT endpoint probes also show that closed native kernel coverage
+does not by itself ensure endpoint acceptance after time conversion.
+
+The analytical ephemeris comparison exposes another boundary between representation and model.
+Mapping VSOP87A, ELP2000-82B and DE440s into common axes makes their position differences
+interpretable. The remaining differences belong to the theories and their realization ties. A
+shared frame parameter records the declared axes; documentation and explicit adapters establish how
+external data realize them.
+
+\subsection{Extent of body-model reuse}
+
+The lunar tests exercise both rotations and finite-target observations against CSPICE. The Martian
+cases test ellipsoid positions and local bases for planetocentric and planetographic latitude.
+Their combined scope supports reuse of surface construction and projection across the tested sphere
+and ellipsoid. A complete Martian ephemeris-to-observation workflow would additionally exercise
+Mars orientation and center providers.
+
+The \texttt{SurveyMoon} example addresses extensibility at the API boundary: an application-defined
+body type can reuse the Moon's center, frame and surface and obtain the same observation. Extending
+this mechanism to a new physical body requires its own documented geometry and supported providers.
+Terrain-dependent visibility would further require a local surface or horizon model. These are
+model additions to the existing projection interface.
+
+NSB, a night-sky radiance and observation-planning application maintained by the same author, is a
+downstream use of ecosystem quantity, time and coordinate components
+\cite{Valles_Puig_NSB_Night-Sky_Background}. It adds sky models and planning operations to those
+representations. This example documents component reuse in a separate application; the generic
+surface-observer interface is evaluated by the tests presented here.
+
+\subsection{Model coverage and further evaluation}
+
+The Earth-rotation comparisons use controlled TT and UT1 arguments, and EOP coverage tests use
+synthetic samples. A next step is a complete measured-EOP transformation workflow, including polar
+motion and celestial-pole corrections, with the input snapshot, interpolation and coverage recorded
+alongside the output. The historical adapter also identifies a concrete interface improvement:
+frame operations should avoid unnecessary UTC queries when TT and UT1 are already supplied.
+
+The lunar time diagnostic quantifies the importance of an aligned prescription at tight numerical
+tolerances. The seven-term TT-to-TDB approximation and CSPICE's native conversion differ by
+approximately $14.66\,\mu\mathrm{s}$ at the application epoch, changing the range by about $0.8$
+mm. This exceeds the matched-convention range criterion. Applications requiring apparent places
+need a correction policy that integrates time conversion with light time, aberration and
+gravitational deflection. Higher-fidelity lunar pointing would also require a corresponding
+orientation realization and surface model.
+
+The language interfaces introduce a further testing boundary: C metadata and Python attributes
+replace some native static contracts with runtime checks. Replaying the reference cases through
+each binding would test numerical values, unit and scale conventions, error propagation and
+resource handling together. Such tests would complement the native compiler controls.
+
+Performance also remains to be measured for representative workflows. A useful evaluation would
+separate ephemeris loading, repeated transformations and event searches, and compare equivalent
+models and tolerances. The present results support conclusions about numerical behavior and
+interface enforcement; they provide no timing or memory-cost comparison. Further astrodynamical and
+radiometric workflows would test composition beyond the observer-geometry paths examined here.

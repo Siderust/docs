@@ -1,0 +1,2 @@
+use siderust::{ephemeris::{RuntimeEphemeris,DynEphemeris},time::{TDB,TT}};
+fn main(){let e=RuntimeEphemeris::from_bsp(std::env::args().nth(1).unwrap()).unwrap();for et in [-4734072000.-86400.,-4734072000.,-4734072000.+1.,4735368000.-1.,4735368000.,4735368000.+86400.]{let j=tempoch::JulianDate::<TDB>::new(2451545.+et/86400.).to_scale::<TT>();let p=e.try_moon_geocentric(j);println!("{et},{j:?},{p:?}");}}

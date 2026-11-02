@@ -1,0 +1,2620 @@
+{
+  "sources": [
+    {
+      "name": "siderust",
+      "revision": "460681404501023dddf5c9838cd2496c2dcce933",
+      "url": "https://codeload.github.com/Siderust/siderust/tar.gz/460681404501023dddf5c9838cd2496c2dcce933",
+      "archive_sha256": "99479124c63b40a3c80c15b7de51404938fb75de9390595b2bae299b91ff8891",
+      "expected_files": 558,
+      "archive_files": 558,
+      "license": "AGPL-3.0-only",
+      "producer": "Siderust project",
+      "files": [
+        {
+          "path": ".cargo/config.toml",
+          "sha256": "77e0fd2ce2774386aad398e252fe66565ac4b21176cb8cd8f1e85c39e9c43b47"
+        },
+        {
+          "path": ".gitattributes",
+          "sha256": "4afbb5dd9935797c0c73b878692f2c648ee5fe345d7f3c6ae3fb341abee43c38"
+        },
+        {
+          "path": ".github/workflows/github-ci.yml",
+          "sha256": "2e56c1b6d02fc8bcdba62bb00522c25c5f972521257b1af2242ca107c12d14ea"
+        },
+        {
+          "path": ".github/workflows/publish.yml",
+          "sha256": "d00175f541494461f7cfa61428cda36653dfcafc33641dd62ea3e2415bd97389"
+        },
+        {
+          "path": ".gitignore",
+          "sha256": "2ed0065dc42fb746f84cd4bfbca1dc16aae2d89b01020d6f8f15f554df627ae1"
+        },
+        {
+          "path": ".mailmap",
+          "sha256": "d759395d382c2d65773b428246da88989a9c0dff60a11b1504330bd055fecd27"
+        },
+        {
+          "path": "CHANGELOG.md",
+          "sha256": "c5449d9d2f56c88acd6d51b02ad948cc7da730185d6b067905aa531906852d36"
+        },
+        {
+          "path": "CITATION.cff",
+          "sha256": "37d2cccb166e350cf795bfdb48907b47360bb1f08d1c86231af1884aa256b634"
+        },
+        {
+          "path": "Cargo.lock",
+          "sha256": "649c2303d3e15033c6f87ab215d03b6dbe487a528fcc737e88e548b3d67a1df6"
+        },
+        {
+          "path": "Cargo.toml",
+          "sha256": "2d02223707d3be265e811a8423cd330c04163e9a38d053a93298a24ba9b6e23e"
+        },
+        {
+          "path": "LICENSE",
+          "sha256": "8486a10c4393cee1c25392769ddd3b2d6c242d6ec7928e1414efff7dfb2f07ef"
+        },
+        {
+          "path": "README.md",
+          "sha256": "81b6c2c8ce5f2543a09063846abd6dfd81ad66b4a41eb7b88071734dc6421f1c"
+        },
+        {
+          "path": "benches/README.md",
+          "sha256": "50d64e2e41c67617a31a20aa5fba21428138c369eb39ed95776c344e820d35fc"
+        },
+        {
+          "path": "benches/altitude_comparison.rs",
+          "sha256": "0e3902402a7c248eeadc714df7aab3c70aef1d188e7ab8ada5bbfddc5fc07bfe"
+        },
+        {
+          "path": "benches/converters.rs",
+          "sha256": "781ced313e73a8ffc3d3a2e3d958890cb05a84f13322e14ea08fc621ee9f2d4b"
+        },
+        {
+          "path": "benches/de441.rs",
+          "sha256": "085537b5f4d9f459b2e2164857cf790ebbc9150100b448ba87e997adfb3e41e0"
+        },
+        {
+          "path": "benches/elp2000.rs",
+          "sha256": "41e8d1669767a01f279ce730c4a6930cbd4a8d01fc3f9220ec6c87cdba1fb7c9"
+        },
+        {
+          "path": "benches/ephemeris_comparison.rs",
+          "sha256": "3cd00c08f15f35f7f7b29c986b01faad99de4fe474f0991cf886818f56f14a70"
+        },
+        {
+          "path": "benches/moon_altitude.rs",
+          "sha256": "95b66f813bea2034cc4caadf0e8659b2a25a79b139ad5ec2311763035f375917"
+        },
+        {
+          "path": "benches/reports/README.md",
+          "sha256": "aeae89156e58e6daba23f2afc4d519f7304a346ed8a26656e295b46faea952fc"
+        },
+        {
+          "path": "benches/reports/fast_root_finding_brent.md",
+          "sha256": "90005e7a955b674b4c5af439780184f84bc709bf2db812becede7ec40767335e"
+        },
+        {
+          "path": "benches/reports/moon_altitude_chebyshev_cache.md",
+          "sha256": "de991921290f61cc3180b9057f8377d160dcd343dd54d7a87881a3394e482d8e"
+        },
+        {
+          "path": "benches/reports/moon_altitude_perf_report.md",
+          "sha256": "d5ac9ad7135bb2e9925a18405848c5fad1945706d72289590f559ec75111e49f"
+        },
+        {
+          "path": "benches/reports/profiling.md",
+          "sha256": "27e6f44390cd11b2ef9d6e3e2ddef0093d159bc1f41cb421ff5287aad9f57fb9"
+        },
+        {
+          "path": "benches/reports/solar_altitude_perf_report.md",
+          "sha256": "1319461ef8f907b67668b63c7e4c9be3fc41a3868a30b07e43d12164aab85aa3"
+        },
+        {
+          "path": "benches/sgp4.rs",
+          "sha256": "f2c0a069708d691778408c593c44fb3d0494108b07c986fb65585070ebf7d739"
+        },
+        {
+          "path": "benches/sidereal.rs",
+          "sha256": "e83f6da7b378af9442499f42fb6df38f3c96802b6f4becc69b70869f6c3b3e13"
+        },
+        {
+          "path": "benches/solar_altitude.rs",
+          "sha256": "41051ac9067706a86585dd6b526b361b2ba15ba3eb244d920a57dc86f02be4f0"
+        },
+        {
+          "path": "benches/spk_perf.rs",
+          "sha256": "1ab890fcc7a08d4c3dd91a1fc0dcafb54b11380f59a281923f815c75455d951a"
+        },
+        {
+          "path": "benches/star_altitude.rs",
+          "sha256": "244e9bb9bec5a09c5512ffc978405d95d6d293e884572d43f3dc8ea70780d845"
+        },
+        {
+          "path": "benches/support/internals.rs",
+          "sha256": "cd2fb4f825bcd611f3d44e6185f3efd5e22443143555ddec78f42a1025492823"
+        },
+        {
+          "path": "benches/vsop87.rs",
+          "sha256": "396b7f12c8af5c153c19a9c4d604b549fa5febd64e994afbf19f11749f1b648b"
+        },
+        {
+          "path": "build.rs",
+          "sha256": "4abd942119e7e22bb8b12c17a8d721f104ef42065b9fba82373d69a9858154c1"
+        },
+        {
+          "path": "data/observatories.toml",
+          "sha256": "d82479ac246a035ff0c427808fd1872876fb26b0127ad59477d1c39a6ef533f6"
+        },
+        {
+          "path": "doc/README.md",
+          "sha256": "4d3824b0a3dc6dfd087433059a68fb264bcf7059a43da86e24a8449c98aea188"
+        },
+        {
+          "path": "doc/architecture_decisions.md",
+          "sha256": "904e60c33ab10ba440fb0da08bfee0e231ffb830d28bae6f3c6cadefe8f35524"
+        },
+        {
+          "path": "doc/conventions.md",
+          "sha256": "6d749a59bd93ec305062514d78103c2b90719b733c4c155ff912b9b02353ca8d"
+        },
+        {
+          "path": "doc/datasets.md",
+          "sha256": "e3e722b5974076a895ff74c8b2f30fd22f6cc56c6cc1f682f16f82168fa21ad4"
+        },
+        {
+          "path": "doc/ffi_bindings_matrix.md",
+          "sha256": "2f11d461afbb1d403c2af67f18d173ada92d570db43b84863709b01f1bc06562"
+        },
+        {
+          "path": "doc/frames_and_centers.md",
+          "sha256": "0dde87fcf839266b12ce86b88b3a3ad9fa038d517a5633932f3e6e8f5ed174c6"
+        },
+        {
+          "path": "doc/promises.md",
+          "sha256": "e72ed40fc3e60eb93042ba905874cbcef5dfd4d71359e1046cc8a6b270a70f31"
+        },
+        {
+          "path": "doc/spice_lunar.md",
+          "sha256": "79a5c880436eeafd43be054bf9045271480a7381046504fdd983146e6bf15af9"
+        },
+        {
+          "path": "examples/01_basic_coordinates.rs",
+          "sha256": "f504c548c3001083d6a2ff441f3269e76247ab97aa4618c5005f84279b16d920"
+        },
+        {
+          "path": "examples/02_coordinate_transformations.rs",
+          "sha256": "f8eb458d297ad3a29678713a22842cc2547c598ad90fce49a785d052f6d9a622"
+        },
+        {
+          "path": "examples/03_all_frames_conversions.rs",
+          "sha256": "42f8f13bb510d4bb815d6990a56fc1c780bc302c06e967f288f7f26e604e49e3"
+        },
+        {
+          "path": "examples/04_all_center_conversions.rs",
+          "sha256": "c1795588567e1372423ce958aaae8e0bf395f9e9bf430075d5f98240e325ac52"
+        },
+        {
+          "path": "examples/05_target_tracking.rs",
+          "sha256": "e91640daa82a2064669f3cde0931eed33d7c27035830320dbaaac6328b43b9a9"
+        },
+        {
+          "path": "examples/06_night_events.rs",
+          "sha256": "6259120d259c3dfd017fb89802a537d19cd8f630e50d7840a5f8a591d917879b"
+        },
+        {
+          "path": "examples/07_moon_properties.rs",
+          "sha256": "aa042a421b0e4fbdfb705922e8e6b98f19676b5fd483f05f09bac92d37315ad2"
+        },
+        {
+          "path": "examples/08_solar_system.rs",
+          "sha256": "06039ef4630ecd3477aa166e47b7897c7994d4c15b8dc2766139d1f30537e02f"
+        },
+        {
+          "path": "examples/09_star_observability.rs",
+          "sha256": "bada4851f4318e1dab34d69320287655aa0719a8ac15bc0cbbc798a0a32c5581"
+        },
+        {
+          "path": "examples/10_time_periods.rs",
+          "sha256": "5e9033643db5072311b0f975e537589070be68208af2c5f5b09151623dd8947b"
+        },
+        {
+          "path": "examples/11_serde_serialization.rs",
+          "sha256": "8874bc7885eb8a1d36379e0695f05480d4fede824a6fcdd56dd2acc784f4a864"
+        },
+        {
+          "path": "examples/12_runtime_ephemeris.rs",
+          "sha256": "ee816cef0febd1fe16117584542db0c983dd49d1d90927033fb22241efb795c9"
+        },
+        {
+          "path": "examples/13_coordinate_operations.rs",
+          "sha256": "017383f7a174f48a5969e4a025c38d4233aa77a1672cfdd0ff1c74ff86ac7eb5"
+        },
+        {
+          "path": "examples/14_nutation_models.rs",
+          "sha256": "ac68e98407ca36f18b882978d9483619b46a311ce29ffc6421a2f595b7c22ffa"
+        },
+        {
+          "path": "examples/15_orbit_models.rs",
+          "sha256": "01090140d4de1bb00eb38d1659851bb2e3f585bd123ca8bd63169a34b2912e5f"
+        },
+        {
+          "path": "examples/16_lambert_earth_to_mars.rs",
+          "sha256": "bf9c879e08bd2b0724a5d84668013dd744321f4bd5ef8fefa444eba871e51ed9"
+        },
+        {
+          "path": "examples/17_sgp4_from_tle.rs",
+          "sha256": "fefe31dc87cc7135b1029e5817b6c880879719303d53ab1ac70ab27309e1af38"
+        },
+        {
+          "path": "examples/18_lisa_pod.rs",
+          "sha256": "3b239d69dc2aa83abb73bc32c46bda5e971d664ab6685f269d5288aecd6183dc"
+        },
+        {
+          "path": "examples/19_horizontal_coordinates.rs",
+          "sha256": "4b8fc10a5d58522d940683d6dedcfcce3bc4f87bb3a5207b922089c90b29151f"
+        },
+        {
+          "path": "examples/20_mars_saturn_orientation.rs",
+          "sha256": "03b78aa2624575bf31b4f69c15b3d5db7b9c3d1560fce63aa9daaa8121a566aa"
+        },
+        {
+          "path": "examples/21_body_surface_horizontal.rs",
+          "sha256": "9ff91c263b72b18da49ec31f909ef81cdb241b5d612025f59799658fcafe1282"
+        },
+        {
+          "path": "examples/22_moon_surface_quickstart.rs",
+          "sha256": "333b92caca527a7c7fe8205e08626fa5eee364fb0fea3716b8e9ecb1f61ea693"
+        },
+        {
+          "path": "examples/23_lunar_landing_site_navigator.rs",
+          "sha256": "7280a788d7a479a68a4b0d3f1f39ff09cbf921655cbb87c665aea58b08d237ff"
+        },
+        {
+          "path": "examples/24_spice_lunar.rs",
+          "sha256": "ca9ed741fcd3d2f2ea91e4f65e1d7229526c50279c0009e109f6e2a866f24443"
+        },
+        {
+          "path": "examples/README.md",
+          "sha256": "8c4cdfcbf760dcc3dc87fc9ffd7f377d170596b3b089c8c78f176235d84da468"
+        },
+        {
+          "path": "scripts/publish-changed.sh",
+          "sha256": "ad297f6dfa9da70b0886aaee0141ec917b2be0229b046b304f4aca641d13eb32"
+        },
+        {
+          "path": "siderust-ffi/.gitignore",
+          "sha256": "a38caa829ecdc7fdc18ad40bdb9d7e3da08b93cd712a558aabf524ac6e36037e"
+        },
+        {
+          "path": "siderust-ffi/Cargo.toml",
+          "sha256": "6ffff85323b9f938aa7ba8d59a1aec00c24d940ceb1bc56ec796349187db1e80"
+        },
+        {
+          "path": "siderust-ffi/LICENSE",
+          "sha256": "8486a10c4393cee1c25392769ddd3b2d6c242d6ec7928e1414efff7dfb2f07ef"
+        },
+        {
+          "path": "siderust-ffi/README.md",
+          "sha256": "dbce4fa31e79d1a1c161cdcc13e6cc8a6b0d0a05adcc6b8b6ed70631561ce7a6"
+        },
+        {
+          "path": "siderust-ffi/build.rs",
+          "sha256": "676b790ff48eaaf6d45267d1f1d5a32c616aea2d943bf19af79f102f3f4de136"
+        },
+        {
+          "path": "siderust-ffi/cbindgen.toml",
+          "sha256": "b2cc69c3ae7a823a330dc0b1021a8360454a6d1372074e45963c3613252e28b6"
+        },
+        {
+          "path": "siderust-ffi/include/siderust_ffi.h",
+          "sha256": "e4782ebdaac7b923edf281587e739dce236f6be701c3077347699254271b51a9"
+        },
+        {
+          "path": "siderust-ffi/src/altitude.rs",
+          "sha256": "a6f6b8912d1f19ae16cb9cf81dc74ab16364e23811512658ee34da0414b76dd2"
+        },
+        {
+          "path": "siderust-ffi/src/azimuth.rs",
+          "sha256": "49d989915a9e799509b2e0ba6b83eb2295b7d21cf941c23a211b8507651e6f2e"
+        },
+        {
+          "path": "siderust-ffi/src/bodies.rs",
+          "sha256": "2293967189374d3d7aa5fb6f425618be0535d08d7ccee0d4916cd7e5077f59e9"
+        },
+        {
+          "path": "siderust-ffi/src/context.rs",
+          "sha256": "252827886bf307ddda92cda24a4feb9bf9ef220119205601163f23ae59f12632"
+        },
+        {
+          "path": "siderust-ffi/src/coordinates.rs",
+          "sha256": "1ff7cd31851da916bc544a74849cbe4083af4bc36ba9def578eea464f9bb292f"
+        },
+        {
+          "path": "siderust-ffi/src/dynamics.rs",
+          "sha256": "482d0044ecdfb62b9c25e878c73fbbb6ec140c5fd1e4087a5dca123e28966dfb"
+        },
+        {
+          "path": "siderust-ffi/src/ephemeris.rs",
+          "sha256": "3c6d39b8bf1335c238f0eb9691e3fa1ca43381ed9dbc7fe6cde2c41a000b4275"
+        },
+        {
+          "path": "siderust-ffi/src/error.rs",
+          "sha256": "71c16f42c9481b2bd6120ddb11300653b93f72ad044e9282a6544085239b2ecf"
+        },
+        {
+          "path": "siderust-ffi/src/ffi_utils.rs",
+          "sha256": "244bd19dc875a70304d7a1d2aac64ed2ef4767e3f0a384c7479e991c2fdb7139"
+        },
+        {
+          "path": "siderust-ffi/src/lambert.rs",
+          "sha256": "c0b1f530292c7b4f6775e9629720b920513dd463c98ba8d75a804e0050d4f1b3"
+        },
+        {
+          "path": "siderust-ffi/src/lib.rs",
+          "sha256": "5f711d6cebd5e1d14913e1a86a91b3a64dba767e7d8731d7b32b7b43d825c3f3"
+        },
+        {
+          "path": "siderust-ffi/src/observatories.rs",
+          "sha256": "66c3173657c2b4e1515fcf228b992f136b842d028e0390bb78e4c12e256c3092"
+        },
+        {
+          "path": "siderust-ffi/src/oem.rs",
+          "sha256": "eecb0b076d4373b57f99587a714883438a5ce44cc024923f14aac5dbeea9e16f"
+        },
+        {
+          "path": "siderust-ffi/src/phase.rs",
+          "sha256": "59580411f186c87829396af44be9c4a710e20b8c7b38def775895a0f9040ac90"
+        },
+        {
+          "path": "siderust-ffi/src/runtime_ephemeris.rs",
+          "sha256": "0174d3edf2d790989c6c0579e138e5266c8c38f59703d6374696b65ce5675825"
+        },
+        {
+          "path": "siderust-ffi/src/sampling.rs",
+          "sha256": "d52f4fbeefd3563a7a58ea371979196172a48712f839f71eefeda7c1e61c7702"
+        },
+        {
+          "path": "siderust-ffi/src/sgp4.rs",
+          "sha256": "b907d9e3deba351b6036e3430c72e1ec23c442a588d8d02becb48cc4ccacfc0b"
+        },
+        {
+          "path": "siderust-ffi/src/subject.rs",
+          "sha256": "e4c343cc83d8a764072f5173fdb0eabcad4c2b6d6a85b88a45c7eeb1aebf71f1"
+        },
+        {
+          "path": "siderust-ffi/src/target.rs",
+          "sha256": "80199457ea33d426708ba931bedf60e199882cef7f7f945a8a3d5bfe539ab56b"
+        },
+        {
+          "path": "siderust-ffi/src/test_helpers.rs",
+          "sha256": "e73ce147eb9604ac3487835ff8c1f251b2e1986e76d9010a7c1e5299efe6e7a0"
+        },
+        {
+          "path": "siderust-ffi/src/twilight.rs",
+          "sha256": "5411d204b85f2adcd9bf65ea30cf67f7682c4ea7a39a2f54ac2fb52acfd8e8aa"
+        },
+        {
+          "path": "siderust-ffi/src/types.rs",
+          "sha256": "eefd8c02fdd639f2a68357b2678b5a454367f543149cd3bbf2d46ccc2ea7a4fa"
+        },
+        {
+          "path": "siderust-ffi/tests/dynamics_ffi.rs",
+          "sha256": "44213159d46b3d9fa2daf2ff4c47ff840ca64acb8cf82e741c58e26fdd6d77f9"
+        },
+        {
+          "path": "siderust-ffi/tests/ffi_smoke.rs",
+          "sha256": "f98c94361069217f725f35886219ccfb2242469e1195a550ef16323615724b3a"
+        },
+        {
+          "path": "siderust-ffi/tests/sgp4_vallado.rs",
+          "sha256": "46daf88f81b3677d74b865bf64112c21b57b4119858a57b03e766eb272324b26"
+        },
+        {
+          "path": "siderust-ffi/tests/tempoch_08.rs",
+          "sha256": "39eda9a5385cb2c03f9d70a033f9fc123d61ef4e5e08508f3813d8b59ece2aa2"
+        },
+        {
+          "path": "src/astro/README.md",
+          "sha256": "417f5802c06394ab32b52cd94e466bfdf9bcc406b613295f5c1eed3bd1a3fc2c"
+        },
+        {
+          "path": "src/astro/aberration.rs",
+          "sha256": "9e7f9edcfa58446560561e81e13e60bc546247861e926110b3c7a6897bfb62aa"
+        },
+        {
+          "path": "src/astro/apparent.rs",
+          "sha256": "63ce14c3782cad8ab6665c573068d4493c08dcc0cc65553441ee878949cec1a5"
+        },
+        {
+          "path": "src/astro/cio.rs",
+          "sha256": "16310d6fbfbf29e1f28f5c2d3efb7c9a39915836ed09ace39dbc592e2359c3dd"
+        },
+        {
+          "path": "src/astro/conic.rs",
+          "sha256": "8a44a33db15b346453587e620dbdeb73af35d528e6c532451d9b51ce0db0f466"
+        },
+        {
+          "path": "src/astro/conic_equations.rs",
+          "sha256": "2f7136c5f5013dbc6f4304fa2cf1211db0df905730dfe230ace2f223991ef543"
+        },
+        {
+          "path": "src/astro/dynamics/README.md",
+          "sha256": "6ea1fba18b23924df04fef590261c39d02fda46adb0da10c59efb372880cf7eb"
+        },
+        {
+          "path": "src/astro/dynamics/context.rs",
+          "sha256": "11851be7975ce28bc3d4e3c219d3d26aa0555ef11fc9b15a6f8c7de7924d97cb"
+        },
+        {
+          "path": "src/astro/dynamics/covariance.rs",
+          "sha256": "029b904c890cc7e68be28c59eacff09a2569542a9f08bb78d1ca6886d93e7ba6"
+        },
+        {
+          "path": "src/astro/dynamics/density.rs",
+          "sha256": "89ee73b34fadc925153221a42c17255b0ac46d597ea9257b42921d6eb4b00403"
+        },
+        {
+          "path": "src/astro/dynamics/errors.rs",
+          "sha256": "5aa10e9c56c2e18d4f59ae5a6fea809a0db0dde62f5cb17f75617b22f84d02ec"
+        },
+        {
+          "path": "src/astro/dynamics/forces/drag.rs",
+          "sha256": "b1a7cfa48f08aecf86dfa6ee0b44af47cdee9416541bf54807d6847985fe51ce"
+        },
+        {
+          "path": "src/astro/dynamics/forces/empirical.rs",
+          "sha256": "ab63a1d8fa4452a32c88384b604bacf62b4a67fbcf73a70b90f5507a51595e73"
+        },
+        {
+          "path": "src/astro/dynamics/forces/geopotential.rs",
+          "sha256": "1b2d1baefe346a95a79cfed9f462d95c755ee754d26aea33f3b9000a4bb0e4c8"
+        },
+        {
+          "path": "src/astro/dynamics/forces/mod.rs",
+          "sha256": "cdf131527ecc079652e0bcd50f3e4876800a7091d55a048e56bc520e7ed994a2"
+        },
+        {
+          "path": "src/astro/dynamics/forces/relativity.rs",
+          "sha256": "d2df204430dca2c46bac3db903693cae01d9ce826e7569be24039fee91c5e2d9"
+        },
+        {
+          "path": "src/astro/dynamics/forces/srp.rs",
+          "sha256": "f5ad5207aa822035e70076711700c94c3beb5e9b4bd365100cb1659c6476d4cb"
+        },
+        {
+          "path": "src/astro/dynamics/forces/third_body.rs",
+          "sha256": "764dfc06501d83ed781ccc8db0ae34988d07ea60fba922ae0ee781400cafeea5"
+        },
+        {
+          "path": "src/astro/dynamics/gravity/egm_low_degree.rs",
+          "sha256": "1dc18d5fc90b337f358543d6aa83c12497066b59fd6f6bf41244ce48379b24ec"
+        },
+        {
+          "path": "src/astro/dynamics/gravity/mod.rs",
+          "sha256": "fca8a29aa2129c184ebc8b3c86028b3fe1edb4e918c6dfa190eef51b66476b0a"
+        },
+        {
+          "path": "src/astro/dynamics/mod.rs",
+          "sha256": "ed0cb57ba3f680250a4d3b903bfa218ab3470803dc9563de0b18315eaba4bef2"
+        },
+        {
+          "path": "src/astro/dynamics/propagation/mod.rs",
+          "sha256": "6e6f3bbb11cdce13d5c62e8987b6e8468d446fca47198a8c22e077877cafee49"
+        },
+        {
+          "path": "src/astro/dynamics/propagation/propagator.rs",
+          "sha256": "61eb05f988966a472f2623ae24ee9cf0a7822d3adcea9e8b6de178c288be6e59"
+        },
+        {
+          "path": "src/astro/dynamics/state.rs",
+          "sha256": "b1d1fb55a620cec265b729261d02d5bed8086a770176e8067deeac3c94da9325"
+        },
+        {
+          "path": "src/astro/dynamics/units.rs",
+          "sha256": "266dc2042fb576ff3b1657fc879aea84f5d5cd7c2047b1e986d3ae4b6dbb19a2"
+        },
+        {
+          "path": "src/astro/earth_rotation.rs",
+          "sha256": "8b155190911a457e998886fb52b389ab676268086d42d3e6091ebc06906fb412"
+        },
+        {
+          "path": "src/astro/earth_rotation_provider.rs",
+          "sha256": "d427a85c54a433bbfa4cf88f8c5a3d3ab8708c3ccea09e6c757daa74b6438706"
+        },
+        {
+          "path": "src/astro/eop.rs",
+          "sha256": "8d2aff18c505cccfdf054dfb1de5d34f67a5adf658d217fbd401c5cfaa0a6d24"
+        },
+        {
+          "path": "src/astro/era.rs",
+          "sha256": "8b4a31703535e7df085a24d214ba72c31ce63e2114bceccdd954e1153846bb59"
+        },
+        {
+          "path": "src/astro/frame_bias.rs",
+          "sha256": "f2f364bba8de3279eec8337c45c0e812e8e19957e72527c94c3260c65fb9aa7b"
+        },
+        {
+          "path": "src/astro/iers_data.rs",
+          "sha256": "6a14bdd4a8ebb3d45ca26ddd9056f1a080695a3b3b7f979eed8d02e04ade1f31"
+        },
+        {
+          "path": "src/astro/light_deflection.rs",
+          "sha256": "b644aa7a038c2c4198b3a1ccfc60e0fe3ded22526176c4a44c719e01ad5b313a"
+        },
+        {
+          "path": "src/astro/mod.rs",
+          "sha256": "2124ca6283f1aff8c0cb2091d002b2c8949371d9c76edac4734ed85684a545bf"
+        },
+        {
+          "path": "src/astro/nutation/iau2000a.rs",
+          "sha256": "ff4a5d618c2e1a18611b8adac89b0dde24b637d0be9f36d1252d4f9d60dd91ba"
+        },
+        {
+          "path": "src/astro/nutation/iau2000b.rs",
+          "sha256": "a086756856efc0df015a1cd221bf8cbbe75befaed10bc6e8486fcf693cc3e8e3"
+        },
+        {
+          "path": "src/astro/nutation/iau2006.rs",
+          "sha256": "d339a40735070dcf808e1d719fea32d378e11a977871477b5b211cf2b940769a"
+        },
+        {
+          "path": "src/astro/nutation/iau2006a.rs",
+          "sha256": "3592512d939f27222d6c7527af659aeca0b870a8a14d51f54138e189c89b0c03"
+        },
+        {
+          "path": "src/astro/nutation/mod.rs",
+          "sha256": "9509b135359af820a57ddd0872af4a35ac779c9f83f3a7247ff943ed366e6bb0"
+        },
+        {
+          "path": "src/astro/nutation/nut00a.rs",
+          "sha256": "24d8dc6a0e84124099efd6e9f1b21bc5f0f25ad02c8cf7e586f36e75ad5bccf8"
+        },
+        {
+          "path": "src/astro/orbit.rs",
+          "sha256": "0e88d6c6a222e9b111c826e82deabeb5699b394dc5db1a7260e61531ce2c3216"
+        },
+        {
+          "path": "src/astro/orientation.rs",
+          "sha256": "7fcc2b5bbe4fc3ef4c5e5a181329f6b05c54c42f7994dfeb4849f33e44caeb86"
+        },
+        {
+          "path": "src/astro/polar_motion.rs",
+          "sha256": "372b6c71a07b8c7f5cd1991176a4bdb4edfc18225d75641b54dad3259105a50c"
+        },
+        {
+          "path": "src/astro/precession.rs",
+          "sha256": "09ebde9d24a28460bbee8f3eca095228ff3d3d354f960196af08ca42c4d8a38e"
+        },
+        {
+          "path": "src/astro/proper_motion.rs",
+          "sha256": "c10803106ca60d95a68b9650aa9652f4a114bf1a8a0354114362fb464f1939db"
+        },
+        {
+          "path": "src/astro/sgp4/README.md",
+          "sha256": "0f6f8ec2be41c3eb3e32aacc0f92f26eccde1e2f3d6b3d5f949c5b4c0f900bf4"
+        },
+        {
+          "path": "src/astro/sgp4/deep_space.rs",
+          "sha256": "bef562fae47b39fa4c71824b4e102c014b20ee453d1be5cffd555419a77af259"
+        },
+        {
+          "path": "src/astro/sgp4/elements.rs",
+          "sha256": "e55e4e8f8b02d71e07ebfbc9128be8be9509061fc9f5e55fc8290c01ba8e5c8a"
+        },
+        {
+          "path": "src/astro/sgp4/error.rs",
+          "sha256": "fc7433decd1c9f5111f6afca081ee53161275800de48fb77a256b3d5c9746ff3"
+        },
+        {
+          "path": "src/astro/sgp4/mod.rs",
+          "sha256": "471550a87aaad5712f8b7702977da9b3812277159b500ae31451471548553c87"
+        },
+        {
+          "path": "src/astro/sgp4/model.rs",
+          "sha256": "4ea843f8e655775f928b4b7dd4c203786bf667a599c8eeba8bff45a93688d6d0"
+        },
+        {
+          "path": "src/astro/sgp4/propagator.rs",
+          "sha256": "3fbaf7fa207d193b8771b2e2725c2603107bdd5597cc51956f46ed3d41c9cf3b"
+        },
+        {
+          "path": "src/astro/sgp4/state.rs",
+          "sha256": "1005886330f39fe2f98ea4ec2201e370b6088ec8572274c5bdd345034d0de04f"
+        },
+        {
+          "path": "src/astro/sgp4/time.rs",
+          "sha256": "31075e378bba845669170da3b98b6360b35f40d4d45064248c21acafb7c45c30"
+        },
+        {
+          "path": "src/astro/sidereal.rs",
+          "sha256": "47f3f58ca2a61ab257425de36ee6f6feb953583bd76bf978e0a404c8e26f8048"
+        },
+        {
+          "path": "src/astro/units.rs",
+          "sha256": "61c10a308d6172f05ae32cbc116b7088c3315008f8982bada916e313c473a480"
+        },
+        {
+          "path": "src/atmosphere/README.md",
+          "sha256": "78e904ba3f6b109d5e8ce07961849ae2c3e88d5180d70c016fca31ba8f0fcaec"
+        },
+        {
+          "path": "src/atmosphere/airglow.rs",
+          "sha256": "f9111ce96f7c3273913b20b39899c755d41e1f7d319ef1bb8d7b97d845774d43"
+        },
+        {
+          "path": "src/atmosphere/airmass.rs",
+          "sha256": "8eda4e8d84d8eb6d14ecb2dedb3b48a215038819bc4b04745b711de0e89099af"
+        },
+        {
+          "path": "src/atmosphere/extinction.rs",
+          "sha256": "31dd8aa215c3ff2090bb99473ee1969ada40d54fbe764651295c5f8c062e2fac"
+        },
+        {
+          "path": "src/atmosphere/layered.rs",
+          "sha256": "d142fd34caaa374f4d775b72648968d10e04ccf283c73ff314902cea1be22897"
+        },
+        {
+          "path": "src/atmosphere/mie.rs",
+          "sha256": "f98cfc8b0c4f2265f7cc1b35f8b8284caa35b6307a31ef69914bdb43cc400158"
+        },
+        {
+          "path": "src/atmosphere/mod.rs",
+          "sha256": "dc11ab81034d82a9489a0216053749475daa13f7cc338678be67f1116168209a"
+        },
+        {
+          "path": "src/atmosphere/normalized_phase.rs",
+          "sha256": "2a7dfe9a5003e21959068c05663b4bfd147b8b9617269bb8d90d60586734c523"
+        },
+        {
+          "path": "src/atmosphere/o3trans.dat",
+          "sha256": "cb06c173f393d6d55e3c39551665abb8f5d6c1a846cd0fd739a15d0155f94502"
+        },
+        {
+          "path": "src/atmosphere/ozone.rs",
+          "sha256": "82cc89e4bb8cc5a97b07243e93884d9b1c89bf8615127efa739b8826e2f02311"
+        },
+        {
+          "path": "src/atmosphere/profile.rs",
+          "sha256": "c71efc01648c40a7963250b1e7a2805dede3fe68343264b8421315d3ab294afb"
+        },
+        {
+          "path": "src/atmosphere/rayleigh.rs",
+          "sha256": "e6ffed9b1b515e65b71810bd450bb3abffeae3ae71e29e22a99b8923d1935bbe"
+        },
+        {
+          "path": "src/atmosphere/scattering.rs",
+          "sha256": "425d7a56e7ef5e73b93e6fc94f30eacf530108af70d9ac108169f45b266c2375"
+        },
+        {
+          "path": "src/bodies/README.md",
+          "sha256": "0d56f9e51d63fd93ab291da0e481fc26b9b7a0e4296e4e62bb635cdd3c024144"
+        },
+        {
+          "path": "src/bodies/aircraft/inner.rs",
+          "sha256": "6c506df72a403d3e08740ec3b81835cc8d42920cad7b4e17d1b9f6965d903468"
+        },
+        {
+          "path": "src/bodies/aircraft/isa.rs",
+          "sha256": "6f8dfafd6234419e7af0e5c50dca4b51768d8e872a67371b335473699884d088"
+        },
+        {
+          "path": "src/bodies/aircraft/mod.rs",
+          "sha256": "b3b72be9e40b98048e511d92e3a144c41bad219311f69400bedc59a75da5242c"
+        },
+        {
+          "path": "src/bodies/asteroid.rs",
+          "sha256": "cade7548c37d852f64665a1981ad23312e80bd97abad5a474069171b72805040"
+        },
+        {
+          "path": "src/bodies/catalog.rs",
+          "sha256": "9dc7c30f0ad35be554f7b9c0ee02c2eff6ba03efe1a3a421d2de5ddd9c2f758f"
+        },
+        {
+          "path": "src/bodies/comet.rs",
+          "sha256": "c530cc16268245d1e3924d37808ad3495fdbe226a38b4eae3a122e1da3d6726d"
+        },
+        {
+          "path": "src/bodies/mod.rs",
+          "sha256": "a7be8429c460e46c98f23785d83ef82fefc149d3cc4c68b5bb0f0323a8a737ed"
+        },
+        {
+          "path": "src/bodies/planets.rs",
+          "sha256": "0da94f17d9cbe9ba3dd46e0feab6856f406ed50ac3bc2eaa0b076dd0b3f7f570"
+        },
+        {
+          "path": "src/bodies/satellite.rs",
+          "sha256": "92e0fba2922b4d1c91cae6bc101ff3072ee0aad1e94bdad6acd3335db39efa86"
+        },
+        {
+          "path": "src/bodies/solar_system.rs",
+          "sha256": "5fcba1469c9d94781a2f7b7edc3ac2ea79ce93dca03c6df82865c307ae578c45"
+        },
+        {
+          "path": "src/bodies/stars.rs",
+          "sha256": "503f9fdeaedb7e46a52d99d20df0878c2e49cd547af39d68d92e78429646a34a"
+        },
+        {
+          "path": "src/catalogs/catalog.rs",
+          "sha256": "937fa3111c554789c45c1f748d57d4a7b2bcaa589c1d2abe1c8802a9525ffeff"
+        },
+        {
+          "path": "src/catalogs/gaia/dr3.rs",
+          "sha256": "8798a6cd5ba6b3db99a0e5a0739cab15fc96592a541b2c9cd09763d56886dd20"
+        },
+        {
+          "path": "src/catalogs/gaia/error.rs",
+          "sha256": "322f80e149678b74fdc5a6b0ab23684138a9944a6c3d5cf11299e8efa6340461"
+        },
+        {
+          "path": "src/catalogs/gaia/mod.rs",
+          "sha256": "fd54370d2f45fe2922ed78e3df4d4757a484021ce75cc1f25424ef762ff05609"
+        },
+        {
+          "path": "src/catalogs/gaia/photometry.rs",
+          "sha256": "964e16bf8ddf5f9140b3d924d414e23d5d744a434d505b7a9b37a644121bdc5b"
+        },
+        {
+          "path": "src/catalogs/gaia/quality.rs",
+          "sha256": "95a69c9846b2d1164e5ad4e513803a2d73cda1da7b68f5a51bc66f573c627baf"
+        },
+        {
+          "path": "src/catalogs/gaia/raw.rs",
+          "sha256": "32a13ef69401a0b5c0645dd02ce9b5b4c08829bcb9a833dc359573d993d47856"
+        },
+        {
+          "path": "src/catalogs/ingest.rs",
+          "sha256": "307d64274a81b2e848ce256fd115c44179376c98a96e919ce52fe5b0befd0268"
+        },
+        {
+          "path": "src/catalogs/mod.rs",
+          "sha256": "ff31dad1a4f6269840ac02c587674a795777793fb7aaaa18f6f316dcbeaab189"
+        },
+        {
+          "path": "src/catalogs/observatories.rs",
+          "sha256": "08cd586f0da6e2af1ec2ff589f22dd06bab0a9cb2988b3e340fcfc631e88cf53"
+        },
+        {
+          "path": "src/catalogs/observatory_schema.rs",
+          "sha256": "8eb82c4230fa1b302d440e26e2a0befdf09ae83a14a32e5d927d119801cd5067"
+        },
+        {
+          "path": "src/catalogs/record.rs",
+          "sha256": "6b21fbbaf37fab40fbd8436cd1386726193a184de8ad914cc5f9c1dcfe121255"
+        },
+        {
+          "path": "src/checksum.rs",
+          "sha256": "c84e51a0eb6001fc4fe032e15ea29486cd35396ba739479d1350c5c439f3212e"
+        },
+        {
+          "path": "src/coordinates/README.md",
+          "sha256": "632358bab6831f7c261af440b51f643c19a250e2a37cf6ccd6d5237b145d41b8"
+        },
+        {
+          "path": "src/coordinates/cartesian.rs",
+          "sha256": "d4fd85d4f32d14206735631b675bc22f501afe00f79b3bcdf305a0d7547a85a9"
+        },
+        {
+          "path": "src/coordinates/centers.rs",
+          "sha256": "90f39017cecb7ec2ed1e3fd1f2f5657a69a2752764d4634d2c82b1b9f767e009"
+        },
+        {
+          "path": "src/coordinates/frames.rs",
+          "sha256": "de7cec50e00faf172d8b041b9f48cd5e0b55b1a4212fbac1c370ec4eefb505e0"
+        },
+        {
+          "path": "src/coordinates/horizontal.rs",
+          "sha256": "719ac7425c7e6d2c322fbec139d14314ea02452984218ce1cdbe0aa08a518d10"
+        },
+        {
+          "path": "src/coordinates/mod.rs",
+          "sha256": "2d32918ca95dc5e759fe77c98ef974b9a7fd35e4ca5666c22a95b6706545393e"
+        },
+        {
+          "path": "src/coordinates/observation/mod.rs",
+          "sha256": "e7d426ec8bcfbfed7307210ff60a0d1d46f684cdf6e762a08dbc8d0cf416ceca"
+        },
+        {
+          "path": "src/coordinates/observation/observational_direction.rs",
+          "sha256": "f47f472dbeba1cc80fe71cef39085151c90b66ef01ead30acf13ff4a2807142f"
+        },
+        {
+          "path": "src/coordinates/observation/observer_state.rs",
+          "sha256": "bd9aeeb5e452b1789594e578e917bde1afa96302ad8ad042a994571d2206f541"
+        },
+        {
+          "path": "src/coordinates/sampling.rs",
+          "sha256": "10a8e80c5c082151e1e903d5956ef0433114b3f29452fc18179d54665369f817"
+        },
+        {
+          "path": "src/coordinates/spherical.rs",
+          "sha256": "b678991671232fc4188c4789ba87718ecad9b51af83a2da749d3cd2b2e23a1a1"
+        },
+        {
+          "path": "src/coordinates/surface/body.rs",
+          "sha256": "0ab796d311c5f128546153457b076d18a16614995c290028f6412135bcc585c5"
+        },
+        {
+          "path": "src/coordinates/surface/center.rs",
+          "sha256": "ca59461ba9181bfe9e8c6f6994ec4731b66afcc5a9c90dc91a5db5a822d75bfe"
+        },
+        {
+          "path": "src/coordinates/surface/enu.rs",
+          "sha256": "46ccefcb981df23a47702b0ae0b8f1690df9729b5a7725e3af70dd007c7602b2"
+        },
+        {
+          "path": "src/coordinates/surface/error.rs",
+          "sha256": "6d651186b5b240aeb1143fb15473026fbb4add95a3764f048553aa77f125d829"
+        },
+        {
+          "path": "src/coordinates/surface/mod.rs",
+          "sha256": "c5b5f43fa3276cf1d133e99480573167ffb5f165c010b2b8045cd1bad5e29a75"
+        },
+        {
+          "path": "src/coordinates/surface/reference_surface.rs",
+          "sha256": "e21e92c1431fd0fd85bff1c0f508f52f165021a4a723b9e2066f9cf22d34b485"
+        },
+        {
+          "path": "src/coordinates/surface/site.rs",
+          "sha256": "6fd0deb23c5e419ead1878f2c57f962496f0087f848aeee964f940c9fc7f990b"
+        },
+        {
+          "path": "src/coordinates/transform/centers/mod.rs",
+          "sha256": "d894835d2b62deee70f215ac375c7a643278e245ae77665b6afa6238777b5bbd"
+        },
+        {
+          "path": "src/coordinates/transform/centers/position/mod.rs",
+          "sha256": "4f352060d90e318c791be4ed6b29bf9b850abba267eb130eeaa1d5c53493d094"
+        },
+        {
+          "path": "src/coordinates/transform/centers/position/to_bodycentric.rs",
+          "sha256": "f4b02ac70f0b74951c2956b5219cfc8ce405d049ac865f3f81755122d14480a3"
+        },
+        {
+          "path": "src/coordinates/transform/centers/position/to_topocentric.rs",
+          "sha256": "2665241f597be368450ba20ff2c1dfbe19d2c5235a14b33135f588c5f7ed4485"
+        },
+        {
+          "path": "src/coordinates/transform/context.rs",
+          "sha256": "56b29bc03d56fae09ee173ab9da169b5f17d33c949cd65890585a19c70088ab9"
+        },
+        {
+          "path": "src/coordinates/transform/ecliptic_of_date.rs",
+          "sha256": "7723eec1b2bbb070b28fd0c7728c53e617cb29aacb1c9cf5ab454daafa11dfea"
+        },
+        {
+          "path": "src/coordinates/transform/ext.rs",
+          "sha256": "30f1e20415a3764577839622e595bf918467d8be0d6515769df6fc9aa951ac3a"
+        },
+        {
+          "path": "src/coordinates/transform/frames/bias.rs",
+          "sha256": "3c25105e2dba57738a5b15f188ea6dd95ed2c96df9bb476a26cd2da2ea624042"
+        },
+        {
+          "path": "src/coordinates/transform/frames/direction.rs",
+          "sha256": "602cd71ed9437d8b150ee317a1b293dab777db26de0390f1162082bec83fee26"
+        },
+        {
+          "path": "src/coordinates/transform/frames/galactic.rs",
+          "sha256": "8ac77f0c10ced2e4a4fc26ee4a6bce395c95974cdf74880b8a3b77d925a83589"
+        },
+        {
+          "path": "src/coordinates/transform/frames/mod.rs",
+          "sha256": "5234d35abdaa018f1e851cd439a37aa7d0483c708c06b2bf477039bc62bc636d"
+        },
+        {
+          "path": "src/coordinates/transform/frames/to_ecliptic.rs",
+          "sha256": "13e2d65934365667db3106b8aa2b4c5c52094d39aeb43becb7649e79152c723c"
+        },
+        {
+          "path": "src/coordinates/transform/frames/to_equatorial.rs",
+          "sha256": "4dcbda47a85229502ca71fa6ee4c855ea7a232f63b02b87e195c749fd024ba4e"
+        },
+        {
+          "path": "src/coordinates/transform/frames/to_horizontal.rs",
+          "sha256": "8e668ecc3297f9059d7eabfefe93fa78d7b32e827ded3f0001378bee9ae85e96"
+        },
+        {
+          "path": "src/coordinates/transform/frames/to_icrs.rs",
+          "sha256": "a1e40de29ba6dff3c87bda0534907e542b68aa94124112125333e3009f14e590"
+        },
+        {
+          "path": "src/coordinates/transform/frames/velocity.rs",
+          "sha256": "71f9a3cdffbaebc75281c987628cbf0047279f9b1ac5e0d59dd2d85c459f121a"
+        },
+        {
+          "path": "src/coordinates/transform/horizontal.rs",
+          "sha256": "a5837630cd0dd0e0c98205938e033344590d8cd3ea1aef38ccbf21e18c62811b"
+        },
+        {
+          "path": "src/coordinates/transform/mod.rs",
+          "sha256": "0223656048302ce7fa3b2ff0c5ae6d00a037a02530f8b3d733f4c84cb3cb105f"
+        },
+        {
+          "path": "src/coordinates/transform/providers/centers_lagrange.rs",
+          "sha256": "82eea35a95aeefccdb5d160964d2febbfd1fc1734dd826c4ec2d716086189370"
+        },
+        {
+          "path": "src/coordinates/transform/providers/centers_planetary.rs",
+          "sha256": "a8ddfb79e7b0661d10a4ea59982ba97ac50688ad56b79a87eb0f4fd835ab7f1a"
+        },
+        {
+          "path": "src/coordinates/transform/providers/centers_standard.rs",
+          "sha256": "27a3e414806b456edd5a0588547e132b0e9935494fb259991da910bb2a590bab"
+        },
+        {
+          "path": "src/coordinates/transform/providers/frames_catalog.rs",
+          "sha256": "5ec0bde216647ddd39ff2924f0c4966e81cc64c74070c91a5bfe97e82d1ce2b8"
+        },
+        {
+          "path": "src/coordinates/transform/providers/frames_earth.rs",
+          "sha256": "79c3871a71135bf99ad114e1e8a9fd06ba344911f250e973d73f2b46db994a48"
+        },
+        {
+          "path": "src/coordinates/transform/providers/frames_inertial.rs",
+          "sha256": "dc6ef416544741a2e96a964b4591f0d84a6aa25b6a96adcab35ba0b99977d400"
+        },
+        {
+          "path": "src/coordinates/transform/providers/frames_planetary.rs",
+          "sha256": "0ba32235d112563383991526ba23560292f2feb95bfe44fba4b77e000f1c1342"
+        },
+        {
+          "path": "src/coordinates/transform/providers/frames_teme.rs",
+          "sha256": "bd3722d6c62904cd78ea957c79d8970750171594d776eb16eacea5495b1e0bc0"
+        },
+        {
+          "path": "src/coordinates/transform/providers/mod.rs",
+          "sha256": "accac183439525781846837f05b4b94e07c11b3b70659ea6b15ed573180d9ee9"
+        },
+        {
+          "path": "src/coordinates/transform/providers/tests.rs",
+          "sha256": "52a42941dd86d09999f925900f72f26bf7c54f084bee72e585372604261892b0"
+        },
+        {
+          "path": "src/coordinates/transform/surface_horizontal.rs",
+          "sha256": "735dda6529b9b6b101f80832b793020bbe037fc8515a5c22c8a29d123d86e3c9"
+        },
+        {
+          "path": "src/coordinates/transform/to_cartesian.rs",
+          "sha256": "c5afbe1cf19ee1c5dbd2674778ef82bded6d2618ec0f005013da995d5c43c391"
+        },
+        {
+          "path": "src/coordinates/transform/to_spherical.rs",
+          "sha256": "750097c73e376585e93087ab48490fc7e7c0b8457f4cab0c943a00d12ce15c9f"
+        },
+        {
+          "path": "src/coordinates/types.rs",
+          "sha256": "c2eeb36660106326a678e2955273c6ababc171494b9e5c6fb42248bcae8bff9d"
+        },
+        {
+          "path": "src/ephemeris/elp2000/elp_series.rs",
+          "sha256": "7db817e757d851c14ae0aa04ad256a9e2d2152ad185929a0a7d883c64f1f5c23"
+        },
+        {
+          "path": "src/ephemeris/elp2000/elp_structs.rs",
+          "sha256": "637c20d814a49d25be05700cd9ec88966b824cf5853ffe12d70157702b5d9b03"
+        },
+        {
+          "path": "src/ephemeris/elp2000/mod.rs",
+          "sha256": "ab33b1aaafc8539ff6c823e8b12c65c089e837651375d402f673bc1f75ae3774"
+        },
+        {
+          "path": "src/ephemeris/jpl/bodies.rs",
+          "sha256": "c4475eb430eb626a91af4e89b37bdfe46ed56d296b55c3974fa77fca5a72411e"
+        },
+        {
+          "path": "src/ephemeris/jpl/eval.rs",
+          "sha256": "524baf1f0676186fa806803b03290fd73da57cce092b9c6b7251deff30bb688b"
+        },
+        {
+          "path": "src/ephemeris/jpl/mod.rs",
+          "sha256": "84e1b5ea886bf841bb2ea5555b412ddba70e5ab76ea65c16adf100fc15ddfeba"
+        },
+        {
+          "path": "src/ephemeris/lagrange/embedded.rs",
+          "sha256": "b454672db907a60f1e28848f87393a1bc5ea74cdca815bde152668f649f9fa0b"
+        },
+        {
+          "path": "src/ephemeris/lagrange/fit.rs",
+          "sha256": "6bce2ab8cb26ad55dc09f3fc2ec8499835bb18b336b888bd4545e7e4d462c918"
+        },
+        {
+          "path": "src/ephemeris/lagrange/mod.rs",
+          "sha256": "b2bbf078be652702e8d20c0ab6effd4ad22b4451ddf8052b29d9c60fa955d2f0"
+        },
+        {
+          "path": "src/ephemeris/lagrange/solver.rs",
+          "sha256": "441e1f51f121c28fffb9dc294496c1bbbea97a0c63526edb817c2ceb0b9280cc"
+        },
+        {
+          "path": "src/ephemeris/mod.rs",
+          "sha256": "ad7f664d2ad615c4f743685a1eb85f8191413ab6d024b66dbd0dff9e5bb94d03"
+        },
+        {
+          "path": "src/ephemeris/native_frames.rs",
+          "sha256": "38a81dd47a0c174a3f0e3521ca84362bc63037f11206377f69d99c550315e947"
+        },
+        {
+          "path": "src/ephemeris/planetary.rs",
+          "sha256": "23b0cefc988ebbadb3c3777c0bd24ab6c7e92c7349cc61d55151dae12d20426d"
+        },
+        {
+          "path": "src/ephemeris/pluto.rs",
+          "sha256": "6cf602c5e223914ffd11b78fade395d5b36b26287d155e5e5d7bf38ba3fbd493"
+        },
+        {
+          "path": "src/ephemeris/runtime_backend.rs",
+          "sha256": "e52360496e5d22273a4c2bce72ca445525bea3b4f834c791437ab04f46dd77fe"
+        },
+        {
+          "path": "src/ephemeris/tabulated.rs",
+          "sha256": "434998c1999617e2fbc5966c8cff983bce608811135c8525c361420d3ba9d9c7"
+        },
+        {
+          "path": "src/ephemeris/vsop87/mod.rs",
+          "sha256": "80e33c5e1d3ea716ad8348a8b6495cfb63cc665bc3b85fc627d9ca149a0ed99a"
+        },
+        {
+          "path": "src/ephemeris/vsop87/vsop87_impl.rs",
+          "sha256": "bcec7747960737a0eadbd5199033252af59cecd90da010171963b74be1a0f69c"
+        },
+        {
+          "path": "src/ephemeris/vsop87/vsop87_trait.rs",
+          "sha256": "ed663dadab526f4bd528ba769164944d47fef34c5decb29f121b53ec8bc96206"
+        },
+        {
+          "path": "src/ephemeris/vsop87/vsop87a.rs",
+          "sha256": "cc421a190300125982452b97f7283a75aa6a65b866d639b70ac5fad005c40ec7"
+        },
+        {
+          "path": "src/ephemeris/vsop87/vsop87e.rs",
+          "sha256": "686cd79d315a6b597adb1adc4a65600994f6cfc035d4d301eabf7f766e0f76ae"
+        },
+        {
+          "path": "src/ephemeris/vsop87_backend.rs",
+          "sha256": "80abefb9a47801e138de501b2480db0c2e5f25a9059009b84b273313ebaa4da8"
+        },
+        {
+          "path": "src/event/altitude/events.rs",
+          "sha256": "fb6d9fd408816265453931e1355a8291c550a0b9b14b9094f83e31a17fadebce"
+        },
+        {
+          "path": "src/event/altitude/mod.rs",
+          "sha256": "2a766cccc772c279db62349953331672b227e3a540e581cb66c0c9c5d44eba29"
+        },
+        {
+          "path": "src/event/altitude/provider.rs",
+          "sha256": "1b474928d238fb030521371c032817866e76cf7455ab11ac6bb90a8df6144ef4"
+        },
+        {
+          "path": "src/event/altitude/search.rs",
+          "sha256": "04fcccae6502bff2d143fe1670078d22d384493377f40523fc7b60ee65a4592f"
+        },
+        {
+          "path": "src/event/altitude/types.rs",
+          "sha256": "2961dc3c318fd7b469d7919876128699ed5b58b9c834a9a3f71bdc10e91cebbd"
+        },
+        {
+          "path": "src/event/azimuth/events.rs",
+          "sha256": "1afeeda86283d09dae350b23ce4975643c3d0db2b5d2f8f06f4f5991a2c0eb90"
+        },
+        {
+          "path": "src/event/azimuth/mod.rs",
+          "sha256": "951283818e4f81c4ac5d524f08fa52bbd1f81cd6666c0c04e54417a7dcdd163e"
+        },
+        {
+          "path": "src/event/azimuth/provider.rs",
+          "sha256": "79b019432995ec9add969c302a5a72c6efb2c336ab35331eefe1997cd2fe3663"
+        },
+        {
+          "path": "src/event/azimuth/search.rs",
+          "sha256": "04dbe8e763b10e35fed40dd0c51e4298de2a02f631c533b767524b276da1c2fd"
+        },
+        {
+          "path": "src/event/azimuth/types.rs",
+          "sha256": "76520f1f92036b38aa7e0f53e05fdb8ce1c62b1d7bd359eb1b613160a5948531"
+        },
+        {
+          "path": "src/event/horizontal.rs",
+          "sha256": "3b262daa1300e1ee7aec5aaf5b2b23450be4c09bfdadd04768d9f92faa61b3ed"
+        },
+        {
+          "path": "src/event/lunar/altitude_periods.rs",
+          "sha256": "9c12e4f4a3327423c3580964bd2f9555cf59c2c4410337a6c0de76854848234d"
+        },
+        {
+          "path": "src/event/lunar/azimuth.rs",
+          "sha256": "717766de3a7e65389c907b6e8b13ab2fe6e469a702176b71c4db66929808c74a"
+        },
+        {
+          "path": "src/event/lunar/meeus_ch47.rs",
+          "sha256": "c46eb47eb09391048ff79a58844c501b351c3bc20971590f6840444eb01514df"
+        },
+        {
+          "path": "src/event/lunar/mod.rs",
+          "sha256": "63254e5011ff3fd01a3aef313a165ab867e19d883623a432eacadafc873904ac"
+        },
+        {
+          "path": "src/event/lunar/moon_cache.rs",
+          "sha256": "55df3a9a2d5823335d959c7946fcfc91007af3fab0305ec27fe22fac71003243"
+        },
+        {
+          "path": "src/event/lunar/moon_equations.rs",
+          "sha256": "3886c8ee3c6b51ee7a21db750f893bda6a547cbee9add072b74bee27a0952967"
+        },
+        {
+          "path": "src/event/lunar/phase.rs",
+          "sha256": "77dae8cd53bce200c11cc668534980b52443c49ebf86809ffbb1bd9b4624f169"
+        },
+        {
+          "path": "src/event/lunar/photometry.rs",
+          "sha256": "ba4c5eb2f0c1fd1f14cbe10bb148e24bcdc9a4acc981da89023769ff7d294760"
+        },
+        {
+          "path": "src/event/lunar/position_angle.rs",
+          "sha256": "f64198b2c4d5d1537357b8545dab76030a12234d7ace8a5e0c606d0bb85632d0"
+        },
+        {
+          "path": "src/event/mod.rs",
+          "sha256": "04d16a4d2405d839c66d6eb514d71a7c0b9541dc8c855f2b2e913a984f37ac96"
+        },
+        {
+          "path": "src/event/planetary/mod.rs",
+          "sha256": "0739f8b70d9b6582b2923aa0809b0c844743a921679864ff6f4ce7e245344781"
+        },
+        {
+          "path": "src/event/planetary/orientation.rs",
+          "sha256": "a05b3a179489311caf3fcaf0020d9abe43afafdd3a4bf25e1d415b8111f7716b"
+        },
+        {
+          "path": "src/event/search/bracketing.rs",
+          "sha256": "d7e84b6c1f364e3372c75f1e062117a2946ac38ece13e426909f0fb4702f06ed"
+        },
+        {
+          "path": "src/event/search/crossings.rs",
+          "sha256": "72d26ba5d6a93c5cd478fc6c88263a7575f99c1e6eb15298feeaa6a746df4e2a"
+        },
+        {
+          "path": "src/event/search/extrema.rs",
+          "sha256": "c7c703830bf8d9eaacbdcdc606f64ed1de83cfa863956804e8971fa73e904486"
+        },
+        {
+          "path": "src/event/search/intervals.rs",
+          "sha256": "aa7217e8a87f5851f86816e0b8791d5f7fb22c271bad74529cf3be0c122aec65"
+        },
+        {
+          "path": "src/event/search/mod.rs",
+          "sha256": "c2ceed0256cd4b2d3b08dab0451a21920947eda4f6bd1ff336ac0c8149026584"
+        },
+        {
+          "path": "src/event/search/periods.rs",
+          "sha256": "0f13cb0d416934ed00c4b7ed8a2f4c67bad1dea04fdaa52c83d6d2f0402a038a"
+        },
+        {
+          "path": "src/event/search/root_finding.rs",
+          "sha256": "0487d98e91b65f0b0841261470a57de25a8d4d6f64eef8444343353cb13ddc97"
+        },
+        {
+          "path": "src/event/search/scan_fallback.rs",
+          "sha256": "05da0a91ff55ebcd446760d4b1d2bb366b0752c799420a8ecc218979bbaed180"
+        },
+        {
+          "path": "src/event/solar/README.md",
+          "sha256": "bc90129cedb63f5f56fc15f055430f96a30182d63b284b27443b0ec20126ac44"
+        },
+        {
+          "path": "src/event/solar/altitude.rs",
+          "sha256": "9a29e9a60a6397d50c0f95e070724d24275504d4b147787884918c10776efa78"
+        },
+        {
+          "path": "src/event/solar/azimuth.rs",
+          "sha256": "a01c1a1681442a1b4c0e7b08c46e7f7a9c1836de07dc35054d4af03423ecea94"
+        },
+        {
+          "path": "src/event/solar/classification.rs",
+          "sha256": "0853296796c56a356677293c0585ba2bbe0fd1fcc774522eb5862bd0b5b961cb"
+        },
+        {
+          "path": "src/event/solar/daily_events.rs",
+          "sha256": "485ef3ea822519622b4a4942ce0cc94a82ee8fd991710246a02c4fbfbf2391a2"
+        },
+        {
+          "path": "src/event/solar/mod.rs",
+          "sha256": "aeea90ced18332df82c4ea4a5dd4bf9220ea000dca37363b6b2b9b3cb568a226"
+        },
+        {
+          "path": "src/event/solar/night_types.rs",
+          "sha256": "81e8734de0b71d1b8d43875b7fbc445f75f42722e88f68a2cb5bc24d39c7c386"
+        },
+        {
+          "path": "src/event/solar/periods.rs",
+          "sha256": "7928493ff94f3a55f3d2696a023e792f7124d1a49a10231bf167df55ae55a5dd"
+        },
+        {
+          "path": "src/event/solar/sun_equations.rs",
+          "sha256": "417762899b3bae71507dc9015be283f46d0591f3102b5b2df268b9f9c649389b"
+        },
+        {
+          "path": "src/event/stellar/altitude_periods.rs",
+          "sha256": "4fb5d1520c0a5986451eadd0ab3a4f806600bcddf90eb2581ce7a87f7b79216a"
+        },
+        {
+          "path": "src/event/stellar/azimuth.rs",
+          "sha256": "9e931a9bc06f04b133d137279186c8501af12194ab510ee2c93e0c23323bac69"
+        },
+        {
+          "path": "src/event/stellar/mod.rs",
+          "sha256": "5b74f89e25a61efd55d1de608678f4a0ce61839fb447787840af0c52644d2a3e"
+        },
+        {
+          "path": "src/event/stellar/star_equations.rs",
+          "sha256": "f59db40e563b34807c9d40f358a0d1ad66ae002446ba7a96d35b88e0c33a0488"
+        },
+        {
+          "path": "src/formats/adsb/cpr.rs",
+          "sha256": "ae0a2bd35514f5db329382a32c85032e4c2d6d9a221a740d935c941ab17dd0d5"
+        },
+        {
+          "path": "src/formats/adsb/mod.rs",
+          "sha256": "f895ed4cf8375f5d92a95caa04cbfa3fe768dc461db2738c747abbf249e5531f"
+        },
+        {
+          "path": "src/formats/ccsds/mod.rs",
+          "sha256": "6bf82fbb3017facd53c1a71457c7a4290432772edde1c47bc16e37efb632d4ff"
+        },
+        {
+          "path": "src/formats/ccsds/oem.rs",
+          "sha256": "937ed29c1a1746c862c77791055229100e5a86de4416e8e945a4cb9f4dd0cbb2"
+        },
+        {
+          "path": "src/formats/ccsds/opm.rs",
+          "sha256": "d2fc50fddf4a96a83b22bea7c0f3c9e5850dd79bfbf31422bde349bcad8a4e5e"
+        },
+        {
+          "path": "src/formats/ccsds/tdm.rs",
+          "sha256": "54559992f70786a86af9617fdde924f0477ae8d9842a19e2706d5d57f04f6ff2"
+        },
+        {
+          "path": "src/formats/error.rs",
+          "sha256": "f0a525ce00582cadd399d777854c3e2d7e1a61cc7b063251a655cd4da124d064"
+        },
+        {
+          "path": "src/formats/iers/eop.rs",
+          "sha256": "1c12dea0061d23ae33afba164dcfe78b8c1a4de557b2f6bbab0da378c99d24d0"
+        },
+        {
+          "path": "src/formats/iers/mod.rs",
+          "sha256": "ac9856565269235d47d940c43d898204ef6fa859aabb571bc19a189d04c7897f"
+        },
+        {
+          "path": "src/formats/igs/antex.rs",
+          "sha256": "9b6372fc558ff08a8ef8b8037134b298e8576c822b4e5e82ed422b9926a2c4ae"
+        },
+        {
+          "path": "src/formats/igs/mod.rs",
+          "sha256": "7abf7da360012b448265618dbfe260066118f5f3e2e5efe5c27e840c8bab0b42"
+        },
+        {
+          "path": "src/formats/igs/orbex.rs",
+          "sha256": "cc5411004e5fba346d1c0d2fe903299fba9c1bbc017236d661fcbff47911a854"
+        },
+        {
+          "path": "src/formats/igs/sinex.rs",
+          "sha256": "cda6b567dd4c1cf984008ca0e48610815d6ffd333136e3498b421e0fd15b2ba2"
+        },
+        {
+          "path": "src/formats/igs/sp3.rs",
+          "sha256": "042adcac2c95a708e845aff27dbcb9efc39ce6606e5e24ba4b4c9511a46bce5e"
+        },
+        {
+          "path": "src/formats/ilrs/cpf.rs",
+          "sha256": "377e61403b8743faeda486ad4845fc506ec1fa03d1c06e7db2a0a74810ffecca"
+        },
+        {
+          "path": "src/formats/ilrs/crd.rs",
+          "sha256": "a2909585b51dee558eaca98b598168cf1ea6f6183e21af0e3053ed4cfb2ea0c2"
+        },
+        {
+          "path": "src/formats/ilrs/mod.rs",
+          "sha256": "8358b9f0cfc80db58f4559eda81e5e76d4ca13bb0fd00ba92597710acd591213"
+        },
+        {
+          "path": "src/formats/mod.rs",
+          "sha256": "ae7a1b1998d00c92c6ebcc350e6b01b352d90d7350990fdead721f9634f364c6"
+        },
+        {
+          "path": "src/formats/rinex/doris.rs",
+          "sha256": "f3f351f7965ebe6dec7c550963e7971bbc42e71f04c2101c0799e8251bcdaaa4"
+        },
+        {
+          "path": "src/formats/rinex/mod.rs",
+          "sha256": "005e36f9953d80aea65360cbc3f36aaa3b0568204ee74c5feba9a89ecb72e370"
+        },
+        {
+          "path": "src/formats/rinex/nav.rs",
+          "sha256": "be1365201b1d29564bf56f78cd0a4b917eebb2ebd574502c21400f7654ceb483"
+        },
+        {
+          "path": "src/formats/rinex/obs.rs",
+          "sha256": "ef064b1e556a3a1246d7b7b5601828b0d7cdb14b6dd25e19868a83ddc8866160"
+        },
+        {
+          "path": "src/formats/sck.rs",
+          "sha256": "d813e82df0c7e5dc567e94ebdad2b206f2b7947f2d49caf98e83af1a8d1da449"
+        },
+        {
+          "path": "src/formats/spice/bpc.rs",
+          "sha256": "711c599f4d21d554abbbf9583f7f68c7a1cd9daabece9fe4d75e3413dda7ce5c"
+        },
+        {
+          "path": "src/formats/spice/ck.rs",
+          "sha256": "b5a50f2c4edfec45b64431217cac331a8ad705c7329f91dad9a97bd8574779d4"
+        },
+        {
+          "path": "src/formats/spice/daf.rs",
+          "sha256": "ade6fe1371752643ecf52a891fcbbd8be4e9294c11c0bba3d42bcc57e565af64"
+        },
+        {
+          "path": "src/formats/spice/error.rs",
+          "sha256": "f2778b17debf27b74ac4623b4ab5108d2f3ca3b87ba4dcfd54482cb49748cfd4"
+        },
+        {
+          "path": "src/formats/spice/fk.rs",
+          "sha256": "3a57ea36c21fcb0c20f1b57e89fae22a23bb40b3b6f36d461cd20e2bd252fe1d"
+        },
+        {
+          "path": "src/formats/spice/ik.rs",
+          "sha256": "46c3582bc2d0b0c1bf83042c0fbdc350b334a321be14b9e3b87c53a6ef4d8df1"
+        },
+        {
+          "path": "src/formats/spice/kernel.rs",
+          "sha256": "32fe437b02aefceea8a728b03f913e0457d492373a5bc8edc75b73ec696dce4f"
+        },
+        {
+          "path": "src/formats/spice/lsk.rs",
+          "sha256": "7cacfa3b4ab6514b2dc7774d79d3ad8221ae71e20e6949c5af248f20d5f837de"
+        },
+        {
+          "path": "src/formats/spice/mod.rs",
+          "sha256": "0c74482e1616aa202c32a9d083b0522d8159bd42ce90573b77496964712b7975"
+        },
+        {
+          "path": "src/formats/spice/naif.rs",
+          "sha256": "97bd0b035696628307e6e32d88704303c97beda0b1f7abacdd6fa1e20c254ccc"
+        },
+        {
+          "path": "src/formats/spice/pck.rs",
+          "sha256": "7ea2b154fa38ab7c62335d96a144337559642cd5b73a295e8db9634e60675437"
+        },
+        {
+          "path": "src/formats/spice/sclk.rs",
+          "sha256": "6e0ec44fc9f0cc4faa6b3ef7b692db49db87dd85b2c5def3855fc331c4411bd2"
+        },
+        {
+          "path": "src/formats/spice/segment.rs",
+          "sha256": "d27d94bc95032d042213453a0065569c144234d97e1053404f0c2bd5dc2f6143"
+        },
+        {
+          "path": "src/formats/spice/spk.rs",
+          "sha256": "7d804cda0c0453d95958cd848d5971400de826dc29e4e93da79a3380af45503d"
+        },
+        {
+          "path": "src/formats/spice/spk_kernel.rs",
+          "sha256": "4d994989abc70e8ffa223f4307ec46b0c8f6820be524d7d439f0a51d334a8807"
+        },
+        {
+          "path": "src/formats/spice/text.rs",
+          "sha256": "0cbcba10890cdbe89e91d0b21b0b4a9a9a1cd2f4c81053a19b61a661d86e71f6"
+        },
+        {
+          "path": "src/formats/test-data/README.md",
+          "sha256": "575d6c285017d9f176b00e3b0764c75f0b4a97ff133f8d4aa4afefd75771d12c"
+        },
+        {
+          "path": "src/formats/test-data/omm/celestrak_sample.json",
+          "sha256": "2db631b400556be11ef2cf190b6f8f195c3cb97f3bbf8f9c1c1d07f2d86b7be3"
+        },
+        {
+          "path": "src/formats/test-data/omm/iss_zarya.json",
+          "sha256": "17f9a83bbc4cb161ba0c4a1b65b552aba65e7b045643db3146bf6973646cd5ce"
+        },
+        {
+          "path": "src/formats/test-data/omm/iss_zarya.kvn",
+          "sha256": "a5db496d3cf63af19c126f942111d74cfdabde46b93c82f60e2605e357f67f94"
+        },
+        {
+          "path": "src/formats/test-data/omm/iss_zarya.xml",
+          "sha256": "d8bb8ec9e4233be61e09830e17fdca70d28f75c31cd8444cec1cdcd4cc66ecc6"
+        },
+        {
+          "path": "src/formats/test-data/tle/iss_zarya.3le",
+          "sha256": "b4377fcb077c5f892b4f8cbfbbd1a3e93c89c3e0561d22d7cfb334d1169fe40f"
+        },
+        {
+          "path": "src/formats/tle/builder.rs",
+          "sha256": "44ac1f1fa4b2db82a7a28f29c6b12fcd8ebeead2066e11211432576a62060ff9"
+        },
+        {
+          "path": "src/formats/tle/error.rs",
+          "sha256": "4261ac53e73e55646b036032a15f490a936414ce9f3d09c94e5524920b52c402"
+        },
+        {
+          "path": "src/formats/tle/mod.rs",
+          "sha256": "66d43308095e366ef474cb44c4ac2a6c2bb80db385fe715f88be5cd84aa31a0e"
+        },
+        {
+          "path": "src/formats/tle/omm/json.rs",
+          "sha256": "bb00063f1f5226668dc7315154fa54e90c48992cd1ba37709ebb5cb84f579a65"
+        },
+        {
+          "path": "src/formats/tle/omm/kvn.rs",
+          "sha256": "98f3770e46adf5002f68b38aa66026383e131463c1170d173ebf4e7d795627da"
+        },
+        {
+          "path": "src/formats/tle/omm/mod.rs",
+          "sha256": "5d8ac280530d2c6087a0a79e3a6906b3b3995211ed8415a61ce068e3fbf5fdb6"
+        },
+        {
+          "path": "src/formats/tle/omm/xml.rs",
+          "sha256": "1f74baa5a8f51290250bb37e32a404662a29d6df631b20e28a43c0e66ff3352d"
+        },
+        {
+          "path": "src/formats/tle/parse.rs",
+          "sha256": "01f46be785d3a2f40ce3d42d42aef2c9b56b3d8d6953eaaf695ec4e0f7ded717"
+        },
+        {
+          "path": "src/formats/tle/tests.rs",
+          "sha256": "ffc3b2a61a6c83181aa5b5f9698ea5fa00d74cc8cbf16d108b7317e55c4317c9"
+        },
+        {
+          "path": "src/formats/tle/tle.rs",
+          "sha256": "309ef567681f3b1e29078a6df469128714e07a794865952f5dca96ee5faf3f9a"
+        },
+        {
+          "path": "src/formats/vlbi/mod.rs",
+          "sha256": "4b76c9e3b32b37d7d318670733edaa30288d2236fb0596d627f8ceb733303402"
+        },
+        {
+          "path": "src/formats/vlbi/vgosdb.rs",
+          "sha256": "b97d1ef59b0df311885382b4544014090c305baefa1ae59715f469f96c7b4d7d"
+        },
+        {
+          "path": "src/healpix/error.rs",
+          "sha256": "d81077d9b86846a8287f607ddf67645935e82c09b57d1968ffb5eecabc25359a"
+        },
+        {
+          "path": "src/healpix/grid.rs",
+          "sha256": "65ba1f7471fea99170f11bdf14202b18bdfb8a0643b662211806c055c35ccbba"
+        },
+        {
+          "path": "src/healpix/index.rs",
+          "sha256": "f0546aff3a508b9b56d69798bf7c8c08a1ee79dc467413183de5a97121b48fd5"
+        },
+        {
+          "path": "src/healpix/map.rs",
+          "sha256": "b133cd83b401693ef71b3101f65328e6aba3d8b1c6f46bcacb470575981d0bdf"
+        },
+        {
+          "path": "src/healpix/mod.rs",
+          "sha256": "162c3707e17b76fff9508aff78ec1ee685fde7efe51edbd6edb0238318ffdce6"
+        },
+        {
+          "path": "src/healpix/nside.rs",
+          "sha256": "990e5b559de94b331f491a9bef4111ce271c77f6413af75492ef10d4ded00870"
+        },
+        {
+          "path": "src/healpix/ordering.rs",
+          "sha256": "8fc960873b2d7cb4d2fadd571b11b945c900acc7a5761ed665c1b2405a7065e4"
+        },
+        {
+          "path": "src/healpix/ring.rs",
+          "sha256": "be478a68541eefa2290ad49c4389b2da04d83b9e2bea6a0e8cc36707493e441c"
+        },
+        {
+          "path": "src/healpix/tests.rs",
+          "sha256": "e4b544ccc27712b8fa6cccf300767211cedede3397678a515aa41c3fbaaf1109"
+        },
+        {
+          "path": "src/healpix/validation.rs",
+          "sha256": "3a81f7abffcf866ebefe19d0aba1fef201a4ba4dff75707ca10bdfa61916919e"
+        },
+        {
+          "path": "src/lib.rs",
+          "sha256": "d5eac4d6340fb70bbad9ce9d21fc7f4073c642324b8d2ac8c9bc924a552e9d32"
+        },
+        {
+          "path": "src/macros.rs",
+          "sha256": "bbeca5e66ec8602e4f1941a4100d378ebfed24564d0b42e119407e59c094a09e"
+        },
+        {
+          "path": "src/mission/context.rs",
+          "sha256": "e11867e4c5b7e0c936076248cdee84f515031c903bd43dddea074cd95cb4444a"
+        },
+        {
+          "path": "src/mission/geometry/az_el_range.rs",
+          "sha256": "151818641c8164f512732b605ca6d42f08fc1ae4926a5184d0f11643c049a00b"
+        },
+        {
+          "path": "src/mission/geometry/eclipse.rs",
+          "sha256": "74152a03f9a9cb2dc20d9ced10124fca86e927ec77dd8f527c56e4110a438ad5"
+        },
+        {
+          "path": "src/mission/geometry/fov.rs",
+          "sha256": "7f24f67df3e5f0b94eda2ccf861bd66ac01e6e2b67f12af376477415277d015c"
+        },
+        {
+          "path": "src/mission/geometry/local_frame.rs",
+          "sha256": "a18e66be92d697c5d3cff8c3cd3ebda341e22a39b025aa2722d3d0d23284c911"
+        },
+        {
+          "path": "src/mission/geometry/mod.rs",
+          "sha256": "ea106917f7589b09ce7b86af6bc9c31f20d68596028414b63008587744f6e1e1"
+        },
+        {
+          "path": "src/mission/geometry/occultation.rs",
+          "sha256": "6596d189122192c80d32a405623a9f52c4886daa62aaa143d74d65475437259f"
+        },
+        {
+          "path": "src/mission/geometry/orbit_relative.rs",
+          "sha256": "c94b1cb2c7cc0328036c74d22b838a908b90df04f87cde70aae0161e125d4abc"
+        },
+        {
+          "path": "src/mission/geometry/terrain_mask.rs",
+          "sha256": "5e64c62c6d8c04f28c6691156407acbc5b266a45d07e3df027d62dbb6c212089"
+        },
+        {
+          "path": "src/mission/mod.rs",
+          "sha256": "14542acb70e381b3aed49a541d47f668f8f123c5672db4a8a9d721c7b9907f46"
+        },
+        {
+          "path": "src/mission/site.rs",
+          "sha256": "a52b0cc6c5f69a2d425b83e3b3cb69b9196db874a25ea3b10e9392e546ab9abf"
+        },
+        {
+          "path": "src/photometry/README.md",
+          "sha256": "50e6e57b057a499d582c2833b465153060d49cef00ded8378c2e85991c407293"
+        },
+        {
+          "path": "src/photometry/mod.rs",
+          "sha256": "97d5b2a1a4cc0d3b2cfa403535a1b3c4e93b7bfdcd4e813242e86a7420df3718"
+        },
+        {
+          "path": "src/photometry/passbands/bessell1990/B.dat",
+          "sha256": "ba2b36196cc285482659df521fc5ffde60e8c6849963912cfcbe61f912f704b0"
+        },
+        {
+          "path": "src/photometry/passbands/bessell1990/I.dat",
+          "sha256": "f3eba62d9898b1b69b6c56cbb7806875f528410145594e56d61cff4f8c5c44e0"
+        },
+        {
+          "path": "src/photometry/passbands/bessell1990/R.dat",
+          "sha256": "25393e6cd0c2b3c2c7a2a0688ce675e6475d550150b44f580751e13731ac1bc0"
+        },
+        {
+          "path": "src/photometry/passbands/bessell1990/U.dat",
+          "sha256": "e00771381f3ecd293bcf8c20fdbe57ce5cb9c24404b6ad7f499f28912525ea58"
+        },
+        {
+          "path": "src/photometry/passbands/bessell1990/V.dat",
+          "sha256": "fd5cc0ac9bba2e8121efe8b66d1aeb63b0744b0997d672053bdccf585248e24c"
+        },
+        {
+          "path": "src/photometry/passbands/bessell1990.rs",
+          "sha256": "8cafbca03bfe09e66bdcc5b84de7503a09842c2e488864d84d8beefdfe5894c5"
+        },
+        {
+          "path": "src/photometry/passbands/mod.rs",
+          "sha256": "b78c0bbf09b76fcb8e7911fdfab4301d1fcc8e26e06d69e2f56f1ced295f6f66"
+        },
+        {
+          "path": "src/pod/estimation/mod.rs",
+          "sha256": "9daea0911246e2515b69d196378d84c775dfc20fe9bad7552d3286cc4cd5392f"
+        },
+        {
+          "path": "src/pod/estimation/nonlinear.rs",
+          "sha256": "069fbfe080b41dbd8929b618dbc013b4e59cd7b1b61f8a4efb8e03c45aebb5c4"
+        },
+        {
+          "path": "src/pod/estimation/sequential.rs",
+          "sha256": "645a9c0dcb25a5c8a7778d6620e7dfe65f0aa3e84b983f4072eb0ac899f519bf"
+        },
+        {
+          "path": "src/pod/estimation/wls.rs",
+          "sha256": "1392ed510770784b63e74bb89b1ce6f3343b60419d704e1d890c64be1ca187d5"
+        },
+        {
+          "path": "src/pod/force/config.rs",
+          "sha256": "18f6af867284850ad86ac2712bce9fac700f6def5c1178fe99d61abc849d3180"
+        },
+        {
+          "path": "src/pod/force/empirical_periodic.rs",
+          "sha256": "10004a5e2b362e741758c5632b253690424e1fdb8ad3c2961b48dfef2158c56c"
+        },
+        {
+          "path": "src/pod/force/low_thrust.rs",
+          "sha256": "2b7b4f1753399673f61a12cee866751adc89667a7a9efabd320c1f680d79ca49"
+        },
+        {
+          "path": "src/pod/force/mod.rs",
+          "sha256": "e9d8863f4eb74d07c257052f5b7d4ea58783308e4357271f40159ce8cd4595e3"
+        },
+        {
+          "path": "src/pod/force/registry.rs",
+          "sha256": "e09d12d22251da68c1a043395b202c2027a32d55a854cae860fecae4b75bb0c1"
+        },
+        {
+          "path": "src/pod/force/thrust.rs",
+          "sha256": "33527193be9d1f3083b0b83ae3d5115d9bd2010e011f4fb445b34bef4fb7a093"
+        },
+        {
+          "path": "src/pod/force/thrust_arc.rs",
+          "sha256": "bca4106fe76d8691334ec5b733ba4dfea29653c41dbd3415701998c13a56b853"
+        },
+        {
+          "path": "src/pod/io/mod.rs",
+          "sha256": "4cb10650a586bcd772d46db0ef593a4e8f6574482ad0123932c31ced37fcd0ed"
+        },
+        {
+          "path": "src/pod/mod.rs",
+          "sha256": "d06b39e9daaf8434156f281e552d6da061f4944da4d660c130b767d888d830ee"
+        },
+        {
+          "path": "src/pod/observation/batch.rs",
+          "sha256": "3de80aa447906cc22bc0f1ea13cc1216075e532420aef6e437b2c91b6a270959"
+        },
+        {
+          "path": "src/pod/observation/corrections.rs",
+          "sha256": "d81a32d825ecfff1fba3c6c9e3568e30356946c74662fa61162d8c7977bdf8bc"
+        },
+        {
+          "path": "src/pod/observation/error.rs",
+          "sha256": "bade4383a10bb871f5655377725aed0934378aa95f527634eabafa0bc755f7eb"
+        },
+        {
+          "path": "src/pod/observation/gnss_obs.rs",
+          "sha256": "234e67a7898f1c199abb4584b9f55e93f75606fc4e0e391ed3682a9d0a9e888f"
+        },
+        {
+          "path": "src/pod/observation/mod.rs",
+          "sha256": "d94ade60a79ed69e6a3fcf0785e7af591bff25e8a976a69a2d0f0dfc6d193ec0"
+        },
+        {
+          "path": "src/pod/observation/obs_trait.rs",
+          "sha256": "4ae30b514a8f540e3281940c322643c5c28a98a27df6709c647c131106fd1bd4"
+        },
+        {
+          "path": "src/pod/observation/provider_bundle.rs",
+          "sha256": "e5661eeefdd221e4c3e26ad741931c968ae83f409f30f527b8b9555d8d05aac5"
+        },
+        {
+          "path": "src/pod/observation/range.rs",
+          "sha256": "94c4651554b998a124ecd1fa2d204234a2cc4be79b16c3d8af9c58a893f17abb"
+        },
+        {
+          "path": "src/pod/observation/slr_obs.rs",
+          "sha256": "85458eb47d4a314c246cb098c49becdddbda7d58ded55708daf820fcdcabed27"
+        },
+        {
+          "path": "src/pod/problem/arc.rs",
+          "sha256": "40f70a10c044fb902a58d5d640d943016731017751e1042737ccff9ecf3c6355"
+        },
+        {
+          "path": "src/pod/problem/covariance.rs",
+          "sha256": "a8d2e39fe9f0d0e8b4af3da0cdd7869ddf9f08087ec6850b931062953b35fc1d"
+        },
+        {
+          "path": "src/pod/problem/mod.rs",
+          "sha256": "9b732aabf13fc9c97d71873325733babb07457deaf98716f68a70cc542644d75"
+        },
+        {
+          "path": "src/pod/problem/parameter.rs",
+          "sha256": "291e09e909a16084ceb9e5b0c637a6d89172ab30456aa30cab57b08565cee3ca"
+        },
+        {
+          "path": "src/pod/process/mod.rs",
+          "sha256": "42ee81076ae570c623c70eb83251e8b45b696eeb7fef4f30bf06318865a7eae1"
+        },
+        {
+          "path": "src/pod/process/noise.rs",
+          "sha256": "4128c54c18d34cd2822da96305ad38ebcd2078513e4aaa2ebf46b21af88778bb"
+        },
+        {
+          "path": "src/pod/product/error.rs",
+          "sha256": "24a2081ca02751d83a3f0d59c563da1c2398e678ad3e57b84e3239ab3c94bcf6"
+        },
+        {
+          "path": "src/pod/product/manifest.rs",
+          "sha256": "3c0e89bf5bc4648576f3246ad95f75d4596183bbb9c7286c35bbf5ebad059af5"
+        },
+        {
+          "path": "src/pod/product/mod.rs",
+          "sha256": "51f2b820e27aea80fa8e6aaf2a8ae3699900c188fe979b518051f5abcc05cceb"
+        },
+        {
+          "path": "src/pod/product/naming.rs",
+          "sha256": "0b23a462d183e99677468c87231c64a97986fb153d674b86b66d5766584b720c"
+        },
+        {
+          "path": "src/pod/product/orbit.rs",
+          "sha256": "b69b7f5cb1aee491553ec1bb8c5c9486727ce041812dbc5c446f8f25bbdfa31c"
+        },
+        {
+          "path": "src/pod/product/qc_json.rs",
+          "sha256": "163840bb770cd700580fd8cab92a3b27bbf42d3a99d7dbba103a5e70f6d4c8da"
+        },
+        {
+          "path": "src/pod/product/residuals_csv.rs",
+          "sha256": "b867c759a8c3aa16d07085fd93c955a7f5759a2d97e847209479b2b34459df0b"
+        },
+        {
+          "path": "src/pod/product/residuals_parquet.rs",
+          "sha256": "2780c073c914f7791ed3345301e0417d2d2cc895b84e35c403c2166a266e61d9"
+        },
+        {
+          "path": "src/pod/propagation/adapter.rs",
+          "sha256": "0d0e4c52aba136935234089fd452bcfaa4f21d755c7ab1daea276fa5ccc9baff"
+        },
+        {
+          "path": "src/pod/propagation/error.rs",
+          "sha256": "a6c9b51d97695abf9406fc56fa87be791fabdfab93988d2033d4490816878f7e"
+        },
+        {
+          "path": "src/pod/propagation/integrators.rs",
+          "sha256": "c931814c72605278db8eea63f44dd338560280dcd3c6073665f0443b6c6bc790"
+        },
+        {
+          "path": "src/pod/propagation/mod.rs",
+          "sha256": "8a860c3f22f9af56608421fde447ad553344c9d69ae261ae6e34f4dd09b766e1"
+        },
+        {
+          "path": "src/pod/propagation/pod_error.rs",
+          "sha256": "90a60e2d290246a136406985ce83164d5fe962ca0ecc891e413797fcca9bc814"
+        },
+        {
+          "path": "src/pod/propagation/validation.rs",
+          "sha256": "377b6b819e8178e1e31cb99c1bbeb69f08351b019eeccc7ec7005d1381962e11"
+        },
+        {
+          "path": "src/pod/propagation/variational.rs",
+          "sha256": "60e7f7ab27497f558e3e58b4971e661dc6fd470289730cd2e2f89e3ff506ee86"
+        },
+        {
+          "path": "src/pod/providers.rs",
+          "sha256": "37d4aefa1a15cce40ebbcd79803106e07486dc4f32665b553c8d019b7d512425"
+        },
+        {
+          "path": "src/pod/qc/mod.rs",
+          "sha256": "e256407d50c0c29068d15b23370f7fc4431ff4c9fbf8297acf82528ceb9a7f18"
+        },
+        {
+          "path": "src/pod/qc/orbit_compare.rs",
+          "sha256": "83476be954ba59462b6ca4a09b4cb3bf51191990c79264097bc158a503531fae"
+        },
+        {
+          "path": "src/pod/qc/residuals.rs",
+          "sha256": "b9df8ebde75b371f0e1e93a491134eee04233a169a71e9989aa425baee29524e"
+        },
+        {
+          "path": "src/pod/qc/slr_validation.rs",
+          "sha256": "13564d3d9899c29f226adf25f4022f24fd5151add955f2cd9209e274b6ee03d7"
+        },
+        {
+          "path": "src/pod/run/dataset.rs",
+          "sha256": "08e0fd09fe085ac7dc8eaad653c1e2fae05e1b148e6b9ed0c865b3aa9f1900e3"
+        },
+        {
+          "path": "src/pod/run/manifest.rs",
+          "sha256": "d53b276ab614309620917de0b04bc06abf24d9f173760d728e2d343abd5aee04"
+        },
+        {
+          "path": "src/pod/run/mod.rs",
+          "sha256": "b4b6c63dfe49bac322583a414ecd3fe7bc0608e4d36b3d502df2f0fc5d38b875"
+        },
+        {
+          "path": "src/pod/schema/qc.v1.json",
+          "sha256": "84d700e63db0c2f17c9f1ab3042b0e7ebed1ecdc60a2db26d85ea483ca03b9a0"
+        },
+        {
+          "path": "src/pod/schema/run_manifest.v1.json",
+          "sha256": "5cfd8c522b38e6cfa4a25c4c112b69ac1270aa677a01d0f523bc43fdaacdac42"
+        },
+        {
+          "path": "src/pod/spice/mod.rs",
+          "sha256": "cb927357c00b75c2deea134b2eae771f3c4946c300aaaa4511f48f80dc426390"
+        },
+        {
+          "path": "src/pod/spice/provider.rs",
+          "sha256": "6158bb1c84efc050b351dc744a7ed905c8e5fe2c04f6de40027748998a0c77c7"
+        },
+        {
+          "path": "src/qtty.rs",
+          "sha256": "fb0e876fa275bdb6b3064ccf7dce069028088be11935f6700150f1b52c5d40f0"
+        },
+        {
+          "path": "src/spice/context.rs",
+          "sha256": "b2f0d4192359bf91de431a5d4b70979d7a5f0d7cdd102b668b5e73f02e27be6b"
+        },
+        {
+          "path": "src/spice/error.rs",
+          "sha256": "dcec471e0ecf159254dd11dfaad8b597f22735f64296d6a8c7e7ebb072a1c716"
+        },
+        {
+          "path": "src/spice/frame_registry.rs",
+          "sha256": "240f676313a81e9075c491c5ccc7295e34993afc5f01e5f7168e15730f36eced"
+        },
+        {
+          "path": "src/spice/kernel_set.rs",
+          "sha256": "41efdba9c0ab17a2a5645d06806e0fe38edaf0ae4ad0094538f9e96bb38880da"
+        },
+        {
+          "path": "src/spice/lunar.rs",
+          "sha256": "655543b0cb7f7cbcd41a4029845b76063a51c5c5eb325e29eda2d698033d7c18"
+        },
+        {
+          "path": "src/spice/mod.rs",
+          "sha256": "3bcbb0bfb281762a74d911447f3ece7de7064edaa3e3ae5d0b6215b62a31627e"
+        },
+        {
+          "path": "src/starlight/brightness.rs",
+          "sha256": "79c7b59d8e865c81f6080d136cc76fbc80e1a308f49f1742a8629a126bf865ef"
+        },
+        {
+          "path": "src/starlight/builder.rs",
+          "sha256": "cf4fdd32a5fe4ab60225fd2cb9c094a72072601337be2976d606095a55559928"
+        },
+        {
+          "path": "src/starlight/csv.rs",
+          "sha256": "c0e6d1c82e4b71370278d56a3e57a8b5d372bd30b97e4a51d52364f21576f41c"
+        },
+        {
+          "path": "src/starlight/error.rs",
+          "sha256": "a8f1c9c27ecf7d6ea012e929fd627385e3e3e6a1203823c4d4dd42d35d615748"
+        },
+        {
+          "path": "src/starlight/magnitude.rs",
+          "sha256": "90a03ca01efb29646fc5733137cd6b9a2e557a49c987f3bb7723efabc3f124da"
+        },
+        {
+          "path": "src/starlight/map.rs",
+          "sha256": "3ed2322453d7d355280cfa6f3754a9835ca3e6802f033161c60ae2d86ece88ad"
+        },
+        {
+          "path": "src/starlight/mod.rs",
+          "sha256": "e993b4a27f29bd879135d58c49e7c25e4d7eaf3f97de5b6c8911338566f0af33"
+        },
+        {
+          "path": "src/starlight/photometry.rs",
+          "sha256": "bd10840b770b513d085358282b31d543cea72fc45260677a59d614aa9c082bcc"
+        },
+        {
+          "path": "src/starlight/provenance.rs",
+          "sha256": "3215599dba73cdc799db1132cfb4f8043fb9abc59483c00bdda90312f2d31246"
+        },
+        {
+          "path": "src/starlight/record.rs",
+          "sha256": "9118222433a48b58339b24c299c03e9981f1302acea6f27abe2ec12316e7d9b8"
+        },
+        {
+          "path": "src/starlight/tests/builder_cases.rs",
+          "sha256": "5cb0eb4115e94029a96aeee3f6fedea41fe400ec2cb9261fef8da5744ebdc08b"
+        },
+        {
+          "path": "src/starlight/tests/scalar_cases.rs",
+          "sha256": "8920684f98aff992825c0a96fc269a60f0e8fe7d95734a62740072339eb23d76"
+        },
+        {
+          "path": "src/starlight/tests/validation_cases.rs",
+          "sha256": "a03ebef19ac9218d142d3c8533a028016ad455f074fd7ad81b18faef79e2f044"
+        },
+        {
+          "path": "src/starlight/tests.rs",
+          "sha256": "e276d4bdb1e559fb7ef74a9f9bb7ef05a9d1f77fe6a789c87af34042ba6f0529"
+        },
+        {
+          "path": "src/starlight/validation.rs",
+          "sha256": "742dd85dca6261958eb599d4b90c4dcc968dd1676e382249f787d3ad4c241b2f"
+        },
+        {
+          "path": "src/targets/README.md",
+          "sha256": "23dcb2121c725dbf9a05c4025d57171cb18dcacb1be7b1758abcec265ae74421"
+        },
+        {
+          "path": "src/targets/mod.rs",
+          "sha256": "de5a13e570b5a542413761ff902698ff84af137adb7baea7156e6f9edb1d5b50"
+        },
+        {
+          "path": "src/targets/target.rs",
+          "sha256": "7943c52990603e036a5ea779e5f368156574589fcf5a6f192a68bddeaaccedc7"
+        },
+        {
+          "path": "src/targets/trackable.rs",
+          "sha256": "e8ec8bb86c82b1496a3d26f27dc6ee583b9781241067fb5bfe745555febfca2e"
+        },
+        {
+          "path": "src/targets/transform.rs",
+          "sha256": "35ca8391ac1a3948e560ca8f98a51e8a4fa6aa5c7930fdcc775cb9a280a8365a"
+        },
+        {
+          "path": "src/time.rs",
+          "sha256": "fa3caaf01bb5ff195086fd748f49c89381583cea0b3356f2067cf3f1cd419f1c"
+        },
+        {
+          "path": "tests/atmospheric_layers.rs",
+          "sha256": "c49d528391ad89a4b9c1f2f8033e5b1f99cda718056ef1fecb7d5c66bdd5a677"
+        },
+        {
+          "path": "tests/body_surface_horizontal.rs",
+          "sha256": "7db5989b95f8416cb8d95fc5a786d62bf139f50c4c6c6737f27aeb7d85ad4f57"
+        },
+        {
+          "path": "tests/data/ephemeris_frames.json",
+          "sha256": "5fc8edcd9ad6613d06319c03afdf1674f52e421beea5035715f9c0778f98b305"
+        },
+        {
+          "path": "tests/ephemeris_frame_consistency.rs",
+          "sha256": "b59336884c63d41b9719e8a02dc3920e76da3b591ba53eed656c47c28b9d3452"
+        },
+        {
+          "path": "tests/fixtures/lunar_de440/coverage_rotations.csv",
+          "sha256": "52a56f340cce78cf99fd11dc7e141952f70808426bc257c0d80121f87236ec7c"
+        },
+        {
+          "path": "tests/fixtures/lunar_de440/excerpt.bpc",
+          "sha256": "5c95564df1a6b10754bde1364fd6e669d80628139d40c64d8b900c6d6b8832ad"
+        },
+        {
+          "path": "tests/fixtures/lunar_de440/excerpt.bsp",
+          "sha256": "1b464d63990f5d493623a07376d3b5dce16095194c120a1f2dee3d2bf62a0200"
+        },
+        {
+          "path": "tests/fixtures/lunar_de440/external_reference.csv",
+          "sha256": "83fbac5897302483f1f1bfd3a7b9210a884067408ee11261943c3a185e74fb49"
+        },
+        {
+          "path": "tests/fixtures/lunar_de440/moon_de440_220930.tf",
+          "sha256": "73eb6b216c06a27c3419c4cfeaded7ffce46a714e3d4f9f5142dda51c0710f76"
+        },
+        {
+          "path": "tests/fixtures/lunar_de440/naif0012.tls",
+          "sha256": "678e32bdb5a744117a467cd9601cd6b373f0e9bc9bbde1371d5eee39600a039b"
+        },
+        {
+          "path": "tests/fixtures/lunar_de440/provenance.json",
+          "sha256": "84ee9fb49af46c48c6e784474372308c7caf5bfa10fc40dbab4669192a09357b"
+        },
+        {
+          "path": "tests/fixtures/lunar_de440/reference.csv",
+          "sha256": "5ea09eb10bb5a82e68ab76d73cd8e82d569360f5a5f12e904bd63a046cec5f85"
+        },
+        {
+          "path": "tests/fixtures/lunar_de440/test_rotation.tf",
+          "sha256": "f0ad8d601c03f4a3c09b9e310878c607bdbc0709cbd7554edbadc451816eeca2"
+        },
+        {
+          "path": "tests/fixtures/lunar_de440/time_reference.csv",
+          "sha256": "5b5a4d21c2f2b868bc403e576782f09ecef16f3392c1a264ff7175bf546d2189"
+        },
+        {
+          "path": "tests/fixtures/sgp4/LICENSE-MIT",
+          "sha256": "81f50589ea125427814266a787d92f388e93b97437b2157938ab84adf56fc3a0"
+        },
+        {
+          "path": "tests/fixtures/sgp4/LICENSE-python-sgp4",
+          "sha256": "4474ea9eccbb829c6bc3652381bfe78b1c815de021d4a284a2a5b383a374d030"
+        },
+        {
+          "path": "tests/fixtures/sgp4/README.md",
+          "sha256": "72cb9b65cccd02383499b122277f81ad2c4b83c2e02a9fb9ff8bcc7d980c755b"
+        },
+        {
+          "path": "tests/fixtures/sgp4/generate_iau.py",
+          "sha256": "cb99b678eb02999d46083094972778c566651aee767f3264d5476235c6618113"
+        },
+        {
+          "path": "tests/fixtures/sgp4/iau.txt",
+          "sha256": "216cb958e84728ffef21a3153e8c7f2483d79ff92df045f044029d9f9cf7ad15"
+        },
+        {
+          "path": "tests/fixtures/sgp4/synthetic.txt",
+          "sha256": "fdb4a31c14a22bc67d48b3535bddedeed5c5330b0733ca761fc57770f1fad8fb"
+        },
+        {
+          "path": "tests/fixtures/sgp4/vallado.txt",
+          "sha256": "13a265a89d98fb7fb88b0f55e732c476b25cd9fc3750324cc557658a8888b745"
+        },
+        {
+          "path": "tests/lagrange_centers.rs",
+          "sha256": "4f4c402a9031d4e4d3b67c079205f42aa3356f643bc2c420438f4296e06c8434"
+        },
+        {
+          "path": "tests/normalized_phase.rs",
+          "sha256": "2a027cbff51f26f39f3126a988e8c5d12b8905f4a3cef4330eb6582162e2cef4"
+        },
+        {
+          "path": "tests/observatory_catalog_no_default.rs",
+          "sha256": "742ddcb6e1a4abd1425f8ce47f6c9ca09a168a428ed4867a6c993465cdb6c44c"
+        },
+        {
+          "path": "tests/pod_smoke.rs",
+          "sha256": "5bf8abfc880ff75767960cbc2ecf65aabf450215905c82fce3dd52b9dc38a15f"
+        },
+        {
+          "path": "tests/public_dependencies.rs",
+          "sha256": "04dae8efc3be106d6fcbf12ab85b7ba48e70fd3b49082f7c8db91506ab671de0"
+        },
+        {
+          "path": "tests/reference_data/astro_night_periods_2026.json",
+          "sha256": "b5ef787a2a91806177055d52c28813c7a8b5307c70b6b42217c775536ccefaa8"
+        },
+        {
+          "path": "tests/sgp4_vallado.rs",
+          "sha256": "b6aabb8286dd97c0c401c9fcd72d0a72e5d09a508b106297b9172e334499af97"
+        },
+        {
+          "path": "tests/spice_context.rs",
+          "sha256": "52d1d471f0d53e6c04e860cd192a8f3ba7ab5eff8262ad323cf6c3a8b10a7023"
+        },
+        {
+          "path": "tests/spice_lunar.rs",
+          "sha256": "9aa14aaf5f2d8f95b8a7c189f6a33563d58a1da7a55cb00e79b8b8158bb20f56"
+        },
+        {
+          "path": "tests/tempoch_08.rs",
+          "sha256": "76e4ae0442d6796556c8187a9ce8c9ca44dfb2b3cb392878a3964e42ad333826"
+        },
+        {
+          "path": "tests/test-data/lisa/lisa_orbit_sample.oem1",
+          "sha256": "a91f6fbe4364b2006ebbe5e44441373d2101125a4f64006edcb54ce4623d550c"
+        },
+        {
+          "path": "tests/test-data/lisa/lisa_orbit_sample.oem2",
+          "sha256": "c374fdb1290dab69c1529dba1a69889888adcb7f468a96de54b4d95d826fcf22"
+        },
+        {
+          "path": "tests/test-data/lisa/lisa_orbit_sample.oem3",
+          "sha256": "05aa119c46a83b973cf018b614e360197b485ca1387bd69952773e9131729c51"
+        },
+        {
+          "path": "tests/test_altitude_api.rs",
+          "sha256": "e934e423950c332364fca65099998760060ed231f12dcb8860f768fbdd43947a"
+        },
+        {
+          "path": "tests/test_altitude_provider.rs",
+          "sha256": "56c1e705d7340eca7840fd408ccb37603323172ad3a28aa72b3c760a9d711e4f"
+        },
+        {
+          "path": "tests/test_angular_separation.rs",
+          "sha256": "61f6b128107b5762e6f7202090e4215eab5ba37c5fc385966594e8109d61576d"
+        },
+        {
+          "path": "tests/test_asteroid.rs",
+          "sha256": "4fdb7a56efcde9eaacb60f312052fb59cc9279fa7d1b8d384194382915c7810f"
+        },
+        {
+          "path": "tests/test_astro_frame_bias.rs",
+          "sha256": "f62a535ec7b31bccb1bf8fa328e8bb61a5e2a90a4dfd71f0ca7582214ff2499d"
+        },
+        {
+          "path": "tests/test_astro_nights_roque_2026.rs",
+          "sha256": "9e43e3e84265839789968f1ded3cc4c148595fb7eb60da12b561a97c4f19657c"
+        },
+        {
+          "path": "tests/test_azimuth_api.rs",
+          "sha256": "e9ca712385665a44fb9a855135b8b7046c1439459848a0fd4fad6b7cd1f0ee86"
+        },
+        {
+          "path": "tests/test_bodies.rs",
+          "sha256": "729bf9ba3ed97b99b76283bfb8f6f8665fa787690992b3537a68bfdfac056727"
+        },
+        {
+          "path": "tests/test_cartesian.rs",
+          "sha256": "d892c4422e1052712f0c469550377ee0cd1042a4ba20acb9dec43d93c1eadf2a"
+        },
+        {
+          "path": "tests/test_cartesian_direction.rs",
+          "sha256": "00fd08878c19cfe6f4f0c8f6db192ff77c2c37edd7a543b26b835b3a94782bdf"
+        },
+        {
+          "path": "tests/test_cartesian_vector.rs",
+          "sha256": "839de0e1e8c8b94997c3cc1397d4903ea94f8614e324e73b0f62c51131c15c95"
+        },
+        {
+          "path": "tests/test_coordinates.rs",
+          "sha256": "7856ca566f634252d6b20dc1c1120cc702fb843fcb8286b31ce9aaaa3c4d0733"
+        },
+        {
+          "path": "tests/test_domain_b.rs",
+          "sha256": "32465653a745669872c209da56d79db33e840ff3adf0aa8227571e77ae772a7e"
+        },
+        {
+          "path": "tests/test_ellipsoidal_geodesy.rs",
+          "sha256": "92982e7a8d39b8735414135098e6a7fd5ccffba00bf14ec16c15b0360232129d"
+        },
+        {
+          "path": "tests/test_ephemeris.rs",
+          "sha256": "1a5e8ba3e0ff1a5323df54efebc875b3e9986cc870b8b07564f3a1069d01cc8d"
+        },
+        {
+          "path": "tests/test_event_search.rs",
+          "sha256": "09396857cc323c8d5e8832ae7a8ac7b4eada1749215e23e75b632fa3eacdb0c7"
+        },
+        {
+          "path": "tests/test_high_precision_earth_rotation_regression.rs",
+          "sha256": "51bdc7fe969a9d0a250b14d6664beb12c46ac080fb9ab899814e8990eb301d07"
+        },
+        {
+          "path": "tests/test_horizontal_extension_api.rs",
+          "sha256": "dcc1f18f68dbea6730dbe7c7f607f53379f364f7d7b93ea3cfdad294ce43bee6"
+        },
+        {
+          "path": "tests/test_iau_compliance.rs",
+          "sha256": "b985a9f845aaeb18e8a8597786791caf9143ffc812a796652544cd1161bcdcf8"
+        },
+        {
+          "path": "tests/test_jpl_real_backend.rs",
+          "sha256": "f166e053e3a91bf1ae9cda3ce9bfbc9d77dfcc6020b9d16310867570018c6510"
+        },
+        {
+          "path": "tests/test_moon_phase.rs",
+          "sha256": "00caf2fd3bdd6e1995adbc5a3013376e2627f2102a1bdd2e67b518575ed79ced"
+        },
+        {
+          "path": "tests/test_new_coordinate_systems.rs",
+          "sha256": "e6ec394b9cb2c05c8e318403f490f964a01a8c384c7c0a5157c048345e404975"
+        },
+        {
+          "path": "tests/test_planets.rs",
+          "sha256": "ac21eb66236ebc5ef77ec3e7a21e512bd914bf454fa219ef5d3b501399d56715"
+        },
+        {
+          "path": "tests/test_satellite.rs",
+          "sha256": "ad3cee999e3d56ef77017d10b6dc072f51f070dad50868f4a6939b5232bf0dd2"
+        },
+        {
+          "path": "tests/test_serde.rs",
+          "sha256": "ce1f66b0a013c463036c9c38b26332c8c523cbbd8c01f570ce646d796d3fdd58"
+        },
+        {
+          "path": "tests/test_spherical_frames.rs",
+          "sha256": "9745adb739c3be2dd741c05498648be3cf617b2fdc645a92699949f85e83e71e"
+        },
+        {
+          "path": "tests/test_spk_runtime.rs",
+          "sha256": "59eb8a19d3ab52b264543fe151508dc0ba2ae3b0418d65f1b8bc1cb9c7d746d0"
+        },
+        {
+          "path": "tests/test_stars.rs",
+          "sha256": "5c2f9505326413ae2629603bc5567f7d519e00b0def04deeb4fbd7e43cc4db82"
+        },
+        {
+          "path": "tests/test_stellar.rs",
+          "sha256": "24fe51ae11a566561500575a3f82a89a203cfe54edbfcc4db385e2c7bc238c84"
+        },
+        {
+          "path": "tests/test_target_transform.rs",
+          "sha256": "4013ade51567950dd8f20643d6e563ac6b8a3dcae99929c69e76b8603951398b"
+        },
+        {
+          "path": "tests/test_time.rs",
+          "sha256": "902fb183342e5f98c6b18fb60be42a17be10e1a3c1e9afe88134ef0c0fdd468d"
+        },
+        {
+          "path": "tests/test_units.rs",
+          "sha256": "cb1df3c2caf0e0f16bccc528248eb813687437cef81451f3c73e6605f90e72d5"
+        },
+        {
+          "path": "tests/test_vsop87e_vel.rs",
+          "sha256": "b34234dfc16c57a88857649e0ce3b3b7fecafddfe70aaa020eca9e529309b6cf"
+        },
+        {
+          "path": "tests/test_wgs84_regression.rs",
+          "sha256": "15710a1c85219ea0ad369293595d66fa12fcc8cd19ce4b9b0da9bef30b02389d"
+        },
+        {
+          "path": "tests/tle_sgp4_pipeline.rs",
+          "sha256": "5a8f3eaa76bbff529c3a2bdc9f5f0dc69f6504c6ad0877c46923d972fcfb6e89"
+        },
+        {
+          "path": "tools/cspice_refs/cspice_lunar_de440_references.py",
+          "sha256": "ec22c5dd9c8e734fde5c70bc32df8a8d90c51e08efc7f7f6e1214f71b96a1519"
+        },
+        {
+          "path": "tools/cspice_refs/cspice_surface_references.py",
+          "sha256": "0f8da3e9d4be8e75d1fa0bcdd04bdf395678b20754ae6be264ee80f8579e8274"
+        },
+        {
+          "path": "tools/release/Cargo.toml",
+          "sha256": "3cd1070619841d3d8d0151d5296195a3cef01ea093a910eb0ff8876164fc819b"
+        },
+        {
+          "path": "tools/release/src/changelog.rs",
+          "sha256": "23ee45368d92abb51b977f5b37a7625baefe6a38c44ee0f1d61dc7ded7105e88"
+        },
+        {
+          "path": "tools/release/src/lib.rs",
+          "sha256": "490f8aa108f8a331094f8a135f8b2ad178315386e96c972b0156c91ce9edd366"
+        },
+        {
+          "path": "tools/release/src/main.rs",
+          "sha256": "7d5b7700f17d751c9d38120c3ef59d59b19af16aa78715d59f70fc64f2f60358"
+        },
+        {
+          "path": "tools/release/src/validate.rs",
+          "sha256": "29341b2c2bfa5e68b888cb508875d547f6d5d72f0a19cf7322353b353faa684b"
+        }
+      ]
+    },
+    {
+      "name": "tempoch",
+      "revision": "ff9544cbf4367f715e1d8b8eaba98493a454364d",
+      "url": "https://codeload.github.com/Siderust/tempoch/tar.gz/ff9544cbf4367f715e1d8b8eaba98493a454364d",
+      "archive_sha256": "02731f0d34d8e08ba1ce0bdd4958dd003560f84784321ab4f72c12b75b3a58dc",
+      "expected_files": 90,
+      "archive_files": 90,
+      "license": "AGPL-3.0-only",
+      "producer": "Siderust project",
+      "files": [
+        {
+          "path": ".github/workflows/ci.yml",
+          "sha256": "acf057fa906463063ea336f17f763ee2f0899341cee4bf25791b4d73da0ce0ae"
+        },
+        {
+          "path": ".github/workflows/publish.yml",
+          "sha256": "0e23a6b0ce49cc1abb5946692fef077d8ac73b9b199459063a82beb8b8a68bd3"
+        },
+        {
+          "path": ".gitignore",
+          "sha256": "4e11e238b1b0c49aac4bcfd4ea911b2e2a63ae0d6dfd100dc2635bc4475e0c2f"
+        },
+        {
+          "path": "CHANGELOG.md",
+          "sha256": "5399c6a15c61bf849732883c7138482ad62469befc413c0ba5e00258665f3ee9"
+        },
+        {
+          "path": "Cargo.lock",
+          "sha256": "52aa62cd394468c48cea4b52afa9450fbd93c9e1bb828cfb2729485f8e5d61ee"
+        },
+        {
+          "path": "Cargo.toml",
+          "sha256": "7f35c5fc8695237c006c0d8072e6cfdb1693c61e39d86b3f2520e2a26a89c28e"
+        },
+        {
+          "path": "LICENSE",
+          "sha256": "8486a10c4393cee1c25392769ddd3b2d6c242d6ec7928e1414efff7dfb2f07ef"
+        },
+        {
+          "path": "README.md",
+          "sha256": "a919b742f815e221ca6542f7a00ed7271c032d9448310e8217dc084da212162f"
+        },
+        {
+          "path": "doc/nominal-civil-utc.md",
+          "sha256": "66ef2db5ddbe144b25dd11bb8e1f8e38c17ec264e2d5975878fb90e890766f6e"
+        },
+        {
+          "path": "scripts/publish-changed.sh",
+          "sha256": "25d919622abb33e499964a05eafc12848084dfc0374443386ad97d6faa77f295"
+        },
+        {
+          "path": "tempoch/Cargo.toml",
+          "sha256": "0b1e5fd9e04bd5485e384d24a83d0959c3e8e8d67c44838ba0a1990218466bbc"
+        },
+        {
+          "path": "tempoch/examples/01_quickstart.rs",
+          "sha256": "ead96dacf4d90e3dd0777956e2516c5dae3c4efacf262199f926a92ee28ed381"
+        },
+        {
+          "path": "tempoch/examples/02_scales.rs",
+          "sha256": "65275e88c190bb793b64f03b95910ae6a4b4020cbd0b95ccbff1256e4d50aea6"
+        },
+        {
+          "path": "tempoch/examples/03_formats.rs",
+          "sha256": "09a53d891a9b467f77929f55bf85b7810042c361e62943304d902c9bcd203a59"
+        },
+        {
+          "path": "tempoch/examples/04_periods.rs",
+          "sha256": "3c38426148861cd92f1ad172aa801e08efbd206d3d55e4e1fdf388a8cb0d8c11"
+        },
+        {
+          "path": "tempoch/examples/05_serde.rs",
+          "sha256": "9a1ed4a49ea26f1b7a52f45aab8bd53f1186722273beb92aa3282e40ac551648"
+        },
+        {
+          "path": "tempoch/examples/06_runtime_tables.rs",
+          "sha256": "300220e53a988ea4a3dda2239edfc4ceb79a4ccf35f588dda96a0e8d2b3cd437"
+        },
+        {
+          "path": "tempoch/examples/07_conversions.rs",
+          "sha256": "a8a5930c8a20b976fea196e7e29f1d720ef75bea159cf6abe6866e9a0f67b306"
+        },
+        {
+          "path": "tempoch/src/lib.rs",
+          "sha256": "408e2c362188f14247914f32d1950ce4f03a1a7a4ea852ef67eeb790bcb9dbc3"
+        },
+        {
+          "path": "tempoch/tests/integration.rs",
+          "sha256": "4fb7699a08adf50f3e39fdf9fc4b38f70ca943cade3798916d00e20c1ba54728"
+        },
+        {
+          "path": "tempoch/tests/nominal_civil_utc.rs",
+          "sha256": "8160d0e47c61276868f41f28f5b46c730f4398b9eb68f1562e6480ebe0afef68"
+        },
+        {
+          "path": "tempoch/tests/scales_w3.rs",
+          "sha256": "80619097467b623f6a7d195200b0e5a76c0fba90893394ab182cd879fce672cb"
+        },
+        {
+          "path": "tempoch-core/Cargo.toml",
+          "sha256": "479df499febbd0c68b06387ba17b842b2e3c905796d8e2202e929fee73aa2bd7"
+        },
+        {
+          "path": "tempoch-core/src/data/mod.rs",
+          "sha256": "5223e09fb62bfb8faac6c66c09f4c74e4f74946a6c661cedb07eb54ec43c0bd0"
+        },
+        {
+          "path": "tempoch-core/src/data/runtime_data/eop.rs",
+          "sha256": "a69b60dc06de623b2dc8a7bcb9730a7184a2e24d88ca63cf543043bdaceda6d8"
+        },
+        {
+          "path": "tempoch-core/src/data/runtime_data/mod.rs",
+          "sha256": "86c11dcf8f73a9fca03d9b96fc831b96cea7199840c62b6d5663f3933c4e12ea"
+        },
+        {
+          "path": "tempoch-core/src/data/runtime_data/store.rs",
+          "sha256": "7da4eee831ebf1952fb96019d71d4860952ff209b1dd34cfc38f6a9f5d8bc3b1"
+        },
+        {
+          "path": "tempoch-core/src/data/runtime_data/utc_tai.rs",
+          "sha256": "14c72ddc6da2d57b4a675194d600cecf7a9e572bbc0ebae8b2694caf58f9390d"
+        },
+        {
+          "path": "tempoch-core/src/data/status.rs",
+          "sha256": "643b56cf818c1e08dd43552b7ce6aab7d6e8a381cb6d78a46fd2e9ccc65d4c5a"
+        },
+        {
+          "path": "tempoch-core/src/earth/context.rs",
+          "sha256": "709c827aa03d2807523b57f8eb86926528a257c69d9f6775e171278a554ca5dd"
+        },
+        {
+          "path": "tempoch-core/src/earth/delta_t.rs",
+          "sha256": "faa8d6218ff61f3090595eae4f5fdeceb0115797b71690d5d11d97c84a00e058"
+        },
+        {
+          "path": "tempoch-core/src/earth/eop.rs",
+          "sha256": "9bdb427a0239a92e66a400e0b6d80337ac6fbcbf32f6262865f7c06dad84881f"
+        },
+        {
+          "path": "tempoch-core/src/earth/mod.rs",
+          "sha256": "d82a2ff2d503362f0891bc2a7fb1901d26cbee686fd350eff49389c03b1f8b43"
+        },
+        {
+          "path": "tempoch-core/src/encoding/jd.rs",
+          "sha256": "a6ee479f4e1a6194ca4345775116c8fe34aa2c89a9f0fc7a4d137092b46a1c59"
+        },
+        {
+          "path": "tempoch-core/src/encoding/mjd.rs",
+          "sha256": "e5bad1bc04d9e201ab5be37713b0890d613f6de0fb499dd358833286a722e0a3"
+        },
+        {
+          "path": "tempoch-core/src/encoding/mod.rs",
+          "sha256": "4fc813de0dc722626331440ff91a74ca22421260807f8705119e22442c5800b2"
+        },
+        {
+          "path": "tempoch-core/src/features/mod.rs",
+          "sha256": "0a08a9e5bdd0d626dc0758e1b9f9f3c139734e7ef10644299560c31f90606eb1"
+        },
+        {
+          "path": "tempoch-core/src/features/serde_impl.rs",
+          "sha256": "d67d36f264104f3b7206711fc38bc59c440fb80e969a9c8720f7b5a60899c4e2"
+        },
+        {
+          "path": "tempoch-core/src/features/tagged.rs",
+          "sha256": "7c9a0d5abe71e070b5f0d81e02bbcb02bde49f543fa5954b278620e02fd6796e"
+        },
+        {
+          "path": "tempoch-core/src/features/time_instant.rs",
+          "sha256": "4fe71efe2039a11ab1cb86f09535d770db3912d1e1926a3dbaa1797389ac33eb"
+        },
+        {
+          "path": "tempoch-core/src/format/chrono.rs",
+          "sha256": "e74a770fcec9b5d83852763be3e1f300310fd50046e02c4ed9b123ea9eece232"
+        },
+        {
+          "path": "tempoch-core/src/format/gnss_week.rs",
+          "sha256": "bab3083b539052245fa0e59038f14d77e44aff10317cde00a6767067281a7cb9"
+        },
+        {
+          "path": "tempoch-core/src/format/impls.rs",
+          "sha256": "a6254fcf58b891e485ca7488a88eca34c9dec00ac7d90d585486dec574c43974"
+        },
+        {
+          "path": "tempoch-core/src/format/iso.rs",
+          "sha256": "3fdc5c2eaf2bc4fc2c784ce24d8ce3fa984221bb3f8631a539d71463c39c7016"
+        },
+        {
+          "path": "tempoch-core/src/format/markers.rs",
+          "sha256": "3d4aa5844504c67935d35eacd3f8aca9c3497ea5c08f7635d848b5b6598109e7"
+        },
+        {
+          "path": "tempoch-core/src/format/mod.rs",
+          "sha256": "1e04807623d279e5d1a122c4323630e3b11731153e139a67941bbb6ddbf65a80"
+        },
+        {
+          "path": "tempoch-core/src/format/time_format.rs",
+          "sha256": "c22ed8cb1b182bd439f440afa8f79c85d8a0858facfbbd9481373b7ea7009c8e"
+        },
+        {
+          "path": "tempoch-core/src/format/traits.rs",
+          "sha256": "8a4944f114c6379a8060735e5c78383b175a3899caa237d43182d76cfbb2e7d5"
+        },
+        {
+          "path": "tempoch-core/src/foundation/constats.rs",
+          "sha256": "8c8b4fdaa2789ef73f5360bf4163326c0149bfd64fb31dcffb6ff4c668aae2f7"
+        },
+        {
+          "path": "tempoch-core/src/foundation/duration.rs",
+          "sha256": "5724edb46903bf1d37ee7b5e73991ff09fe0fde64fe5776040d7ab4988ea554a"
+        },
+        {
+          "path": "tempoch-core/src/foundation/error.rs",
+          "sha256": "24e18431452aa546b37d66cbfe462873ef1ebdfb83e40fcb207d3e45c0b1acc1"
+        },
+        {
+          "path": "tempoch-core/src/foundation/mod.rs",
+          "sha256": "e0b582845581abb4515d247707ec8645fb4686bdae2a971f19c5ab60f625c6b2"
+        },
+        {
+          "path": "tempoch-core/src/foundation/sealed.rs",
+          "sha256": "c832f96a9cb27a4878ec0f19f6344fb5dd555cc92565575f89a40b295b390106"
+        },
+        {
+          "path": "tempoch-core/src/lib.rs",
+          "sha256": "89c7fca8c79ba89b468190fe8a72931a8333626df321af2589fa51c0e1e3f75a"
+        },
+        {
+          "path": "tempoch-core/src/model/civil.rs",
+          "sha256": "a0f8103cf74b4637faf305db89c1d9f7106f4fdb382f4308a00731af82c80037"
+        },
+        {
+          "path": "tempoch-core/src/model/mod.rs",
+          "sha256": "6a00aebc55c48f932156bd53c4dce1536232cb053b7fb72f7f8056834923fcf8"
+        },
+        {
+          "path": "tempoch-core/src/model/scale/conversion.rs",
+          "sha256": "cb84064e90e227b86bca44265ac1910cebbba3a5f32b330260889ffb91a5e950"
+        },
+        {
+          "path": "tempoch-core/src/model/scale/mod.rs",
+          "sha256": "b8813c08fdfdf8ba6212587c5c597ac96fcd4be10ce7d252dcbe64e68defb3b4"
+        },
+        {
+          "path": "tempoch-core/src/model/target.rs",
+          "sha256": "377cd379d7ce3737203ded7d6d3acd5f80b2d3c239c0e620f2d408e0f4105c37"
+        },
+        {
+          "path": "tempoch-core/src/model/time.rs",
+          "sha256": "659db47d0d7f4fbabd7432fb806c38285e27c8b034a90b8f9afaf8aedab36a7c"
+        },
+        {
+          "path": "tempoch-core/src/period/error.rs",
+          "sha256": "c4492bc194d61d1f22431529cdc8cc4b831038b664cb34999a8a20555576b49a"
+        },
+        {
+          "path": "tempoch-core/src/period/mod.rs",
+          "sha256": "7ca9b024e618cfa14af88938cf4910660acb1dc8b09ba62a1baf5b32efcde202"
+        },
+        {
+          "path": "tempoch-core/src/period/series.rs",
+          "sha256": "c4d310cd37f79f2da4199fba671a04e287caf8020a65e59da372a5be51f424e2"
+        },
+        {
+          "path": "tempoch-core/tests/period_formats.rs",
+          "sha256": "582d79d306e81085fc4755e891753885de302fc0436ba4b32ec75a4e52abcc62"
+        },
+        {
+          "path": "tempoch-core/tests/proptests.rs",
+          "sha256": "d751db48bc865fe69b123b160b93593471c0e33c5e0980e65f7b35b28b313366"
+        },
+        {
+          "path": "tempoch-core/tests/utc_interop.rs",
+          "sha256": "28dec8f78d9e6473d837535ca2b08a8f06a7a5bb20850e187a63676797c98365"
+        },
+        {
+          "path": "tempoch-core/tests/utc_precision.rs",
+          "sha256": "ccf0382cc4b4239bd788c464eb628585dcc72308704d8c1ff26907d39456b63a"
+        },
+        {
+          "path": "tempoch-ffi/Cargo.lock",
+          "sha256": "bfb5287c86c119021a3606067cb4e12e05ed97ce36c0ed99018f5511b45b4f0f"
+        },
+        {
+          "path": "tempoch-ffi/Cargo.toml",
+          "sha256": "0e319f09df587f36e95e850b358d80cebdac7535b11ae942b9c3561d911d0de2"
+        },
+        {
+          "path": "tempoch-ffi/README.md",
+          "sha256": "f0a780275a52d1109e72266d7353b97fa0f7d019a332fcab6a56f711f82e076a"
+        },
+        {
+          "path": "tempoch-ffi/build.rs",
+          "sha256": "278ed0b169515431b908dcc0fcfca7190e82ef89299ddbe719c7a929250b30fc"
+        },
+        {
+          "path": "tempoch-ffi/cbindgen.toml",
+          "sha256": "181c63127149feb17899aa8337079a8189d52bd4516e4fde77816ace933aac62"
+        },
+        {
+          "path": "tempoch-ffi/include/tempoch_ffi.h",
+          "sha256": "e97eae6de4523f2c73f9c9eb362e71b484ea56ed55e833330be139f9b6848e1a"
+        },
+        {
+          "path": "tempoch-ffi/src/constats.rs",
+          "sha256": "a442a3a3090a5d0315f3dea2fbbc22f358fa0c7cc71a98415b9fab3b0bcbe15d"
+        },
+        {
+          "path": "tempoch-ffi/src/context.rs",
+          "sha256": "cd447cf83e2d22fe23b47fc1c5f5397254d60db89a0d56e020e9abf5914c9733"
+        },
+        {
+          "path": "tempoch-ffi/src/eop.rs",
+          "sha256": "e46aab81335dbcc00be1d55b1a3cd58a6acda0ff68786075c9fe50d6173a7eaf"
+        },
+        {
+          "path": "tempoch-ffi/src/error.rs",
+          "sha256": "fefe69cd22006092a7e11b83d4c82a1ef795c03a3b8f1060076a1d16c4a0f7f4"
+        },
+        {
+          "path": "tempoch-ffi/src/gnss.rs",
+          "sha256": "cb966e71ebff6952028a84c5d33f644604d3396b1748b3e07d3d79a201ae586d"
+        },
+        {
+          "path": "tempoch-ffi/src/lib.rs",
+          "sha256": "d36b728936a2b4a6753d9955846805e986326dade49f810c05ec5f71322bfe6f"
+        },
+        {
+          "path": "tempoch-ffi/src/period.rs",
+          "sha256": "605690ca28de1b6c6b96b78a4bc0cef6f9811c87b8aace867afbb2a0a53c8938"
+        },
+        {
+          "path": "tempoch-ffi/src/status.rs",
+          "sha256": "33e8a3b973f0f2226a8ee959da9c025ebb5c02ecddddf02041cef4736fdf0897"
+        },
+        {
+          "path": "tempoch-ffi/src/time.rs",
+          "sha256": "d3b04b34431e39d19e34880cc8aa786d4300c401005cb07735c25a97226ffb02"
+        },
+        {
+          "path": "tempoch-ffi/src/typed.rs",
+          "sha256": "7a0a2dced5ae9c0726552591e86828351351a7762ea7d5cf394b3299b4259512"
+        },
+        {
+          "path": "tempoch-ffi/tests/ffi.rs",
+          "sha256": "85f6ac7137609be357562f3f590720f8da44afb36c78b5e3e95d249487239a93"
+        },
+        {
+          "path": "tempoch-validation/Cargo.toml",
+          "sha256": "01fc78d71b70777c64dd5c76baf828af336af5c6d4877225b2f8afae8ebb0709"
+        },
+        {
+          "path": "tempoch-validation/data/gnss/README.md",
+          "sha256": "eb3797ff200a7cd9cd90ecca52d1ba26e7a2b5663d0f8dfac8ca62be0d34941b"
+        },
+        {
+          "path": "tempoch-validation/data/gnss/epochs.csv",
+          "sha256": "c4c37eb35bd833317dc10a1ded9efa38ba7b83564ad825e41ca21033b5fccf4a"
+        },
+        {
+          "path": "tempoch-validation/data/gnss/epochs.csv.toml",
+          "sha256": "b7b06c6bfb9b78a40a3182133955d78f5b73ff06c9e5ed1f039d82b26fafb441"
+        },
+        {
+          "path": "tempoch-validation/src/lib.rs",
+          "sha256": "ee9a70bece8537020e8d9536655b90b2381709b2304aebafe2dbbbb44a677b8c"
+        },
+        {
+          "path": "tempoch-validation/tests/gnss_icd.rs",
+          "sha256": "166689c16b52fa97c2b0a5d12973639e9b9cb2be9c97d28ae2768dec95c02a35"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "epoch_tt": "2017-10-01T17:14:00",
+  "calendar": "proleptic Gregorian",
+  "longitude_east_deg": 20.17,
+  "planetocentric_latitude_deg": -1.10,
+  "height_m": 0,
+  "reference_radius_km": 1737.4,
+  "orientation": "MoonIauMeanEarth / analytical IAU_MOON, pck00011.tpc",
+  "time_model": "Tempoch 0.11.2 seven-term USNO Circular 179 TT-to-TDB approximation; independently evaluated in Python and used as the TDB input to CSPICE for both SPK and orientation. Native CSPICE unitim is retained as a separate time-model diagnostic.",
+  "time_model_source": "https://aa.usno.navy.mil/publications/Circular_179",
+  "kernel_inputs": {
+    "de440s.bsp": {"url": "https://naif.jpl.nasa.gov/pub/naif/generic_kernels/spk/planets/de440s.bsp", "sha256": "c1c7feeab882263fc493a9d5a5b2ddd71b54826cdf65d8d17a76126b260a49f2"},
+    "naif0012.tls": {"url": "https://naif.jpl.nasa.gov/pub/naif/generic_kernels/lsk/naif0012.tls", "sha256": "678e32bdb5a744117a467cd9601cd6b373f0e9bc9bbde1371d5eee39600a039b"},
+    "pck00011.tpc": {"url": "https://naif.jpl.nasa.gov/pub/naif/generic_kernels/pck/pck00011.tpc", "sha256": "3dff7b1dbeceaa01f25467767d3fa25816051c85d162d1edf04acb310ee28bb1"}
+  }
+}

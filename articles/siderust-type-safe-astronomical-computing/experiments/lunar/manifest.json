@@ -1,0 +1,86 @@
+{
+  "experiment": "Earth from lunar site, 2017-10-01 17:14:00 TT",
+  "siderust_version": "0.18.1",
+  "files": [
+    {
+      "path": "examples/Cargo.toml",
+      "bytes": 275,
+      "sha256": "d18179548817c3530783a0ce92959aa970fa01c9f5a1e5fb6e96c9dbce81f4f5"
+    },
+    {
+      "path": "examples/Cargo.lock",
+      "bytes": 21769,
+      "sha256": "11d00d2bda0e7d7a311f0eea00cd42281e743d66a05dd7e9e5c64c8a78938371"
+    },
+    {
+      "path": "examples/src/lunar_application.rs",
+      "bytes": 5904,
+      "sha256": "d143abe6edc5cff17e713ba7c06de1a66b07d94f05e70a07b9e2297f80ac6e73"
+    },
+    {
+      "path": "examples/src/bin/earth_from_moon.rs",
+      "bytes": 974,
+      "sha256": "e51503a0b36b15aee9358c42d8d69e87c7fde16a6a11653044f430f198a1b360"
+    },
+    {
+      "path": "examples/src/bin/lunar_geometry.rs",
+      "bytes": 2049,
+      "sha256": "6f3c4f286d053dafd72f00ac24dc0b4da140c772a84659e296513493c42f9212"
+    },
+    {
+      "path": "scripts/validate_lunar_application.py",
+      "bytes": 6667,
+      "sha256": "72fcfa5657ee1788c56b871548b7eadc423caa52e3552c83af99edc3c5dd9cd5"
+    },
+    {
+      "path": "scripts/generate_lunar_macros.py",
+      "bytes": 1284,
+      "sha256": "6ea7c8683f4009768fcbd17db91d414462b44a31c23ead2c5a7b450da6e56b95"
+    },
+    {
+      "path": "scripts/fetch_application_kernels.py",
+      "bytes": 1023,
+      "sha256": "57c504d6ffe33f443f0c33da9e4ab562f3f555286c4d6c4b0348eccf213c4672"
+    },
+    {
+      "path": "scripts/write_lunar_manifest.py",
+      "bytes": 1343,
+      "sha256": "b9d720a4484ea2437ec6c622698f2c430c56b0bd5240def3dfb0be9da2b1bb8d"
+    },
+    {
+      "path": "experiments/lunar/inputs.json",
+      "bytes": 1169,
+      "sha256": "69875dc583b3195e2eca683061cea81c5d493174d4546caf4dc69b5138368d2c"
+    },
+    {
+      "path": "experiments/reproduce.sh",
+      "bytes": 673,
+      "sha256": "b8b2bd3c4f70ff4fe22882bdd6c72bfbd72eca92cf87db43a3bcae84b85dfa6b"
+    },
+    {
+      "path": "experiments/requirements.txt",
+      "bytes": 45,
+      "sha256": "2647cdc0adef594536f6bf8d30715cdc3323801812343a12a96b6e3c2cf0f5ce"
+    },
+    {
+      "path": "experiments/lunar/recorded/lunar-application-reference.csv",
+      "bytes": 799,
+      "sha256": "d0e3d383fc11b69dfcfeb78664a2d08286037c80f4fcb30a949034a3960aa6d7"
+    },
+    {
+      "path": "experiments/lunar/recorded/lunar-application-summary.json",
+      "bytes": 1915,
+      "sha256": "3c314b2758af62371d5023669d3426c41ae1d93bb064aca8ce39b46985766532"
+    },
+    {
+      "path": "experiments/lunar/recorded/lunar-application.csv",
+      "bytes": 1058,
+      "sha256": "52ed338c646ddcbc2937aeae14220c9112ae11806be287c946614c005b4b66e9"
+    },
+    {
+      "path": "experiments/lunar/recorded/lunar.txt",
+      "bytes": 68,
+      "sha256": "65b1bce7a2ba9631d20db354fdda62ce09d1a0ef53b7be55f32b6ba55e9f3327"
+    }
+  ]
+}

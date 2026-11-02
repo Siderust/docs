@@ -1,0 +1,32 @@
+\section{Introduction}
+
+Predicting the direction of Earth from a lunar station requires an ephemeris, a coordinate origin,
+a frame transformation and a finite line of sight projected onto the local horizon. Epochs have
+time scales; positions have units, frames and centers; and the observer has a surface location and
+an orientation model. A calculation must carry these relationships from one operation to the next.
+
+Established libraries represent quantities, time and coordinates through specialized scientific
+interfaces. Composing such components still requires agreement about the representations passed
+between them. Rust's generics and traits allow selected compatibility requirements to be expressed
+in types and checked when an application is compiled. Data coverage, observer coordinates and
+physical model selection require additional information at execution time.
+
+We present Siderust~\cite{Valles_Puig_Siderust_Type-Safe_Astronomy}, an open-source Rust ecosystem
+that uses the quantity, coordinate and epoch types of separate scientific libraries directly in
+astronomical operations. The \texttt{siderust} domain crate connects these representations to
+coordinate transformations, analytical and kernel-backed ephemerides, surface observations and
+observing-event searches. A frame or center change produces a correspondingly typed result, while
+explicit contexts supply the models and data required by the transformation.
+
+This paper makes three contributions. First, we implement modular composition of independently
+reusable scientific libraries through a shared astronomical domain layer. Second, we express
+astronomical compatibility requirements through type-level contracts combined with explicit runtime
+model contexts. Third, we evaluate these interfaces through terrestrial and lunar observations,
+compiler and runtime controls, and independent ERFA and CSPICE comparisons. An application-defined
+surface-observer model exercises extensibility. The experiments distinguish same-model
+implementation residuals from analytical-model differences against DE440s.
+
+Section~2 compares the relevant interface designs. Sections~3--5 describe the architecture,
+scientific APIs and language bindings. Section~6 defines the applications; Sections~7--8 present
+the methods and results. Section~9 discusses the consequences of the observed behavior and the
+remaining technical boundaries.

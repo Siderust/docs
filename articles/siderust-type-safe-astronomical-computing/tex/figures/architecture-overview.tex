@@ -1,0 +1,27 @@
+% Responsibility groups and verified domain-crate uses, not a full crate DAG.
+\begin{tikzpicture}[
+    box/.style={draw,align=center,text width=47mm,minimum height=22mm,
+            inner sep=2mm,font=\small},
+    use/.style={-{Latex[length=2mm]},semithick},
+    flow/.style={use,dashed}
+    ]
+    \node[box,text width=65mm,minimum height=13mm] (app) at (5.7,2.3)
+    {\textbf{Integrated applications}\\Observer geometry; event searches; orbital workflows};
+    \node[box,fill=black!6] (domain) at (5.7,0)
+    {\textbf{Astronomical domain: \texttt{siderust}}\\Coordinate transforms\\Analytical / kernel ephemerides\\Celestial-body models\\Surface observations};
+    \node[box] (runtime) at (11.4,0)
+    {\textbf{Runtime scientific context}\\Model providers; kernels; EOP data\\Supported body-orientation inputs\\Observer configurations};
+    \node[box] (found) at (0,-3.1)
+    {\textbf{Foundational representations}\\\texttt{qtty}: quantities and units\\\texttt{affn}: geometry, frames, centers\\\texttt{tempoch}: epochs and scales};
+    \node[box] (num) at (5.7,-3.1)
+    {\textbf{Reusable numerical methods}\\\texttt{cheby}; \texttt{keplerian}\\\texttt{principia}; \texttt{optica}\\Typed interfaces and scalar kernels};
+    \node[box] (data) at (11.4,-3.1)
+    {\textbf{Scientific data component}\\\texttt{siderust-archive}\\Tables and accessors; manifests;\\checksums and provenance};
+    \node[align=left,font=\footnotesize,text width=45mm] at (0,0)
+    {\textbf{Relationships}\\Solid: domain uses a library group\\Dashed: scientific inputs\\or application composition\\\smallskip Independent components also\\support use outside Siderust.};
+    \draw[flow] (domain) -- node[right,font=\footnotesize]{composes} (app);
+    \draw[flow] (runtime) -- (domain);
+    \draw[use] (domain.south west) -- (found.north);
+    \draw[use] (domain) -- (num);
+    \draw[use] (domain.south east) -- (data.north west);
+\end{tikzpicture}

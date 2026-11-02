@@ -1,0 +1,738 @@
+{
+  "path_base": "article",
+  "policy": "Original evidence is immutable; fresh runs are excluded.",
+  "software": {
+    "rust": "1.93.1",
+    "siderust": "0.18.1",
+    "tempoch": "0.11.2",
+    "python": "3.12.13",
+    "pyerfa": "2.0.1.5",
+    "erfa": "2.0.1",
+    "spiceypy": "6.0.0",
+    "cspice": "CSPICE_N0067",
+    "numpy": "2.5.4"
+  },
+  "experiment_map": "experiments/results/manifests/experiments.json",
+  "files": [
+    {
+      "path": "README.md",
+      "bytes": 3560,
+      "sha256": "e6dc5dbf21bf0f407eb832891525d4b06a0f0e198c18ce960221081264d63fcc"
+    },
+    {
+      "path": "examples/Cargo.lock",
+      "bytes": 21769,
+      "sha256": "11d00d2bda0e7d7a311f0eea00cd42281e743d66a05dd7e9e5c64c8a78938371"
+    },
+    {
+      "path": "examples/Cargo.toml",
+      "bytes": 275,
+      "sha256": "d18179548817c3530783a0ce92959aa970fa01c9f5a1e5fb6e96c9dbce81f4f5"
+    },
+    {
+      "path": "examples/README.md",
+      "bytes": 3363,
+      "sha256": "8b955e0ed7f59238092a685f62b6ad02c7ceffbe06f0fe177cd6ec384ffe303e"
+    },
+    {
+      "path": "examples/src/antares.rs",
+      "bytes": 3975,
+      "sha256": "935a213919435b422b3ac6268200243a8de5c770f43d6885feeb20c18729b5ce"
+    },
+    {
+      "path": "examples/src/bin/antares_diagnostics.rs",
+      "bytes": 975,
+      "sha256": "001d43cab2f1e06718e9dd061d72ca164506ed8228b6c79b16e91f65f719d10c"
+    },
+    {
+      "path": "examples/src/bin/earth_from_moon.rs",
+      "bytes": 974,
+      "sha256": "e51503a0b36b15aee9358c42d8d69e87c7fde16a6a11653044f430f198a1b360"
+    },
+    {
+      "path": "examples/src/bin/frame_repair.rs",
+      "bytes": 678,
+      "sha256": "eab07e2ea75ac6cb763a54cd222e9a56ab257d30c00e83cc529d2ebe03127dbd"
+    },
+    {
+      "path": "examples/src/bin/historical_feasibility.rs",
+      "bytes": 999,
+      "sha256": "d3e9e230ee0ab91dec46870e242da2e5df94a1cc0f4e8df485c647743e59a9b1"
+    },
+    {
+      "path": "examples/src/bin/lunar_geometry.rs",
+      "bytes": 2049,
+      "sha256": "6f3c4f286d053dafd72f00ac24dc0b4da140c772a84659e296513493c42f9212"
+    },
+    {
+      "path": "examples/src/bin/observe.rs",
+      "bytes": 1507,
+      "sha256": "126cf1546478f466fe5d84a87c2dee6b314dcbbb9ab643dff1356abd8544da84"
+    },
+    {
+      "path": "examples/src/bin/qtty.rs",
+      "bytes": 326,
+      "sha256": "1729e75635ec606538308597991b5050ca262dbdcb8dca64d62ccab1cc9e460a"
+    },
+    {
+      "path": "examples/src/bin/runtime_ephemeris.rs",
+      "bytes": 590,
+      "sha256": "82c4f9305f30e07f5613f5cf5d5a246a1f4202e314bc02c9b01b7700fbbfab06"
+    },
+    {
+      "path": "examples/src/bin/surface_contract.rs",
+      "bytes": 2110,
+      "sha256": "5aff5cbf079181d3a0ab57b064579a4e4ff4b3556dbdc2263fdcdb70e6fc3fd2"
+    },
+    {
+      "path": "examples/src/bin/tempoch.rs",
+      "bytes": 294,
+      "sha256": "cddff78704b8f1da75ad7eb68fa3be1ba5e20a83d17ac0895b05816341ae860e"
+    },
+    {
+      "path": "examples/src/bin/viewing.rs",
+      "bytes": 3070,
+      "sha256": "62f4dc6ff0ca3ea1ba5e2b079ac6ad294240cb727f4ec1087d1e6cc67500eac7"
+    },
+    {
+      "path": "examples/src/bin/viewing_events.rs",
+      "bytes": 2304,
+      "sha256": "a824667aff3bc2f940ccfe4ab153b3a1684249ebc81c44f2a61a16dac2e9740f"
+    },
+    {
+      "path": "examples/src/lunar_application.rs",
+      "bytes": 5904,
+      "sha256": "d143abe6edc5cff17e713ba7c06de1a66b07d94f05e70a07b9e2297f80ac6e73"
+    },
+    {
+      "path": "experiments/.gitignore",
+      "bytes": 90,
+      "sha256": "aa8316b802e2526d8b4e72bf5ddca48677dec1b2f67b1ff2a2d09b27e29531b3"
+    },
+    {
+      "path": "experiments/README.md",
+      "bytes": 9793,
+      "sha256": "388f8f20391013d9d11966416eb5219d0e40f1c5f9f49305e7584a6181347bb3"
+    },
+    {
+      "path": "experiments/TIME_MODELS.md",
+      "bytes": 5854,
+      "sha256": "a57aab9c289cec8ab79327b5ac01c57490651fe2154a7e0837e218ad219d9337"
+    },
+    {
+      "path": "experiments/lunar/README.md",
+      "bytes": 2955,
+      "sha256": "18d19200c6968f14ab26c105575ae664e4d588a02ceb44b7794b189c446f7d11"
+    },
+    {
+      "path": "experiments/lunar/SHA256SUMS",
+      "bytes": 1726,
+      "sha256": "a6fe061a18875cba93203bdfa2c01b4ddef9db41786942947993da847b930604"
+    },
+    {
+      "path": "experiments/lunar/inputs.json",
+      "bytes": 1169,
+      "sha256": "69875dc583b3195e2eca683061cea81c5d493174d4546caf4dc69b5138368d2c"
+    },
+    {
+      "path": "experiments/lunar/manifest.json",
+      "bytes": 2826,
+      "sha256": "c50e257744b4568c824b3546df5843ebef22edea077d70a27f59fbc2c6f47c64"
+    },
+    {
+      "path": "experiments/lunar/recorded/lunar-application-reference.csv",
+      "bytes": 799,
+      "sha256": "d0e3d383fc11b69dfcfeb78664a2d08286037c80f4fcb30a949034a3960aa6d7"
+    },
+    {
+      "path": "experiments/lunar/recorded/lunar-application-summary.json",
+      "bytes": 1915,
+      "sha256": "3c314b2758af62371d5023669d3426c41ae1d93bb064aca8ce39b46985766532"
+    },
+    {
+      "path": "experiments/lunar/recorded/lunar-application.csv",
+      "bytes": 1058,
+      "sha256": "52ed338c646ddcbc2937aeae14220c9112ae11806be287c946614c005b4b66e9"
+    },
+    {
+      "path": "experiments/lunar/recorded/lunar.txt",
+      "bytes": 68,
+      "sha256": "65b1bce7a2ba9631d20db354fdda62ce09d1a0ef53b7be55f32b6ba55e9f3327"
+    },
+    {
+      "path": "experiments/reproduce.sh",
+      "bytes": 673,
+      "sha256": "b8b2bd3c4f70ff4fe22882bdd6c72bfbd72eca92cf87db43a3bcae84b85dfa6b"
+    },
+    {
+      "path": "experiments/requirements.lock",
+      "bytes": 7176,
+      "sha256": "a396a48d3bbfc7ee910608009d2d361bc689175a4813aba710eb15fb70abefce"
+    },
+    {
+      "path": "experiments/requirements.txt",
+      "bytes": 45,
+      "sha256": "2647cdc0adef594536f6bf8d30715cdc3323801812343a12a96b6e3c2cf0f5ce"
+    },
+    {
+      "path": "experiments/results/Dockerfile",
+      "bytes": 486,
+      "sha256": "e3c7a282b0ffd81f8769eb7177449528bc619fe4402395c75078f0ec7a32999f"
+    },
+    {
+      "path": "experiments/results/LICENSE",
+      "bytes": 1088,
+      "sha256": "83470ec3d70eecd0f63895355b9d6439748d9ff0dfecf3abaf8dded99ca8f274"
+    },
+    {
+      "path": "experiments/results/README.md",
+      "bytes": 1151,
+      "sha256": "8db26da5ca34aa2ffcf78f02247bc11476b8a9c7af2bc0918b1a248699d75138"
+    },
+    {
+      "path": "experiments/results/SOURCE-MANIFEST.json",
+      "bytes": 15979,
+      "sha256": "274d375d17ce2f19ca4285f3de90cfb02428573a5f97fa58106608276eb27f40"
+    },
+    {
+      "path": "experiments/results/THIRD_PARTY.md",
+      "bytes": 1690,
+      "sha256": "711c147866228ba5348673471262cdc2756aec294b2d78a9d95315e74da87cf3"
+    },
+    {
+      "path": "experiments/results/check_controls.py",
+      "bytes": 1079,
+      "sha256": "c10565d3c4b5af914d292f1398cb7514fbf4566562cdaa46700f5049224d272e"
+    },
+    {
+      "path": "experiments/results/controls/Cargo.lock",
+      "bytes": 21755,
+      "sha256": "1005e2236f4d1eb0f90f26803cbab8fce0435c42d0d3029057b38b760635a618"
+    },
+    {
+      "path": "experiments/results/controls/Cargo.toml",
+      "bytes": 375,
+      "sha256": "85bfa8d683f777c7d665c192cfa0a5f2ef08544d0f71867bcbb32bbcf5edcd76"
+    },
+    {
+      "path": "experiments/results/controls/src/bin/center.rs",
+      "bytes": 267,
+      "sha256": "c938ca083487a7fe0f6d9ea754015df465a7b64340a515445998d94c4eaa2d6a"
+    },
+    {
+      "path": "experiments/results/controls/src/bin/dimension.rs",
+      "bytes": 82,
+      "sha256": "1e982019736741cabb7d3693a2e518b9ebc424010efff43bacc37c2e3f72bcba"
+    },
+    {
+      "path": "experiments/results/controls/src/bin/frame.rs",
+      "bytes": 281,
+      "sha256": "d7bf033a7a4913a260bafd452a9db226e3aa1cb045901ae56fb78264a5cf5ee6"
+    },
+    {
+      "path": "experiments/results/controls/src/bin/observer_body.rs",
+      "bytes": 589,
+      "sha256": "5c8e9dc14f14c0d40e888fab3195bbfc167724794df68009f8755b0dbbc31844"
+    },
+    {
+      "path": "experiments/results/controls/src/bin/scale.rs",
+      "bytes": 130,
+      "sha256": "aaca2d02db9be23a0aa090b14e947a57fc072f40f886737dff607cceaa73c7fc"
+    },
+    {
+      "path": "experiments/results/fetch_sources.py",
+      "bytes": 2095,
+      "sha256": "02fd2bbc6c2f02494532f118bfd5ae02bfe4473aea55c2a848aba8d4e9d081cf"
+    },
+    {
+      "path": "experiments/results/licenses/AGPL-3.0-only.txt",
+      "bytes": 34523,
+      "sha256": "8486a10c4393cee1c25392769ddd3b2d6c242d6ec7928e1414efff7dfb2f07ef"
+    },
+    {
+      "path": "experiments/results/manifests/experiments.json",
+      "bytes": 3271,
+      "sha256": "f32e273f484bd151bbb465b885ee714cf192ca030e694df953257248076656d5"
+    },
+    {
+      "path": "experiments/results/manifests/original-provenance.json",
+      "bytes": 5999,
+      "sha256": "562b6a3377f9fe37abc34c4706590044a9782aafce8009483827d206f4f581e6"
+    },
+    {
+      "path": "experiments/results/manifests/publication-layout.json",
+      "bytes": 1039,
+      "sha256": "6e6c18adaa3da245148d36287fd6a87c3ae1150b8ad1b6bf36ad0f4972701720"
+    },
+    {
+      "path": "experiments/results/manifests/upstream.json",
+      "bytes": 103585,
+      "sha256": "e812c80e1e185961c38ccbd83f1f67b5b417a5e839cf0b9702f356d8d5328e0a"
+    },
+    {
+      "path": "experiments/results/recorded/Earth-SPK-residuals.csv",
+      "bytes": 50014,
+      "sha256": "94e76fa6ce6027cfc0cb824a809a95ab2e5a06dfd3293b17a9c5a5997685883a"
+    },
+    {
+      "path": "experiments/results/recorded/Earth-model-residuals.csv",
+      "bytes": 50014,
+      "sha256": "98a0f7a9d57dd61c457f57ece03ffa0a72cdba417b59e9fc253069ccad85ab1f"
+    },
+    {
+      "path": "experiments/results/recorded/Moon-SPK-residuals.csv",
+      "bytes": 50014,
+      "sha256": "9aaf8e6bc447e80d9ad0b3bfdfb178334121fb39b2fefd021312e57ed55383ea"
+    },
+    {
+      "path": "experiments/results/recorded/Moon-model-residuals.csv",
+      "bytes": 50014,
+      "sha256": "632a7b43f9e40ebacba27077935258544373f9ac24187e41f06f80cd69e5f0b6"
+    },
+    {
+      "path": "experiments/results/recorded/boundaries.csv",
+      "bytes": 9162,
+      "sha256": "d924c3d958328ed0897d6e1b6d012c1a7b3e68df448b60becb4cc71dc9c8f569"
+    },
+    {
+      "path": "experiments/results/recorded/boundary-input.csv",
+      "bytes": 4303,
+      "sha256": "24392364778aa22e98517cda1d64a41e858e8fe8c9740cf87ad36e86e6b16363"
+    },
+    {
+      "path": "experiments/results/recorded/boundary-reference.csv",
+      "bytes": 7072,
+      "sha256": "fd058b52a90098eeedd9450416c5454f6a050d01c83b3431a8ea332f8ea82fb2"
+    },
+    {
+      "path": "experiments/results/recorded/cargo-tree.txt",
+      "bytes": 6470,
+      "sha256": "8f7c7059ad31c1e1d57bbda5266379469319dacab9725a25841a1d5f70303db2"
+    },
+    {
+      "path": "experiments/results/recorded/cargo-version.txt",
+      "bytes": 36,
+      "sha256": "57d704d9ad73ec7cc1b1a79aed6703333615865be6e3dc1ce269ea4ca7068227"
+    },
+    {
+      "path": "experiments/results/recorded/controls-summary.json",
+      "bytes": 386,
+      "sha256": "75a727e5477f9f8fce30d5c7f7747d48fcb7dc06c56aaf723d541ea673b88ba0"
+    },
+    {
+      "path": "experiments/results/recorded/coverage.log",
+      "bytes": 2259,
+      "sha256": "3366b8d4896e098f02745c3bf1bd29c5295b6df0018cd6e1a04a3abf0eefacc8"
+    },
+    {
+      "path": "experiments/results/recorded/eop-tests.log",
+      "bytes": 4222,
+      "sha256": "7e1a0109d5518c57f3c8029cc4afefdef064d1027ac93e5bd4f2ecf79f96d8d1"
+    },
+    {
+      "path": "experiments/results/recorded/ephemeris.csv",
+      "bytes": 249069,
+      "sha256": "208a09bb7fb542903a39c1984dc928745c296a2be90b9aec2d8303c83b35fd28"
+    },
+    {
+      "path": "experiments/results/recorded/extended-residuals.csv",
+      "bytes": 148562,
+      "sha256": "635d1d69d17828f5418ddbe7161c107c26bef5921d4e1020cc5f46499babeeae"
+    },
+    {
+      "path": "experiments/results/recorded/extended-summary.json",
+      "bytes": 7551,
+      "sha256": "d94b4c2209399f856919a2462bacb9ee6a63564929e47e6fad44c2eb9aa8ac2d"
+    },
+    {
+      "path": "experiments/results/recorded/frame-tests.log",
+      "bytes": 4639,
+      "sha256": "e6fa115982a9d2d3b7d7b4bc44ceb040e4387f6739e8e0f05796b43216aff4ec"
+    },
+    {
+      "path": "experiments/results/recorded/lunar-surface-reference.csv",
+      "bytes": 3897,
+      "sha256": "e39b3d36e2233105c6145564dae6cf2bef8f4aed1574d6512ec73a16783b96e0"
+    },
+    {
+      "path": "experiments/results/recorded/lunar-surface.csv",
+      "bytes": 3910,
+      "sha256": "55f2c78d55dccc71c18862c7417f8dbc3afd44f79c17c4a1587125afbd61d5a2"
+    },
+    {
+      "path": "experiments/results/recorded/mars.csv",
+      "bytes": 855,
+      "sha256": "6de5efcd1a341097cd9a9db65a9a7d802707e40f41a9aded676f99a70beec4e7"
+    },
+    {
+      "path": "experiments/results/recorded/python-version.txt",
+      "bytes": 61,
+      "sha256": "424bc78af72791a0e09dad53781f516adc7548246a83dab82191af98173d789d"
+    },
+    {
+      "path": "experiments/results/recorded/reference.csv",
+      "bytes": 178028,
+      "sha256": "cd213039cd054f9abc2aab3480c4b3fe079964b606e981fc9cd2d2bde27c752e"
+    },
+    {
+      "path": "experiments/results/recorded/rotations-reference.csv",
+      "bytes": 328509,
+      "sha256": "bded2dbac58bc9e7d4e7a0004397ff390614771ed4f1bfb1c77fa6142c252389"
+    },
+    {
+      "path": "experiments/results/recorded/rotations.csv",
+      "bytes": 258721,
+      "sha256": "59cea8445047e55024a13ea93292d521a244a96803cd863ae6480cf921bf40bc"
+    },
+    {
+      "path": "experiments/results/recorded/runtime-controls.log",
+      "bytes": 28,
+      "sha256": "e53c737b20a79185d44763d0bdc8d42cdab194dac9b7a1463475138740f1cdc5"
+    },
+    {
+      "path": "experiments/results/recorded/runtime.txt",
+      "bytes": 269,
+      "sha256": "eea8a6c75e1588d6f600d8513006edaa8a7ed26b681ae5075887738541865762"
+    },
+    {
+      "path": "experiments/results/recorded/rustc.txt",
+      "bytes": 196,
+      "sha256": "b1008d5f7681db91d446d2bb0a07af00372bb6cb4d4599e95212e3a8edce4e11"
+    },
+    {
+      "path": "experiments/results/recorded/spk-surface-tests.log",
+      "bytes": 3520,
+      "sha256": "e9fea13578c15ce3a4ad9a5431c841453956c71fd2268fa12e0b9d85475e3cbf"
+    },
+    {
+      "path": "experiments/results/recorded/summary.json",
+      "bytes": 6837,
+      "sha256": "a0aa5ece66a664d3da8b785b515b94e06fdb5e919b44515809c0bc8bbd78d24e"
+    },
+    {
+      "path": "experiments/results/recorded/time_data.provenance.toml",
+      "bytes": 396,
+      "sha256": "8aace5d3829d1f3163e0059e6ccc734dfbdf7e96a67b141dc55d86853d940b12"
+    },
+    {
+      "path": "experiments/results/recorded/utc-reference.csv",
+      "bytes": 2228,
+      "sha256": "06755eba5c63464268a6868ba73bc1243c0b0af28a764295da9c1d9b6fe7b0f2"
+    },
+    {
+      "path": "experiments/results/recorded/utc.csv",
+      "bytes": 1419,
+      "sha256": "044f2154e893139292f242f1fb2be202e4bb36ce81a5efb71e3f9f28df98ba8a"
+    },
+    {
+      "path": "experiments/results/reference/ephemeris.py",
+      "bytes": 2509,
+      "sha256": "7937511935778c2ac33c1dc05f4de6377e58c2055c427c505f8696b71e1f9fdc"
+    },
+    {
+      "path": "experiments/results/reference/extended.py",
+      "bytes": 6885,
+      "sha256": "b5334743b9a4870bea91610eb72b988177b98fabe13b19bdf3d3d6148814f9d3"
+    },
+    {
+      "path": "experiments/results/regenerate.py",
+      "bytes": 2640,
+      "sha256": "7160674a08dea08e80b505b0d1f5b09d359c54995606eacbbdd216f557f57164"
+    },
+    {
+      "path": "experiments/results/reproduce.py",
+      "bytes": 14498,
+      "sha256": "feb3b74dd24eb4429748f75c7150df10bb45f2f9bfb487ccf09bcc2f36f342fe"
+    },
+    {
+      "path": "experiments/results/runner/Cargo.lock",
+      "bytes": 21759,
+      "sha256": "4a4d3c937580dc14da0b3e5741f53e8ca83f6983454450047cc3b1061fc60dcd"
+    },
+    {
+      "path": "experiments/results/runner/Cargo.toml",
+      "bytes": 423,
+      "sha256": "c51b27fd897f7fe0f9c5f30c292238292c2d627f1d827341a5972e8373275d85"
+    },
+    {
+      "path": "experiments/results/runner/src/bin/coverage.rs",
+      "bytes": 406,
+      "sha256": "784e96e471a9f7bc9b8d9ce65d4bda6b59691dc8da5061991b97756aa19d9b06"
+    },
+    {
+      "path": "experiments/results/runner/src/bin/runtime_controls.rs",
+      "bytes": 1596,
+      "sha256": "2c4ce03847ffec75d86ff754662213566676d5ab3c0b11a525bff62dc99086fe"
+    },
+    {
+      "path": "experiments/results/runner/src/bin/validation.rs",
+      "bytes": 4385,
+      "sha256": "e77ca8769ca6cf0c8f4121bf3bed4dd05eead309bb85e6e698b698ccba2b32bd"
+    },
+    {
+      "path": "experiments/results/runner/src/main.rs",
+      "bytes": 780,
+      "sha256": "44182d38d1ec3fe0a140c8e6c203ac632938c102192061b19615dcb97f683e07"
+    },
+    {
+      "path": "experiments/results/verify.py",
+      "bytes": 1744,
+      "sha256": "50907c9e9992ef0d057e1f5798e1f2bd5bc6cb94f7f0e6fd959ccc4ed116b043"
+    },
+    {
+      "path": "experiments/terrestrial/.gitignore",
+      "bytes": 6,
+      "sha256": "247681cefffa8448d973f21147c92b38b63f492a98a50aca3b3c490bc97499e1"
+    },
+    {
+      "path": "experiments/terrestrial/README.md",
+      "bytes": 4038,
+      "sha256": "52732f35e56bef5457575009de0fdce9a34f3b965ada77745b45401b7e0fec29"
+    },
+    {
+      "path": "experiments/terrestrial/SHA256SUMS",
+      "bytes": 4087,
+      "sha256": "715c273626e4f3fdbf95eac7c5a737924fa37fe8b7400dea341213ae163fdc9d"
+    },
+    {
+      "path": "experiments/terrestrial/SIDEREAL_LIMITATION.md",
+      "bytes": 1072,
+      "sha256": "58240dfd3882a1354768679b99d7819298d9675b40b73193d3e0e3caff63e52a"
+    },
+    {
+      "path": "experiments/terrestrial/catalog.json",
+      "bytes": 2966,
+      "sha256": "534462cd7370a750cde5a3a742569d98cd32efb9360965bbb49cc02c6e81d97a"
+    },
+    {
+      "path": "experiments/terrestrial/manifest.json",
+      "bytes": 6718,
+      "sha256": "7f2ee7ff8d2e215fadb2cd4afe7a36f3798676aeccca1fb1d3da0b42bb3d8683"
+    },
+    {
+      "path": "experiments/terrestrial/recorded/figure-reference.csv",
+      "bytes": 22070,
+      "sha256": "0384b42271b5489fb0e0ffecd08e4c3dc4a815010566b192f05a7cadd11d3313"
+    },
+    {
+      "path": "experiments/terrestrial/recorded/historical-feasibility.csv",
+      "bytes": 195,
+      "sha256": "777ce53ebf382c8050ff01db118c2bbb78e3af952bd1d5fce45e8d185605cdb2"
+    },
+    {
+      "path": "experiments/terrestrial/recorded/sidereal-diagnostics.csv",
+      "bytes": 39233,
+      "sha256": "1ce3493b011e549c2b997a70c8752ff0bba28127c08d6157a31c1abed7ea501d"
+    },
+    {
+      "path": "experiments/terrestrial/recorded/terrestrial-cargo-tree.txt",
+      "bytes": 6533,
+      "sha256": "f645a29bc73c5a8b59ce8ec9ebcb01c0bab0ae8e927abb41ef82f25ee52dbf57"
+    },
+    {
+      "path": "experiments/terrestrial/recorded/terrestrial-cargo-version.txt",
+      "bytes": 36,
+      "sha256": "57d704d9ad73ec7cc1b1a79aed6703333615865be6e3dc1ce269ea4ca7068227"
+    },
+    {
+      "path": "experiments/terrestrial/recorded/terrestrial-python-version.txt",
+      "bytes": 61,
+      "sha256": "424bc78af72791a0e09dad53781f516adc7548246a83dab82191af98173d789d"
+    },
+    {
+      "path": "experiments/terrestrial/recorded/terrestrial-rustc.txt",
+      "bytes": 196,
+      "sha256": "b1008d5f7681db91d446d2bb0a07af00372bb6cb4d4599e95212e3a8edce4e11"
+    },
+    {
+      "path": "experiments/terrestrial/recorded/viewing-brackets.csv",
+      "bytes": 41,
+      "sha256": "bc8540c856192cbaf525696d5b684c7250afe471daa4374ae20ffa274fabb508"
+    },
+    {
+      "path": "experiments/terrestrial/recorded/viewing-epochs.csv",
+      "bytes": 40703,
+      "sha256": "ab79912dbfecc2efeaba10eaf28ae82655c5c2d5e413b10d8f8da02231966fdb"
+    },
+    {
+      "path": "experiments/terrestrial/recorded/viewing-events-reference.csv",
+      "bytes": 185,
+      "sha256": "d8f1bbdd4a6ca71cb211f9b2783f089f772e58bdb967e06ffbb0e1df28435987"
+    },
+    {
+      "path": "experiments/terrestrial/recorded/viewing-events.csv",
+      "bytes": 230,
+      "sha256": "1677426eaeccbe52bbbc8636ae08514c4d2507316d967f6f7825a8e2107f8e93"
+    },
+    {
+      "path": "experiments/terrestrial/recorded/viewing-gst06a-reference.csv",
+      "bytes": 14635,
+      "sha256": "a09d3b561034b3cac1dc6d3cf4cb7b95853a30c18c6d7dc78e196c9c4246f779"
+    },
+    {
+      "path": "experiments/terrestrial/recorded/viewing-reference-epochs.csv",
+      "bytes": 58640,
+      "sha256": "16311e8fdcc74184a9032e99bdf5fc5af27a8a015bd5e67aabb222ac0af12c9a"
+    },
+    {
+      "path": "experiments/terrestrial/recorded/viewing-reference.csv",
+      "bytes": 14635,
+      "sha256": "cfa955035f297e5fa4f6f11519eac65a0bbbbe273fd77db7c48c48b5de203e29"
+    },
+    {
+      "path": "experiments/terrestrial/recorded/viewing-residuals.csv",
+      "bytes": 21724,
+      "sha256": "b322e0e266c1a1c7b94d9f7380f3d2d28a898609c8c878cc51dcccd1088ba3f7"
+    },
+    {
+      "path": "experiments/terrestrial/recorded/viewing-selected.csv",
+      "bytes": 2543,
+      "sha256": "700fb55ad073b3eaf7fba03f2a3a97f6a35959a47ad801d1fe106083867d93bf"
+    },
+    {
+      "path": "experiments/terrestrial/recorded/viewing-spans.csv",
+      "bytes": 31,
+      "sha256": "6d761b6c091e466e299a3cbcccff05615d791eee95e84865994332f482b80b85"
+    },
+    {
+      "path": "experiments/terrestrial/recorded/viewing-summary.json",
+      "bytes": 3352,
+      "sha256": "32fa56faa7f01e7d0674ad5bcc2448881cbab0fd242845e04e5a6db4c5b485ec"
+    },
+    {
+      "path": "experiments/terrestrial/recorded/viewing.csv",
+      "bytes": 21056,
+      "sha256": "a688a409dab356f59a5975359e32c14327f24e449e3a4cb48e8c65139f818f57"
+    },
+    {
+      "path": "experiments/terrestrial/reproduce.sh",
+      "bytes": 2932,
+      "sha256": "81d43df78114c6811eb47e0c3a1987ffd353d9e98fc235b9924bc879797f4043"
+    },
+    {
+      "path": "experiments/terrestrial/requirements.txt",
+      "bytes": 29,
+      "sha256": "d42b1e076b0024130286df67fe9db835eed33072eaee8f2d2884b50974475d11"
+    },
+    {
+      "path": "generated-tex.txt",
+      "bytes": 216,
+      "sha256": "fbf2325333d1e8d378023c43a2982b2bf5eacc7d1c34b434c93be93cbdd68471"
+    },
+    {
+      "path": "rust-toolchain.toml",
+      "bytes": 51,
+      "sha256": "b3ccdd58a73b2e4c1be662ce41af1906970522d989d72458beb1be2723b6c19a"
+    },
+    {
+      "path": "scripts/fetch_application_kernels.py",
+      "bytes": 1023,
+      "sha256": "57c504d6ffe33f443f0c33da9e4ab562f3f555286c4d6c4b0348eccf213c4672"
+    },
+    {
+      "path": "scripts/generate_antares_macros.py",
+      "bytes": 2983,
+      "sha256": "aaa52cbdde6884997d9a0b6aa45d327b079540bc60f136650384ab6afcd4b60e"
+    },
+    {
+      "path": "scripts/generate_figures.py",
+      "bytes": 4510,
+      "sha256": "94d7707ac3e823aac8ac1af47fc1ccd2110886f5ee4cfaa32bb694d308188a9f"
+    },
+    {
+      "path": "scripts/generate_lunar_macros.py",
+      "bytes": 1284,
+      "sha256": "6ea7c8683f4009768fcbd17db91d414462b44a31c23ead2c5a7b450da6e56b95"
+    },
+    {
+      "path": "scripts/generate_results_tables.py",
+      "bytes": 4960,
+      "sha256": "74f7777ed828155af278860c2f085104ce3068275b49331eecf8ee3a33792a7e"
+    },
+    {
+      "path": "scripts/table_format.py",
+      "bytes": 814,
+      "sha256": "a56b26f3eaa4e04fa58963caf596a8df364eef0ffd32a4b23cf818e099844941"
+    },
+    {
+      "path": "scripts/validate_antares.py",
+      "bytes": 11432,
+      "sha256": "650963c2588c4bcf8c70f1bfc7e11bf2560dabbbb63cc0fe5ac9af0fb8644325"
+    },
+    {
+      "path": "scripts/validate_lunar_application.py",
+      "bytes": 6667,
+      "sha256": "72fcfa5657ee1788c56b871548b7eadc423caa52e3552c83af99edc3c5dd9cd5"
+    },
+    {
+      "path": "scripts/verify_antares_figure.py",
+      "bytes": 2895,
+      "sha256": "1acb08aba49f796435e7c3b82d3d5ff61ce1e63daf53a937589f72cefd400067"
+    },
+    {
+      "path": "scripts/write_antares_manifest.py",
+      "bytes": 1907,
+      "sha256": "5e105378c3fd3ba21d277382520403b1161c2f1ead9cd354e2cb2800b27648d1"
+    },
+    {
+      "path": "scripts/write_lunar_manifest.py",
+      "bytes": 1343,
+      "sha256": "b9d720a4484ea2437ec6c622698f2c430c56b0bd5240def3dfb0be9da2b1bb8d"
+    },
+    {
+      "path": "scripts/write_results_manifest.py",
+      "bytes": 2197,
+      "sha256": "9802d2b0d2277d3d9ad634a5e2cd175f34390f24e64eacaa19c5cf22dff8f9a1"
+    },
+    {
+      "path": "tex/figures/architecture-overview.tex",
+      "bytes": 1923,
+      "sha256": "df47a9e663d7f2533bb84c548fb890799dd8ccf6a83d06bcf278fdba81349391"
+    },
+    {
+      "path": "tex/figures/architecture.tex",
+      "bytes": 1960,
+      "sha256": "c8ae10ac85cef817a4de70b3f780582febc80cf9a73db324321206a757e0187f"
+    },
+    {
+      "path": "tex/figures/observing-window.tex",
+      "bytes": 19225,
+      "sha256": "89d2f820e5e83c2cbe20f9d8c82ee7f52aeffecf61012775aeecb2780632b591"
+    },
+    {
+      "path": "tex/tables/release-models.tex",
+      "bytes": 373,
+      "sha256": "3f1d453d15632f77613acb5da8a0a945b3d0da50822cae8e495057ef574ceaf4"
+    },
+    {
+      "path": "tex/tables/release-surface.tex",
+      "bytes": 758,
+      "sha256": "122a7be1afd9a442aa3200c1bc4ee568e70f264cd79ceed1d226e92144b31415"
+    },
+    {
+      "path": "tex/tables/release-time.tex",
+      "bytes": 271,
+      "sha256": "76886164f441c7570edecfedb01fe8f42f203ac20e003eceae332a58e6dac818"
+    },
+    {
+      "path": "tex/tables/release-validation.tex",
+      "bytes": 1397,
+      "sha256": "ad6b511f84379378087e7db307ba37928ac43f77c1e0f03d46b30f4bc7ee3e43"
+    },
+    {
+      "path": "tex/tables/release-values.tex",
+      "bytes": 1576,
+      "sha256": "9ca1d2214070c2d8eb389a87612715a0b12a3bdff85ca36cd9f50bc51bd8ac82"
+    },
+    {
+      "path": "tex/tables/results-values.tex",
+      "bytes": 723,
+      "sha256": "101dd4142bfdbab9922b776de8b5949f8d80d6ce09b9497ac2812b87a9b7a0cd"
+    },
+    {
+      "path": "tex/tables/semantic-matrix.tex",
+      "bytes": 2038,
+      "sha256": "aa5a408661779bbd11fc00278644e6f030cf2d540bd9cd96d26c097789e81e99"
+    }
+  ]
+}

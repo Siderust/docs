@@ -1,0 +1,7 @@
+tex/tables/release-models.tex
+tex/tables/release-surface.tex
+tex/tables/release-time.tex
+tex/tables/release-validation.tex
+tex/tables/release-values.tex
+tex/tables/results-values.tex
+tex/figures/observing-window.tex

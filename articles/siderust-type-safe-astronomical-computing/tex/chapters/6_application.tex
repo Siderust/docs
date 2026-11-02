@@ -1,0 +1,150 @@
+\section{Applications in Observer Geometry}
+\label{sec:application}
+
+Surface observations provide two tests of the integrated APIs: an altitude-event search for a fixed
+stellar direction from Earth, and a finite-distance Earth position viewed from the Moon. We define
+their inputs and observables here; Section~7 specifies the independent reductions and Section~8
+reports their residuals.
+
+\subsection{Altitude-event search for Antares}
+\label{sec:antares-example}
+
+We evaluate Antares ($\alpha$ Scorpii) from a terrestrial site at geodetic latitude
+$41.35403^\circ$ north and longitude $2.15017^\circ$ east, assuming zero WGS~84 ellipsoidal height.
+The observation covers 1896 July 14 in the proleptic Gregorian calendar, with the day defined in
+UT1. We seek the intervals during which the target's geometric altitude exceeds $15^\circ$.
+
+Antares is represented by its SIMBAD ICRS coordinates at reference epoch J2000, $\alpha=16^{\mathrm
+            h}29^{\mathrm m}24.45970^{\mathrm s}$ and $\delta=-26^\circ25'55.2094''$ \cite{simbadAntares}. The
+calculation uses a fixed catalog direction, neglecting stellar proper motion and parallax. Siderust
+transforms this direction into the true equatorial reference system of date before evaluating its
+local horizontal coordinates.
+
+The historical date exercises a UT1 observing day with TT derived from the prescribed $\Delta
+    T=\mathrm{TT}-\mathrm{UT1}$ model. The implementation applies the public IAU 2006/2000A
+bias--precession--nutation operation and then the true-of-date horizontal interface with explicit
+TT and UT1. An \texttt{AltitudeProvider} adapter supplies this calculation to the event searches.
+Section~\ref{sec:observation-method} gives the time prescription and search convention.
+
+The event-search tools locate the $15^\circ$ crossings with a numerical time tolerance of
+\ViewingEventTolerance{} s, yielding the interval \ViewingRefinedSpans{} UT1. Upper culmination
+occurs at \ViewingCulminationTime{} UT1 with geometric altitude
+$\ViewingCulminationAltitude^\circ$.
+
+A separate five-minute sampling grid provides a complete view of the target's altitude evolution.
+Including both endpoints of the day, the grid contains \ViewingSampleCount{} epochs, of which
+\ViewingSelectedCount{} satisfy the strict altitude constraint. The selected samples span
+\ViewingSpans{} UT1, with a maximum sampled altitude of $\ViewingMaximumAltitude^\circ$ at
+\ViewingMaximumTime{} UT1.
+
+Figure~\ref{fig:viewing-window} displays the altitude curve and enlarges the two threshold
+crossings. The sampled grid brackets these crossings within \ViewingBrackets{} UT1, respectively,
+while the event search provides refined crossing times. Both calculations use the same altitude
+function. No solar-illumination or nighttime constraint is applied.
+
+\begin{figure*}[!tbp]
+    \centering
+    \input{figures/observing-window}
+    \caption{Geometric altitude of Antares's fixed ICRS
+        catalog direction on 1896 July 14 UT1.
+        Open circles identify the \ViewingSelectedCount{}
+        samples above the $15^\circ$ threshold.
+        Shaded bands indicate the five-minute intervals
+        bracketing each crossing, shown in greater detail
+        in the lower panels. Dotted lines mark the
+        crossings refined using Siderust's numerical
+        event-search tools with a
+        \ViewingEventTolerance{} s tolerance.
+        No nighttime constraint is applied.}
+    \label{fig:viewing-window}
+\end{figure*}
+
+\subsection{Earth seen from a lunar surface site}
+\label{sec:lunar-example}
+
+Earth's finite distance makes observer displacement relevant to its direction in the lunar sky. The
+calculation therefore uses an ephemeris position and includes the surface station's offset from the
+Moon's center.
+
+We consider a hypothetical lunar station at $20.17^\circ$ east longitude and $-1.10^\circ$
+planetocentric latitude, at zero height above the Moon's reference sphere of radius $1737.4$ km.
+The observation is evaluated at 2017 October 1, 17:14:00 TT. Our objective is to determine Earth's
+geometric altitude, azimuth and range from this location.
+
+The DE440s ephemeris supplies Earth's position relative to the lunar center. The lunar body model
+supplies the reference surface and body-fixed orientation. The generic observation interface
+transforms the finite target position into the observer's local horizon system.
+
+The ephemeris-derived position has type \texttt{Position<Selenocentric, ICRS, Kilometer>}. The
+\texttt{ICRS} marker represents the documented ICRF realization of DE440s's SPICE \texttt{J2000}
+axes; no ecliptic transformation is introduced in this application. The epoch retains its TT scale,
+with the required TT-to-TDB conversion applied for ephemeris evaluation and lunar orientation. The
+helper uses the public SPK evaluator with explicit TDB seconds to retain the input epoch resolution
+(Section~\ref{sec:observation-method}).
+
+The lunar orientation follows the analytical \texttt{IAU\_MOON} model, exposed in Siderust as
+\texttt{MoonIauMeanEarth}. It approximates the lunar mean-Earth/polar-axis convention and is
+distinct from principal-axes and DE-specific binary-PCK frame realizations
+\cite{archinal2011,naiflunarframes}. The spherical reference surface gives a radial local vertical.
+
+The observation geometry can be expressed compactly. Let $\boldsymbol r$ denote Earth's
+selenocentric inertial position, $R$ the inertial-to-body-fixed rotation and $\boldsymbol s$ the
+observer's body-fixed position. The vector in the local north--east--up system is
+
+\begin{equation}
+    \boldsymbol\ell =
+    \begin{pmatrix}
+        \boldsymbol n^{\mathsf T} \\
+        \boldsymbol e^{\mathsf T} \\
+        \boldsymbol u^{\mathsf T}
+    \end{pmatrix}
+    (R\boldsymbol r-\boldsymbol s),
+\end{equation}
+
+where $\boldsymbol n$, $\boldsymbol e$ and $\boldsymbol u$ are the local north, east and up unit
+vectors.
+
+The observer-relative range is $\lVert\boldsymbol\ell\rVert$, while altitude and azimuth follow
+from
+
+\begin{align}
+    h & =
+    \operatorname{atan2}
+    \left(
+    \ell_u,
+    \sqrt{\ell_n^2+\ell_e^2}
+    \right), \\
+    A & =
+    \operatorname{atan2}(\ell_e,\ell_n)
+    \pmod{2\pi}.
+\end{align}
+
+Azimuth is measured from north through east. The subtraction of the observer's position is
+essential: it preserves the finite-distance geometry and allows the resulting direction to depend
+on the actual surface location.
+
+Listing~\ref{lst:moon-surface} combines the ephemeris helper with \texttt{SurfaceSite<Moon>} and
+the generic observation operation.
+
+\lstinputlisting[
+    float=tbp,
+    caption={Computing Earth's geometric altitude,
+            azimuth and range from a lunar surface
+            observer. The example combines a DE440s
+            ephemeris-derived position with Siderust's
+            generic surface-observation interface.},
+    label={lst:moon-surface}
+]{../examples/src/bin/earth_from_moon.rs}
+
+The resulting observation places Earth at a geometric altitude of $\EarthAltitude^\circ$ and an
+azimuth of $\EarthAzimuth^\circ$, at a range of $\EarthRange$ km.
+
+The importance of finite-distance representation becomes evident when the surface observation is
+compared with the direction from the Moon's center. The corresponding center-based altitude is
+$\CentreAltitude^\circ$, whereas the surface observer measures $\EarthAltitude^\circ$. The
+difference, approximately $\EarthParallax^\circ$, arises from the displacement of the observer
+relative to the lunar center.
+
+The computed Earth position lies above the local horizon at the selected epoch. The observable is a
+geometric pointing direction at a single epoch. Light-time corrections, aberration, gravitational
+deflection and terrain masking are outside the evaluated model.

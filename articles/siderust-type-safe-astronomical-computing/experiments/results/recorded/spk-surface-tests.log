@@ -1,0 +1,61 @@
+   Compiling siderust v0.18.1 (/home/valles/workspace/siderust-paper-revision/tagged-siderust)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.43s
+     Running tests/body_surface_horizontal.rs (/home/valles/workspace/siderust-paper-revision/tagged-siderust/target/debug/deps/body_surface_horizontal-6474ec3200bffd9f)
+
+running 36 tests
+test earth_surface_matches_wgs84_constants ... ok
+test analytical_enu_projection_reference ... ok
+test direction_does_not_invent_parallax ... ok
+test ellipsoid_geometry_is_scale_independent ... ok
+test enu_basis_orthonormal_earth_mars_moon ... ok
+test finite_east_matches_direction_only_and_affn_horizontal_axes ... ok
+test finite_observation_range_is_invariant_under_length_units ... ok
+test iau_body_poles_match_published_j2000_right_ascension_declination ... ok
+test finite_cardinals_and_extreme_ranges_match_analytical_geometry ... ok
+test iau_body_prime_meridians_match_j2000_cartographic_axes ... ok
+test invalid_horizontal_directions_and_targets_return_errors ... ok
+test invalid_subsurface_site_deserialization_is_rejected ... ok
+test legacy_earth_cartesian_horizontal_matches_spherical_east ... ok
+test lunar_e2e_altaz_matches_offline_cspice_iau_moon_reference ... ok
+test mars_altaz_invariant_under_equivalent_latitude_conventions ... ok
+test mars_azimuth_changes_with_epoch ... ok
+test lunar_iau_mean_earth_orientation_matches_independent_pck_vectors ... ok
+test mars_direction_roundtrip ... ok
+test mars_e2e_body_fixed_cardinal_and_spice_longitude_interop ... ok
+test mars_ellipsoid_zenith_nadir_azimuth_is_zero ... ok
+test mars_lat_conventions_differ_on_ellipsoid ... ok
+test earth_wgs84_zenith_matches_geodetic_cartesian ... ok
+test mars_zenith_along_ellipsoid_normal ... ok
+test microscopic_finite_range_preserves_altaz_in_au ... ok
+test moon_direction_roundtrip_random_sky ... ok
+test moon_equator_cardinals_body_fixed ... ok
+test moon_finite_parallax_shifts_altitude ... ok
+test near_zenith_perturbation_preserves_azimuth ... ok
+test negative_height_domain_for_spheres_and_ellipsoids ... ok
+test north_pole_azimuth_follows_longitude_meridian ... ok
+test rejects_non_finite_site ... ok
+test requested_length_unit_must_represent_finite_geometry ... ok
+test site_params_body_name ... ok
+test zero_range_is_error ... ok
+test shared_planetary_rotation_matches_independent_axes_at_multiple_epochs ... ok
+test zenith_and_nadir_azimuth_is_conventionally_zero ... ok
+
+test result: ok. 36 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests/test_spk_runtime.rs (/home/valles/workspace/siderust-paper-revision/tagged-siderust/target/debug/deps/test_spk_runtime-ae110ffc2c815732)
+
+running 11 tests
+test broken_selected_coefficients_do_not_expose_older_segments ... ok
+test later_segments_win_only_within_their_declared_coverage ... ok
+test byte_loaders_reject_non_j2000_frame_before_reading_coefficients ... ok
+test optional_real_bsp_smoke ... ok
+test legacy_single_segment_parser_rejects_unrepresentable_priority ... ok
+test parsed_constructors_use_the_same_type_and_body_chain_policy ... ok
+test pre_parsed_non_j2000_frames_are_rejected ... ok
+test runtime_ephemeris_multi_segment_boundary ... ok
+test selected_target_chain_never_falls_back_to_an_older_center ... ok
+test spk_kernel_set_matches_runtime_earth_moon_chain ... ok
+test strict_byte_policy_rejects_unrelated_or_higher_priority_incompatible_segments ... ok
+
+test result: ok. 11 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+

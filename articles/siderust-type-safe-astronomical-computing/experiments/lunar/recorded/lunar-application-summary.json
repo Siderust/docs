@@ -1,0 +1,61 @@
+{
+  "epoch_tt": "2017-10-01T17:14:00",
+  "longitude_east_deg": 20.17,
+  "planetocentric_latitude_deg": -1.1,
+  "tt_seconds": 560150040.0,
+  "tdb_seconds": 560150039.9983315,
+  "altitude_deg": 64.75321737248795,
+  "azimuth_deg": 271.1065189156355,
+  "range_km": 391056.0577095697,
+  "center_altitude_deg": 64.86135542236286,
+  "parallax_deg": 0.10813804987490983,
+  "reference": [
+    64.75321737247893,
+    271.106518915635,
+    391056.05770956975
+  ],
+  "rust": [
+    64.75321737248795,
+    271.1065189156355,
+    391056.0577095697
+  ],
+  "absolute_residuals": [
+    9.023892744153272e-12,
+    5.115907697472721e-13,
+    5.820766091346741e-11
+  ],
+  "center_altitude": 64.86135542235385,
+  "parallax": 0.10813804987492404,
+  "vector_max_residuals_km": {
+    "inertial_km": 5.820766091346741e-11,
+    "fixed_km": 6.14600139670074e-08,
+    "observer_km": 2.2737367544323206e-13,
+    "relative_km": 6.14600139670074e-08,
+    "horizontal_km": 5.587935447692871e-08
+  },
+  "vector_component_bound_km": 0.0001,
+  "matrix_max_residual": 1.2634338020234281e-13,
+  "center_altitude_residual_deg": 9.00968188943807e-12,
+  "angle_bound_deg": 3e-09,
+  "range_bound_km": 2e-08,
+  "native_unitim_diagnostic": {
+    "et_seconds": 560150039.9983462,
+    "time_difference_seconds": -1.4662742614746094e-05,
+    "altitude_residual_deg": 1.3454837244353257e-10,
+    "azimuth_residual_deg": 5.784954737464432e-10,
+    "range_residual_km": 7.977942004799843e-07
+  },
+  "kernel_coverage_verified": true,
+  "kernels_sha256": {
+    "de440s.bsp": "c1c7feeab882263fc493a9d5a5b2ddd71b54826cdf65d8d17a76126b260a49f2",
+    "naif0012.tls": "678e32bdb5a744117a467cd9601cd6b373f0e9bc9bbde1371d5eee39600a039b",
+    "pck00011.tpc": "3dff7b1dbeceaa01f25467767d3fa25816051c85d162d1edf04acb310ee28bb1"
+  },
+  "versions": {
+    "pyerfa": "2.0.1.5",
+    "erfa": "2.0.1",
+    "spiceypy": "6.0.0",
+    "cspice": "CSPICE_N0067",
+    "numpy": "2.5.4"
+  }
+}
