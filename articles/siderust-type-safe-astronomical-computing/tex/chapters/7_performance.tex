@@ -373,10 +373,10 @@ materials.
 
 \subsection{Compiler and runtime controls}
 
-Five negative fixtures are compiled separately with \verb|cargo check --locked| and the pinned
-Rust toolchain. They attempt quantity addition across dimensions, position subtraction across
-frames or centers, a TT argument in the UT1 slot of \texttt{gmst\_iau2006}, and inversion of a
-lunar observation using a Martian site. The control runner requires a nonzero exit status and the
+Five negative fixtures are compiled separately with \verb|cargo check --locked| and the pinned Rust
+toolchain. They attempt quantity addition across dimensions, position subtraction across frames or
+centers, a TT argument in the UT1 slot of \texttt{gmst\_iau2006}, and inversion of a lunar
+observation using a Martian site. The control runner requires a nonzero exit status and the
 expected \texttt{E0308} or \texttt{E0277} diagnostic for each fixture.
 
 Runtime controls pair admissible inputs with nonfinite coordinates, invalid latitude, a
